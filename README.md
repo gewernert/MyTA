@@ -7,8 +7,11 @@ This repository contains the static marketing website for MyTA.
 - `index.html`: Homepage for professors, instructors, academic technology teams, and university stakeholders.
 - `demo/index.html`: Dedicated demo page available at `/demo/`.
 - `styles.css`: Shared styling, layout, logo treatment, responsive rules, and product visual styles.
+- `assets/screenshots/myta-ai-tutor.png`: Real MyTA AI Tutor product screenshot used as the primary homepage visual.
+- `assets/screenshots/myta-ai-tutor-crop.png`: Cropped version of the real MyTA AI Tutor screenshot used as the primary homepage visual.
+- `assets/screenshots/myta-login.png`: Real MyTA login product screenshot available for future site use.
 - `assets/screenshots/myta-dashboard.png`: Original real MyTA product dashboard screenshot.
-- `assets/screenshots/myta-dashboard-crop.png`: Cropped version of the same real screenshot used on the homepage.
+- `assets/screenshots/myta-dashboard-crop.png`: Cropped version of the same real screenshot used as a secondary homepage visual.
 - `README.md`: Maintenance notes for the site.
 
 ## Replace The Demo Video
