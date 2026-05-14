@@ -87,10 +87,85 @@
               Visit the homepage for the market context, or contact the team to share feedback.
             </p>
             <div class="button-row">
-              <a class="button button-secondary" href="/">Back to homepage</a>
-              <a class="button button-primary" href="mailto:mytaeducation@gmail.com">Contact us</a>
+              <a class="button button-secondary" href="/" data-analytics-event="Homepage CTA clicked" data-analytics-location="demo context">Back to homepage</a>
+              <a class="button button-primary" href="mailto:mytaeducation@gmail.com" data-analytics-event="Contact CTA clicked" data-analytics-location="demo context">Contact us</a>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section class="section feedback-section">
+        <div class="wrap form-card">
+          <div class="form-heading">
+            <p class="eyebrow">Demo feedback</p>
+            <h2>Share feedback on the walkthrough.</h2>
+            <p>
+              For professors, instructors, academic technology teams, and university stakeholders who watched the demo or product walkthrough.
+            </p>
+          </div>
+
+          <form
+            class="site-form"
+            action="https://formspree.io/f/mojroqew"
+            method="POST"
+            data-form-name="demo_feedback"
+            data-analytics-start="Feedback form started"
+            data-analytics-submit="Feedback form submitted"
+          >
+            <input type="hidden" name="_subject" value="New MyTA demo feedback">
+            <input type="hidden" name="form_type" value="demo_feedback">
+            <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required>
+              </label>
+              <label class="form-field">
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label class="form-field">
+                <span>Role</span>
+                <input type="text" name="role" required>
+              </label>
+              <label class="form-field">
+                <span>University or organization</span>
+                <input type="text" name="organization" autocomplete="organization">
+              </label>
+              <label class="form-field form-field-full">
+                <span>What was most valuable or interesting?</span>
+                <textarea name="most_valuable_or_interesting" required></textarea>
+              </label>
+              <label class="form-field form-field-full">
+                <span>What was confusing?</span>
+                <textarea name="what_was_confusing"></textarea>
+              </label>
+              <label class="form-field form-field-full">
+                <span>What feature would make this more useful?</span>
+                <textarea name="feature_request"></textarea>
+              </label>
+              <label class="form-field">
+                <span>How likely would you be to use or recommend this?</span>
+                <select name="likelihood_to_use_or_recommend" required>
+                  <option value="">Select one</option>
+                  <option value="Very likely">Very likely</option>
+                  <option value="Somewhat likely">Somewhat likely</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                  <option value="Unlikely">Unlikely</option>
+                </select>
+              </label>
+              <label class="form-field form-field-full">
+                <span>Additional comments</span>
+                <textarea name="additional_comments"></textarea>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Send feedback</button>
+              <p class="form-status" data-form-status aria-live="polite"></p>
+            </div>
+          </form>
         </div>
       </section>
     </main>
@@ -113,5 +188,10 @@
         </div>
       </div>
     </footer>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="../assets/js/site.js"></script>
   </body>
 </html>

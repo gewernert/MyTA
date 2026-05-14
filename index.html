@@ -55,8 +55,8 @@
               MyTA brings guided AI into the assignment workflow, so instructors can see how students use AI, where they struggle, and what needs attention before learning disappears into a final submission.
             </p>
             <div class="button-row">
-              <a class="button button-primary" href="/demo/">Watch demo</a>
-              <a class="button button-secondary" href="mailto:mytaeducation@gmail.com">Contact us</a>
+              <a class="button button-primary" href="/demo/" data-analytics-event="Watch demo CTA clicked" data-analytics-location="homepage hero">Watch demo</a>
+              <a class="button button-secondary" href="mailto:mytaeducation@gmail.com" data-analytics-event="Contact CTA clicked" data-analytics-location="homepage hero">Contact us</a>
             </div>
           </div>
 
@@ -173,8 +173,83 @@
           <p class="eyebrow">See the product</p>
           <h2>Watch how MyTA keeps AI use visible inside the course workflow.</h2>
           <div class="button-row centered-row">
-            <a class="button button-light" href="/demo/">Watch demo</a>
-            <a class="button button-dark-outline" href="mailto:mytaeducation@gmail.com">Contact us</a>
+            <a class="button button-light" href="/demo/" data-analytics-event="Watch demo CTA clicked" data-analytics-location="homepage final cta">Watch demo</a>
+            <a class="button button-dark-outline" href="mailto:mytaeducation@gmail.com" data-analytics-event="Contact CTA clicked" data-analytics-location="homepage final cta">Contact us</a>
+          </div>
+        </div>
+
+        <div class="wrap pilot-form-shell">
+          <div class="form-card">
+            <div class="form-heading">
+              <p class="eyebrow">Pilot waitlist</p>
+              <h3>Interested in testing MyTA in a course?</h3>
+              <p>
+                MyTA is looking for professors, instructors, academic technology teams, and university stakeholders who may be open to piloting the software.
+              </p>
+            </div>
+
+            <form
+              class="site-form"
+              action="https://formspree.io/f/xwvydkla"
+              method="POST"
+              data-form-name="pilot_waitlist"
+              data-analytics-start="Pilot waitlist form started"
+              data-analytics-submit="Pilot waitlist form submitted"
+            >
+              <input type="hidden" name="_subject" value="New MyTA pilot waitlist signup">
+              <input type="hidden" name="form_type" value="pilot_waitlist">
+              <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Name</span>
+                  <input type="text" name="name" autocomplete="name" required>
+                </label>
+                <label class="form-field">
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label class="form-field">
+                  <span>University or organization</span>
+                  <input type="text" name="organization" autocomplete="organization" required>
+                </label>
+                <label class="form-field">
+                  <span>Role</span>
+                  <input type="text" name="role" required>
+                </label>
+                <label class="form-field">
+                  <span>Department or course area</span>
+                  <input type="text" name="department_or_course_area">
+                </label>
+                <label class="form-field">
+                  <span>Approximate class size</span>
+                  <input type="text" name="approximate_class_size">
+                </label>
+                <label class="form-field">
+                  <span>When they would be interested in piloting</span>
+                  <select name="pilot_timing" required>
+                    <option value="">Select timing</option>
+                    <option value="This term">This term</option>
+                    <option value="Next term">Next term</option>
+                    <option value="Next academic year">Next academic year</option>
+                    <option value="Still exploring">Still exploring</option>
+                  </select>
+                </label>
+                <label class="form-field form-field-full">
+                  <span>Biggest challenge they are trying to solve</span>
+                  <textarea name="biggest_challenge" required></textarea>
+                </label>
+                <label class="form-field form-field-full">
+                  <span>Optional notes</span>
+                  <textarea name="optional_notes"></textarea>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">Join pilot waitlist</button>
+                <p class="form-status" data-form-status aria-live="polite"></p>
+              </div>
+            </form>
           </div>
         </div>
       </section>
@@ -198,5 +273,10 @@
         </div>
       </div>
     </footer>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="assets/js/site.js"></script>
   </body>
 </html>
