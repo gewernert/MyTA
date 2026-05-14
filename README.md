@@ -1,53 +1,57 @@
 # MyTA Static Website
 
-This is the first version of a simple static website for MyTA. It is built with plain HTML and CSS so it can be deployed on Vercel with almost no setup.
+This repository contains the static marketing website for MyTA.
 
 ## Files
 
-- `index.html`: Homepage with hero, problem, solution, product, validation, team, final call to action, and footer.
-- `demo/index.html`: Dedicated demo page at `/demo/`.
-- `styles.css`: Shared brand styling for both pages.
+- `index.html`: Homepage for professors, instructors, academic technology teams, and university stakeholders.
+- `demo/index.html`: Dedicated demo page available at `/demo/`.
+- `styles.css`: Shared styling, layout, logo treatment, responsive rules, and product visual styles.
+- `assets/screenshots/myta-ai-tutor.png`: Real MyTA AI Tutor product screenshot used as the primary homepage visual.
+- `assets/screenshots/myta-ai-tutor-crop.png`: Cropped version of the real MyTA AI Tutor screenshot used as the primary homepage visual.
+- `assets/screenshots/myta-login.png`: Real MyTA login product screenshot available for future site use.
+- `assets/screenshots/myta-dashboard.png`: Original real MyTA product dashboard screenshot.
+- `assets/screenshots/myta-dashboard-crop.png`: Cropped version of the same real screenshot used as a secondary homepage visual.
 - `README.md`: Maintenance notes for the site.
 
 ## Replace The Demo Video
 
-Open `demo/index.html` and find the large video block.
+Open `demo/index.html` and find the iframe inside the demo video section.
 
-Replace this value:
+Replace:
 
 ```html
 src="about:blank"
 ```
 
-with the final embed URL from the video host, for example a YouTube, Vimeo, or Loom embed URL.
+with the final embed URL from YouTube, Vimeo, Loom, or another trusted video host.
 
-After adding the real video, remove the `video-placeholder` block if you do not want the placeholder text sitting over the video.
+After adding the real video, remove the `video-placeholder` block if you do not want placeholder text over the video.
 
 ## Edit Text And Contact Information
 
-- Homepage text lives in `index.html`.
-- Demo page text lives in `demo/index.html`.
-- Shared colors, spacing, cards, buttons, and responsive styles live in `styles.css`.
+- Homepage copy lives in `index.html`.
+- Demo page copy lives in `demo/index.html`.
+- Shared colors, spacing, buttons, logo, and responsive styles live in `styles.css`.
 - The email appears as `mytaeducation@gmail.com`.
 - The phone number appears as `(812) 705 1008`.
 
-Use search in your editor to find any copy you want to update.
+Use search in your editor to update repeated contact details.
 
 ## Fonts
 
-The CSS uses this heading stack:
+The site uses Poppins from Google Fonts and keeps an Open Sauce style fallback for headings:
 
 ```css
 "Open Sauce One", "Open Sauce Sans", "Poppins", system-ui, sans-serif
 ```
 
-The supporting text uses Poppins from Google Fonts. If you later get the exact Open Sauce One font files, place them in an `assets/fonts` folder and add `@font-face` rules near the top of `styles.css`.
+If exact Open Sauce One font files are added later, place them in an `assets/fonts` folder and add `@font-face` rules near the top of `styles.css`.
 
 ## Preview Locally
 
-Because this is a static site, you can preview it with a tiny local server.
+From this folder, run:
 
-For a local server preview from this folder, run:
 
 ```bash
 python -m http.server 8000
@@ -57,7 +61,7 @@ Then open `http://localhost:8000`.
 
 ## Deploy On Vercel
 
-1. Push this folder to a GitHub repository.
+1. Push this folder to GitHub.
 2. Import the repository into Vercel.
 3. Keep the framework preset as static or other.
 4. Leave the build command empty.

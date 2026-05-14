@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MyTA | Controlled AI learning for higher education</title>
+    <title>MyTA | Make AI use visible while students work</title>
     <meta
       name="description"
-      content="MyTA helps colleges use AI for real learning with guided student support and instructor visibility."
+      content="MyTA brings guided AI into the homework workflow so instructors can see AI use, student confusion, and learning progress while work is happening."
     >
-    <meta property="og:title" content="MyTA | Controlled AI learning for higher education">
+    <meta property="og:title" content="MyTA | Make AI use visible while students work">
     <meta
       property="og:description"
-      content="A controlled AI learning layer for higher education."
+      content="Guided AI during assignments, instructor controlled course context, and visibility into the learning process."
     >
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#d0d7dd">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css">
@@ -26,238 +26,155 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header" aria-label="Main navigation">
-      <nav class="nav wrap">
+    <header class="site-header">
+      <nav class="nav wrap" aria-label="Main navigation">
         <a class="brand" href="/" aria-label="MyTA home">
-          <span class="brand-mark" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+          <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <ellipse cx="32" cy="18" rx="9.5" ry="15" transform="rotate(35 32 18)" />
+            <ellipse cx="46" cy="32" rx="9.5" ry="15" transform="rotate(125 46 32)" />
+            <ellipse cx="32" cy="46" rx="9.5" ry="15" transform="rotate(35 32 46)" />
+            <ellipse cx="18" cy="32" rx="9.5" ry="15" transform="rotate(125 18 32)" />
+          </svg>
           <span>MyTA</span>
         </a>
-        <div class="nav-links" aria-label="Primary">
-          <a href="#product">Product</a>
-          <a href="#validation">Validation</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
           <a href="/demo/">Demo</a>
+          <a href="mailto:mytaeducation@gmail.com">Contact</a>
         </div>
-        <a class="nav-contact" href="mailto:mytaeducation@gmail.com">Contact</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="hero section-pad">
+      <section class="hero">
         <div class="wrap hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Built for real classroom adoption</p>
-            <h1>A controlled AI learning layer for higher education.</h1>
+            <p class="eyebrow">AI in the homework workflow</p>
+            <h1>Students already use AI while they work. MyTA keeps learning visible.</h1>
             <p class="hero-text">
-              MyTA helps colleges use AI for step by step learning, not answer
-              replacement. Students get guided help, while instructors see how
-              students think, learn, and struggle.
+              MyTA brings guided AI into the assignment workflow, so instructors can see how students use AI, where they struggle, and what needs attention before learning disappears into a final submission.
             </p>
-            <div class="button-row" aria-label="Primary actions">
-              <a class="button button-primary" href="/demo/">Watch the Demo</a>
-              <a class="button button-secondary" href="mailto:mytaeducation@gmail.com">Contact Us</a>
+            <div class="button-row">
+              <a class="button button-primary" href="/demo/">Watch demo</a>
+              <a class="button button-secondary" href="mailto:mytaeducation@gmail.com">Contact us</a>
             </div>
           </div>
 
-          <div class="product-visual" aria-label="MyTA product preview">
-            <div class="visual-window">
-              <div class="window-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="visual-grid">
-                <section class="assistant-panel" aria-label="Controlled AI Assistant preview">
-                  <div class="panel-kicker">Controlled AI Assistant</div>
-                  <div class="chat-bubble user-bubble">Can you help me think through the next step?</div>
-                  <div class="chat-bubble ai-bubble">
-                    Start with the concept. What information is given, and what is still unknown?
-                  </div>
-                  <div class="guardrail-row">
-                    <span class="guardrail-dot"></span>
-                    Answer generation blocked
-                  </div>
-                </section>
-                <section class="insight-panel" aria-label="Instructor visibility dashboard preview">
-                  <div class="panel-kicker">Instructor View</div>
-                  <div class="metric-row">
-                    <span>Concept gaps</span>
-                    <strong>12</strong>
-                  </div>
-                  <div class="metric-row">
-                    <span>Help requests</span>
-                    <strong>48</strong>
-                  </div>
-                  <div class="mini-chart" aria-hidden="true">
-                    <span style="height: 48%"></span>
-                    <span style="height: 78%"></span>
-                    <span style="height: 56%"></span>
-                    <span style="height: 88%"></span>
-                  </div>
-                  <div class="knowledge-card">Course knowledge base active</div>
-                </section>
-              </div>
-            </div>
+          <div class="hero-visual" aria-label="Real MyTA product screens">
+            <figure class="product-shot hero-shot">
+              <img
+                src="assets/screenshots/myta-assignment-ai-tutor.png"
+                alt="MyTA assignment screen showing an AI Tutor beside a homework question."
+              >
+            </figure>
+            <p class="visual-note">Real MyTA product screen</p>
           </div>
         </div>
       </section>
 
-      <section class="problem section-pad">
+      <section class="section context-section" id="context">
+        <div class="wrap problem-panel">
+          <div class="section-heading compact-heading">
+            <p class="eyebrow">The real problem</p>
+            <h2>Detection starts after the learning moment has passed.</h2>
+            <p>
+              Students use AI before they submit. Bans and detectors can react later, but they do not show whether learning happened during the work.
+            </p>
+          </div>
+          <div class="problem-points">
+            <p>AI use happens before the final submission.</p>
+            <p>Detectors miss confusion, reasoning, and help-seeking.</p>
+            <p>External AI tools pull learning data out of the course workflow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section product-section">
         <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">The problem</p>
-            <h2>AI is moving faster than classroom systems can adapt.</h2>
+          <div class="section-heading centered-heading">
+            <p class="eyebrow">What MyTA changes</p>
+            <h2>Guided AI becomes part of the assignment workflow.</h2>
+            <p>
+              MyTA keeps AI support tied to course materials, student work, and instructor visibility.
+            </p>
           </div>
-          <div class="three-grid">
-            <article class="outlined-card">
-              <span class="card-number">01</span>
-              <h3>AI is completing homework instead of students.</h3>
-              <p>Students can get final answers without showing the thinking that learning requires.</p>
+
+          <div class="feature-grid three-up">
+            <article class="feature-card">
+              <span>1</span>
+              <h3>Guided AI during assignments</h3>
+              <p>Students get help while they are still reasoning through the task, not only after work is submitted.</p>
             </article>
-            <article class="outlined-card">
-              <span class="card-number">02</span>
-              <h3>Professors have no visibility into real understanding.</h3>
-              <p>Instructors see submitted work, but not the moments where students get stuck.</p>
+            <article class="feature-card">
+              <span>2</span>
+              <h3>Visibility into learning</h3>
+              <p>Instructors can see AI use, confusion, and help-seeking patterns before they are hidden in a final answer.</p>
             </article>
-            <article class="outlined-card">
-              <span class="card-number">03</span>
-              <h3>Universities are being forced to ban AI.</h3>
-              <p>Bans are difficult to enforce and can remove useful support from honest students.</p>
+            <article class="feature-card">
+              <span>3</span>
+              <h3>Built around the course workflow</h3>
+              <p>Course materials and assignment directions shape the support, so AI becomes less disconnected from teaching.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="solution section-pad dark-section">
-        <div class="wrap solution-grid">
+      <section class="section workflow-section">
+        <div class="wrap">
+          <div class="section-heading centered-heading">
+            <p class="eyebrow">How it works</p>
+            <h2>Set the context, support the work, see the patterns.</h2>
+          </div>
+          <div class="workflow-flow">
+            <article class="step">
+              <span>1</span>
+              <h3>Instructor controlled course context</h3>
+              <p>Add materials, directions, and boundaries for AI help.</p>
+            </article>
+            <article class="step">
+              <span>2</span>
+              <h3>Students work with guided AI</h3>
+              <p>AI support sits in the assignment process instead of a separate tab.</p>
+            </article>
+            <article class="step">
+              <span>3</span>
+              <h3>Instructors see what needs attention</h3>
+              <p>Confusion and help-seeking patterns become visible earlier.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section evidence-section">
+        <div class="wrap evidence-panel">
           <div>
-            <p class="eyebrow eyebrow-light">The solution</p>
-            <h2>Controlled AI tutoring for real learning.</h2>
+            <p class="eyebrow">Market context</p>
+            <h2>AI is already part of assessed work.</h2>
           </div>
-          <div class="solution-copy">
-            <p>
-              MyTA gives students guided AI help without direct answer generation.
-              It keeps the interaction focused on reasoning, course context, and
-              the next useful step.
-            </p>
-            <p>
-              For instructors, MyTA turns learning activity into visibility:
-              where students struggle, which concepts need attention, and how AI
-              is being used inside the course workflow.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="product section-pad" id="product">
-        <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Product</p>
-            <h2>Four pieces that make AI usable in class.</h2>
-          </div>
-          <div class="four-grid">
-            <article class="feature-card">
-              <h3>Controlled AI Assistant</h3>
-              <p>Step by step support that helps students keep working through the problem.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Instructor Knowledge Base</h3>
-              <p>Course materials and instructor guidance shape what the assistant can explain.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Learning Visibility Dashboard</h3>
-              <p>Professors see patterns in student thinking, confusion, and help seeking.</p>
-            </article>
-            <article class="feature-card">
-              <h3>LMS Workflow Layer</h3>
-              <p>MyTA is designed to fit into the systems instructors already use.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="validation section-pad pale-section" id="validation">
-        <div class="wrap validation-grid">
-          <div class="section-heading align-left">
-            <p class="eyebrow">Market validation and discovery</p>
-            <h2>AI use is already here. Faculty need a practical middle path.</h2>
-            <p>
-              These signals show why controlled classroom AI matters. Early
-              discovery is underway with university teaching, learning, and
-              academic technology stakeholders.
-            </p>
-          </div>
-          <div class="stat-grid" aria-label="Validation statistics">
-            <div class="stat-card">
+          <div class="stat-row" aria-label="Market context statistics">
+            <div>
               <strong>94%</strong>
               <span>of students use generative AI to help with assessed work</span>
             </div>
-            <div class="stat-card">
+            <div>
               <strong>79%</strong>
               <span>of faculty said GenAI will affect their teaching model</span>
             </div>
-            <div class="stat-card">
+            <div>
               <strong>77%</strong>
               <span>of students would be likely to use AI even if banned</span>
             </div>
-            <div class="stat-card">
-              <strong>34</strong>
-              <span>contacts reached across teaching, learning, and academic technology teams</span>
-            </div>
-            <div class="stat-card">
-              <strong>15</strong>
-              <span>universities contacted</span>
-            </div>
-            <div class="stat-card">
-              <strong>9</strong>
-              <span>early discovery conversations completed with Purdue faculty</span>
-            </div>
           </div>
         </div>
       </section>
 
-      <section class="team section-pad">
-        <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Team</p>
-            <h2>Built by Purdue students across business and engineering backgrounds.</h2>
-          </div>
-          <div class="team-grid">
-            <article class="team-card">
-              <div class="avatar" aria-hidden="true">GG</div>
-              <h3>Grant Goldsmith</h3>
-              <p>CEO and Co Founder</p>
-            </article>
-            <article class="team-card">
-              <div class="avatar" aria-hidden="true">GW</div>
-              <h3>Gavin Wernert</h3>
-              <p>CFO and Co Founder</p>
-            </article>
-            <article class="team-card">
-              <div class="avatar" aria-hidden="true">MR</div>
-              <h3>Mark Rome</h3>
-              <p>COO and Co Founder</p>
-            </article>
-            <article class="team-card">
-              <div class="avatar" aria-hidden="true">PC</div>
-              <h3>Paul Cavounis</h3>
-              <p>CTO and Co Founder</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="final-cta section-pad dark-section">
-        <div class="wrap cta-box">
-          <p class="eyebrow eyebrow-light">For professors and university partners</p>
-          <h2>See how controlled AI support can work in a real course.</h2>
-          <div class="button-row">
-            <a class="button button-light" href="/demo/">Watch the Demo</a>
-            <a class="button button-dark-outline" href="mailto:mytaeducation@gmail.com">Contact the Team</a>
+      <section class="section cta-section">
+        <div class="wrap cta-panel">
+          <p class="eyebrow">See the product</p>
+          <h2>Watch how MyTA keeps AI use visible inside the course workflow.</h2>
+          <div class="button-row centered-row">
+            <a class="button button-light" href="/demo/">Watch demo</a>
+            <a class="button button-dark-outline" href="mailto:mytaeducation@gmail.com">Contact us</a>
           </div>
         </div>
       </section>
@@ -265,17 +182,15 @@
 
     <footer class="site-footer">
       <div class="wrap footer-grid">
-        <div>
-          <a class="brand footer-brand" href="/" aria-label="MyTA home">
-            <span class="brand-mark" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-            <span>MyTA</span>
-          </a>
-        </div>
+        <a class="brand footer-brand" href="/" aria-label="MyTA home">
+          <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <ellipse cx="32" cy="18" rx="9.5" ry="15" transform="rotate(35 32 18)" />
+            <ellipse cx="46" cy="32" rx="9.5" ry="15" transform="rotate(125 46 32)" />
+            <ellipse cx="32" cy="46" rx="9.5" ry="15" transform="rotate(35 32 46)" />
+            <ellipse cx="18" cy="32" rx="9.5" ry="15" transform="rotate(125 18 32)" />
+          </svg>
+          <span>MyTA</span>
+        </a>
         <div class="footer-links">
           <a href="mailto:mytaeducation@gmail.com">mytaeducation@gmail.com</a>
           <a href="tel:+18127051008">(812) 705 1008</a>
