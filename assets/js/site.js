@@ -39,6 +39,34 @@
     });
   };
 
+  var initFormRedirectTargets = function () {
+    document.querySelectorAll("[data-success-redirect]").forEach(function (input) {
+      input.value = new URL(input.getAttribute("data-success-redirect"), window.location.origin).toString();
+    });
+  };
+
+  var initFormSuccessMessages = function () {
+    var successKey = window.location.hash.replace("#", "");
+    if (!successKey) {
+      return;
+    }
+
+    var message = document.querySelector('[data-success-message="' + successKey + '"]');
+    if (!message) {
+      return;
+    }
+
+    message.hidden = false;
+
+    if (window.history && typeof window.history.replaceState === "function") {
+      window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    }
+
+    window.setTimeout(function () {
+      message.hidden = true;
+    }, 6000);
+  };
+
   var initDemoTracking = function () {
     if (!document.querySelector(".demo-main")) {
       return;
@@ -91,6 +119,8 @@
   };
 
   initCtaTracking();
+  initFormRedirectTargets();
   initFormStartTracking();
+  initFormSuccessMessages();
   initDemoTracking();
 })();

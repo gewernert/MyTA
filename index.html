@@ -198,6 +198,7 @@
             >
               <input type="hidden" name="_subject" value="New MyTA pilot waitlist signup">
               <input type="hidden" name="form_type" value="pilot_waitlist">
+              <input type="hidden" name="_next" value="/#pilot-submitted" data-success-redirect="/#pilot-submitted">
               <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
 
               <div class="form-grid">
@@ -244,6 +245,10 @@
                   <textarea id="pilot-optional-notes" name="optional_notes"></textarea>
                 </label>
               </div>
+
+              <p class="form-status success form-success-banner" data-success-message="pilot-submitted" role="status" aria-live="polite" hidden>
+                Thanks for joining the pilot waitlist. Your response has been submitted.
+              </p>
 
               <div class="form-actions">
                 <button class="button button-primary" type="submit">Join pilot waitlist</button>

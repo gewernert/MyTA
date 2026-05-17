@@ -114,6 +114,7 @@
           >
             <input type="hidden" name="_subject" value="New MyTA demo feedback">
             <input type="hidden" name="form_type" value="demo_feedback">
+            <input type="hidden" name="_next" value="/demo/#feedback-submitted" data-success-redirect="/demo/#feedback-submitted">
             <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
 
             <div class="form-grid">
@@ -161,9 +162,13 @@
               </label>
               <label class="form-field form-field-full" for="feedback-additional-comments">
                 <span>Additional comments</span>
-                <textarea id="feedback-additional-comments" name="additional_comments" required></textarea>
+                <textarea id="feedback-additional-comments" name="additional_comments"></textarea>
               </label>
             </div>
+
+            <p class="form-status success form-success-banner" data-success-message="feedback-submitted" role="status" aria-live="polite" hidden>
+              Thanks for the feedback. Your response has been submitted.
+            </p>
 
             <div class="form-actions">
               <button class="button button-primary" type="submit">Send feedback</button>
