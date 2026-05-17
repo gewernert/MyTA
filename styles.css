@@ -600,6 +600,11 @@ h3 {
   transform: none;
 }
 
+.form-message-stack {
+  display: grid;
+  gap: 6px;
+}
+
 .form-status {
   color: var(--muted);
   font-size: 0.9rem;
@@ -612,6 +617,24 @@ h3 {
 
 .form-status.error {
   color: #8a2f2f;
+}
+
+.form-status[hidden],
+.form-field-error:empty {
+  display: none;
+}
+
+.form-field-error {
+  color: #8a2f2f;
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.form-field input[aria-invalid="true"],
+.form-field select[aria-invalid="true"],
+.form-field textarea[aria-invalid="true"] {
+  border-color: #8a2f2f;
 }
 
 .form-hidden {

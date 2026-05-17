@@ -105,71 +105,76 @@
           </div>
 
           <form
+            id="demo-feedback-form"
             class="site-form"
             action="https://formspree.io/f/mojroqew"
             method="POST"
-            novalidate
             data-form-name="demo_feedback"
             data-analytics-start="Feedback form started"
-            data-analytics-submit="Feedback form submitted"
-            data-success-message="Thanks for the feedback. Your response has been submitted."
           >
             <input type="hidden" name="_subject" value="New MyTA demo feedback">
             <input type="hidden" name="form_type" value="demo_feedback">
             <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
 
             <div class="form-grid">
-              <label class="form-field">
+              <label class="form-field" for="feedback-name">
                 <span>Name</span>
-                <input type="text" name="name" autocomplete="name" required>
+                <input id="feedback-name" type="text" name="name" autocomplete="name" data-fs-field required>
+                <span class="form-field-error" data-fs-error="name"></span>
               </label>
-              <label class="form-field">
+              <label class="form-field" for="feedback-email">
                 <span>Email</span>
-                <input type="email" name="email" autocomplete="email" required>
+                <input id="feedback-email" type="email" name="email" autocomplete="email" data-fs-field required>
+                <span class="form-field-error" data-fs-error="email"></span>
               </label>
-              <label class="form-field">
+              <label class="form-field" for="feedback-department">
                 <span>Department</span>
-                <input type="text" name="department">
+                <input id="feedback-department" type="text" name="department" data-fs-field>
               </label>
-              <label class="form-field">
+              <label class="form-field" for="feedback-university-or-organization">
                 <span>University or organization</span>
-                <input type="text" name="organization" autocomplete="organization">
+                <input id="feedback-university-or-organization" type="text" name="university_or_organization" autocomplete="organization" data-fs-field>
               </label>
-              <label class="form-field form-field-full">
+              <label class="form-field form-field-full" for="feedback-features-liked-most">
                 <span>Which feature or features did you like most?</span>
-                <textarea name="features_liked_most" required></textarea>
+                <textarea id="feedback-features-liked-most" name="features_liked_most" data-fs-field required></textarea>
+                <span class="form-field-error" data-fs-error="features_liked_most"></span>
               </label>
-              <label class="form-field form-field-full">
+              <label class="form-field form-field-full" for="feedback-features-liked-least">
                 <span>Which feature or features did you like least?</span>
-                <textarea name="features_liked_least"></textarea>
+                <textarea id="feedback-features-liked-least" name="features_liked_least" data-fs-field></textarea>
               </label>
-              <label class="form-field form-field-full">
+              <label class="form-field form-field-full" for="feedback-confusing-or-needs-clarity">
                 <span>What was confusing about the demo, or what should be added or made clearer?</span>
-                <textarea name="confusing_or_needs_clarity"></textarea>
+                <textarea id="feedback-confusing-or-needs-clarity" name="confusing_or_needs_clarity" data-fs-field></textarea>
               </label>
-              <label class="form-field form-field-full">
+              <label class="form-field form-field-full" for="feedback-feature-request">
                 <span>What feature would make this more useful?</span>
-                <textarea name="feature_request"></textarea>
+                <textarea id="feedback-feature-request" name="feature_request" data-fs-field></textarea>
               </label>
-              <label class="form-field">
+              <label class="form-field" for="feedback-likelihood">
                 <span>How likely would you be to use or recommend this?</span>
-                <select name="likelihood_to_use_or_recommend" required>
+                <select id="feedback-likelihood" name="likelihood_to_use_or_recommend" data-fs-field required>
                   <option value="">Select one</option>
                   <option value="Very likely">Very likely</option>
                   <option value="Somewhat likely">Somewhat likely</option>
                   <option value="Not sure yet">Not sure yet</option>
                   <option value="Unlikely">Unlikely</option>
                 </select>
+                <span class="form-field-error" data-fs-error="likelihood_to_use_or_recommend"></span>
               </label>
-              <label class="form-field form-field-full">
+              <label class="form-field form-field-full" for="feedback-additional-comments">
                 <span>Additional comments</span>
-                <textarea name="additional_comments"></textarea>
+                <textarea id="feedback-additional-comments" name="additional_comments" data-fs-field></textarea>
               </label>
             </div>
 
             <div class="form-actions">
-              <button class="button button-primary" type="submit">Send feedback</button>
-              <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+              <button class="button button-primary" type="submit" data-fs-submit-btn>Send feedback</button>
+              <div class="form-message-stack" role="status" aria-live="polite">
+                <p class="form-status success" data-fs-success hidden>Thanks for the feedback. Your response has been submitted.</p>
+                <p class="form-status error" data-fs-error hidden>Something went wrong. Please try again or email mytaeducation@gmail.com.</p>
+              </div>
             </div>
           </form>
         </div>
@@ -198,6 +203,11 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="../assets/js/site.js?v=forms-submit-fix"></script>
+    <script>
+      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+      formspree("initForm", { formElement: "#demo-feedback-form", formId: "mojroqew" });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <script defer src="../assets/js/site.js?v=formspree-ajax"></script>
   </body>
 </html>
