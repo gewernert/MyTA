@@ -17,11 +17,18 @@
       return;
     }
 
+    window.clearTimeout(form.statusTimer);
     status.textContent = message;
     status.className = "form-status";
     if (state) {
       status.classList.add(state);
     }
+  };
+
+  var clearStatusLater = function (form) {
+    form.statusTimer = window.setTimeout(function () {
+      setStatus(form, "", "");
+    }, 6000);
   };
 
   var setSubmitting = function (button, isSubmitting, originalText) {
@@ -51,6 +58,25 @@
       var originalButtonText = submitButton ? submitButton.textContent : "";
       var successMessage = form.getAttribute("data-success-message") || "Thank you. Your response was sent.";
 
+      var getMissingRequiredField = function () {
+        var requiredFields = form.querySelectorAll("[required]");
+        for (var index = 0; index < requiredFields.length; index += 1) {
+          var field = requiredFields[index];
+          var type = (field.getAttribute("type") || "").toLowerCase();
+          var isHidden = type === "hidden" || field.classList.contains("form-hidden") || field.offsetParent === null;
+
+          if (field.disabled || isHidden) {
+            continue;
+          }
+
+          if (!field.value.trim()) {
+            return field;
+          }
+        }
+
+        return null;
+      };
+
       form.addEventListener("focusin", function () {
         if (started) {
           return;
@@ -62,20 +88,13 @@
         });
       });
 
-      form.addEventListener(
-        "invalid",
-        function () {
-          setStatus(form, "Please complete the required fields before submitting.", "error");
-        },
-        true
-      );
-
       form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        if (!form.checkValidity()) {
+        var missingRequiredField = getMissingRequiredField();
+        if (missingRequiredField) {
           setStatus(form, "Please complete the required fields before submitting.", "error");
-          form.reportValidity();
+          missingRequiredField.focus();
           return;
         }
 
@@ -104,6 +123,7 @@
 
             form.reset();
             setStatus(form, successMessage, "success");
+            clearStatusLater(form);
             trackEvent(form.getAttribute("data-analytics-submit"), {
               form: form.getAttribute("data-form-name")
             });
