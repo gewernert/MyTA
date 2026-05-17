@@ -39,6 +39,76 @@
     });
   };
 
+  var isVisibleField = function (field) {
+    var type = (field.getAttribute("type") || "").toLowerCase();
+    return !field.disabled && type !== "hidden" && !field.classList.contains("form-hidden") && field.offsetParent !== null;
+  };
+
+  var fieldHasValue = function (field) {
+    return field.value.trim() !== "";
+  };
+
+  var emailLooksValid = function (field) {
+    var value = field.value.trim();
+    return value.indexOf("@") !== -1 && value.indexOf(".") !== -1;
+  };
+
+  var showValidationMessage = function (form, message) {
+    var messageElement = form.querySelector("[data-validation-message]");
+    if (!messageElement) {
+      return;
+    }
+
+    messageElement.textContent = message;
+    messageElement.hidden = false;
+  };
+
+  var clearValidationMessage = function (form) {
+    var messageElement = form.querySelector("[data-validation-message]");
+    if (!messageElement) {
+      return;
+    }
+
+    messageElement.textContent = "";
+    messageElement.hidden = true;
+  };
+
+  var initFormValidation = function () {
+    document.querySelectorAll("form[data-form-name]").forEach(function (form) {
+      form.addEventListener("input", function () {
+        clearValidationMessage(form);
+      });
+
+      form.addEventListener("change", function () {
+        clearValidationMessage(form);
+      });
+
+      form.addEventListener("submit", function (event) {
+        var requiredFields = Array.from(form.querySelectorAll("[required]")).filter(isVisibleField);
+        var missingRequired = requiredFields.some(function (field) {
+          return !fieldHasValue(field);
+        });
+        var emailField = form.querySelector('input[type="email"]');
+        var invalidEmail = emailField && isVisibleField(emailField) && fieldHasValue(emailField) && !emailLooksValid(emailField);
+
+        if (!missingRequired && !invalidEmail) {
+          clearValidationMessage(form);
+          return;
+        }
+
+        event.preventDefault();
+
+        if (missingRequired && invalidEmail) {
+          showValidationMessage(form, "Please complete all required fields and enter a valid email address with an @ and a dot.");
+        } else if (missingRequired) {
+          showValidationMessage(form, "Please complete all required fields before submitting.");
+        } else {
+          showValidationMessage(form, "Please enter a valid email address with an @ and a dot.");
+        }
+      });
+    });
+  };
+
   var initFormRedirectTargets = function () {
     document.querySelectorAll("[data-success-redirect]").forEach(function (input) {
       input.value = new URL(input.getAttribute("data-success-redirect"), window.location.origin).toString();
@@ -121,6 +191,7 @@
   initCtaTracking();
   initFormRedirectTargets();
   initFormStartTracking();
+  initFormValidation();
   initFormSuccessMessages();
   initDemoTracking();
 })();

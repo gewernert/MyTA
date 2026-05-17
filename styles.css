@@ -630,6 +630,14 @@ h3 {
   color: #8a2f2f;
 }
 
+.form-validation-message {
+  max-width: 440px;
+}
+
+.form-validation-message[hidden] {
+  display: none;
+}
+
 .form-success-banner {
   margin-top: 20px;
   padding: 12px 14px;
@@ -682,6 +690,10 @@ h3 {
 .demo-hero h1 {
   max-width: 900px;
   font-size: clamp(2.55rem, 5.3vw, 4.25rem);
+}
+
+.demo-hero .hero-text {
+  margin-inline: 0;
 }
 
 .demo-video {
