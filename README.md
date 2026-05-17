@@ -42,22 +42,21 @@ Use search in your editor to update repeated contact details.
 
 ## Forms
 
-The homepage pilot waitlist form and demo page feedback form are wired for Formspree, but the placeholder endpoints must be replaced before launch.
+The homepage pilot waitlist form and demo page feedback form are wired for Formspree.
 
-Replace these values:
+Current endpoints:
 
 - `https://formspree.io/f/xwvydkla` in `index.html`
 - `https://formspree.io/f/mojroqew` in `demo/index.html`
 
-Recommended setup:
+Before launch, confirm the Formspree account setup:
 
-1. Create two Formspree forms, one for pilot waitlist signups and one for demo feedback.
-2. Set email notifications for both forms to `mytaeducation@gmail.com`.
+1. Confirm there are two Formspree forms, one for pilot waitlist signups and one for demo feedback.
+2. Confirm email notifications for both forms go to `mytaeducation@gmail.com`.
 3. Use the Formspree dashboard as the stored response archive, or connect Formspree to Google Sheets if a sheet workflow is preferred.
-4. Replace the placeholder endpoints with the live form URLs.
-5. Submit one test response to each form from the deployed site and confirm the response appears in Formspree and an email arrives at `mytaeducation@gmail.com`.
+4. Submit one test response to each form from the deployed site and confirm the response appears in Formspree and an email arrives at `mytaeducation@gmail.com`.
 
-Until the live endpoints are added, the forms show an error state instead of sending data.
+If Formspree has not verified the recipient or form owner, submissions may be accepted in Formspree but email notifications may not arrive until that account setup is complete.
 
 ## Analytics
 

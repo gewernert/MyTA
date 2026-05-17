@@ -1,14 +1,14 @@
 (function () {
-  var configuredEndpoint = function (action) {
-    return action && action.indexOf("REPLACE_WITH_") === -1;
-  };
-
   var trackEvent = function (name, data) {
     if (!name || typeof window.va !== "function") {
       return;
     }
 
-    window.va("event", Object.assign({ name: name }, data || {}));
+    try {
+      window.va("event", name, data || {});
+    } catch (error) {
+      return;
+    }
   };
 
   var setStatus = function (form, message, state) {
@@ -55,7 +55,7 @@
       form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        if (!configuredEndpoint(form.action)) {
+        if (!form.getAttribute("action")) {
           setStatus(form, "This form needs a live endpoint before launch.", "error");
           return;
         }
@@ -66,7 +66,7 @@
           submitButton.textContent = "Sending...";
         }
 
-        fetch(form.action, {
+        fetch(form.getAttribute("action"), {
           method: "POST",
           body: new FormData(form),
           headers: {
