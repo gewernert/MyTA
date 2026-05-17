@@ -7,8 +7,10 @@ This repository contains the static marketing website for MyTA.
 - `index.html`: Homepage for professors, instructors, academic technology teams, and university stakeholders.
 - `demo/index.html`: Dedicated demo page available at `/demo/`.
 - `styles.css`: Shared styling, layout, logo treatment, responsive rules, and product visual styles.
-- `assets/screenshots/myta-ai-tutor.png`: Real MyTA AI Tutor product screenshot used as the primary homepage visual.
-- `assets/screenshots/myta-ai-tutor-crop.png`: Cropped version of the real MyTA AI Tutor screenshot used as the primary homepage visual.
+- `assets/js/site.js`: Shared form handling and lightweight analytics event tracking.
+- `assets/screenshots/myta-assignment-ai-tutor.png`: Real MyTA assignment screen used as the homepage hero visual.
+- `assets/screenshots/myta-ai-tutor.png`: Real MyTA AI Tutor product screenshot available for future site use.
+- `assets/screenshots/myta-ai-tutor-crop.png`: Cropped version of the real MyTA AI Tutor screenshot available for future site use.
 - `assets/screenshots/myta-login.png`: Real MyTA login product screenshot available for future site use.
 - `assets/screenshots/myta-dashboard.png`: Original real MyTA product dashboard screenshot.
 - `assets/screenshots/myta-dashboard-crop.png`: Cropped version of the same real screenshot used as a secondary homepage visual.
@@ -37,6 +39,38 @@ After adding the real video, remove the `video-placeholder` block if you do not 
 - The phone number appears as `(812) 705 1008`.
 
 Use search in your editor to update repeated contact details.
+
+## Forms
+
+The homepage pilot waitlist form and demo page feedback form are wired for Formspree.
+
+Current endpoints:
+
+- `https://formspree.io/f/xwvydkla` in `index.html`
+- `https://formspree.io/f/mojroqew` in `demo/index.html`
+
+Before launch, confirm the Formspree account setup:
+
+1. Confirm there are two Formspree forms, one for pilot waitlist signups and one for demo feedback.
+2. Confirm email notifications for both forms go to `mytaeducation@gmail.com`.
+3. Use the Formspree dashboard as the stored response archive, or connect Formspree to Google Sheets if a sheet workflow is preferred.
+4. Submit one test response to each form from the deployed site and confirm the response appears in Formspree and an email arrives at `mytaeducation@gmail.com`.
+
+If Formspree has not verified the recipient or form owner, submissions may be accepted in Formspree but email notifications may not arrive until that account setup is complete.
+
+## Analytics
+
+The site includes Vercel Web Analytics using the static HTML script loader and tracks:
+
+- Demo page views
+- Demo page scroll depth
+- Feedback form starts
+- Feedback form submissions
+- Pilot waitlist form starts
+- Pilot waitlist form submissions
+- Major CTA clicks
+
+Analytics are visible in the Vercel project dashboard under Analytics after Web Analytics is enabled and the site is deployed. Custom events may require a Vercel plan that supports Web Analytics custom events.
 
 ## Fonts
 
