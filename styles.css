@@ -226,13 +226,13 @@ h3 {
 }
 
 .hero {
-  padding: 88px 0 72px;
+  padding: 78px 0 70px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(460px, 1.05fr);
-  gap: 56px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  gap: 48px;
   align-items: center;
 }
 
@@ -257,6 +257,8 @@ h3 {
 
 .hero-visual {
   position: relative;
+  width: min(100%, 680px);
+  justify-self: center;
   padding: 20px;
   border: 1px solid var(--border-blue);
   border-radius: var(--radius-lg);
@@ -600,11 +602,6 @@ h3 {
   transform: none;
 }
 
-.form-message-stack {
-  display: grid;
-  gap: 6px;
-}
-
 .form-status {
   color: var(--muted);
   font-size: 0.9rem;
@@ -617,24 +614,6 @@ h3 {
 
 .form-status.error {
   color: #8a2f2f;
-}
-
-.form-status[hidden],
-.form-field-error:empty {
-  display: none;
-}
-
-.form-field-error {
-  color: #8a2f2f;
-  font-size: 0.78rem;
-  font-weight: 650;
-  line-height: 1.35;
-}
-
-.form-field input[aria-invalid="true"],
-.form-field select[aria-invalid="true"],
-.form-field textarea[aria-invalid="true"] {
-  border-color: #8a2f2f;
 }
 
 .form-hidden {

@@ -39,32 +39,6 @@
     });
   };
 
-  var initSuccessAutoHide = function () {
-    if (typeof MutationObserver !== "function") {
-      return;
-    }
-
-    document.querySelectorAll("[data-fs-success]").forEach(function (element) {
-      var hideTimer;
-      var observer = new MutationObserver(function () {
-        window.clearTimeout(hideTimer);
-        if (!element.hidden && element.textContent.trim()) {
-          hideTimer = window.setTimeout(function () {
-            element.hidden = true;
-          }, 6000);
-        }
-      });
-
-      observer.observe(element, {
-        attributes: true,
-        attributeFilter: ["hidden", "class", "style"],
-        childList: true,
-        characterData: true,
-        subtree: true
-      });
-    });
-  };
-
   var initDemoTracking = function () {
     if (!document.querySelector(".demo-main")) {
       return;
@@ -118,6 +92,5 @@
 
   initCtaTracking();
   initFormStartTracking();
-  initSuccessAutoHide();
   initDemoTracking();
 })();
