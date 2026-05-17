@@ -111,6 +111,7 @@
             data-form-name="demo_feedback"
             data-analytics-start="Feedback form started"
             data-analytics-submit="Feedback form submitted"
+            data-success-message="Thanks for the feedback. Your response has been submitted."
           >
             <input type="hidden" name="_subject" value="New MyTA demo feedback">
             <input type="hidden" name="form_type" value="demo_feedback">
@@ -167,7 +168,7 @@
 
             <div class="form-actions">
               <button class="button button-primary" type="submit">Send feedback</button>
-              <p class="form-status" data-form-status aria-live="polite"></p>
+              <p class="form-status" data-form-status role="status" aria-live="polite"></p>
             </div>
           </form>
         </div>

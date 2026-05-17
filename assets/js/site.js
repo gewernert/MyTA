@@ -24,6 +24,15 @@
     }
   };
 
+  var setSubmitting = function (button, isSubmitting, originalText) {
+    if (!button) {
+      return;
+    }
+
+    button.disabled = isSubmitting;
+    button.textContent = isSubmitting ? "Sending..." : originalText;
+  };
+
   var initCtaTracking = function () {
     document.querySelectorAll("[data-analytics-event]").forEach(function (element) {
       element.addEventListener("click", function () {
@@ -40,6 +49,7 @@
       var started = false;
       var submitButton = form.querySelector('button[type="submit"]');
       var originalButtonText = submitButton ? submitButton.textContent : "";
+      var successMessage = form.getAttribute("data-success-message") || "Thank you. Your response was sent.";
 
       form.addEventListener("focusin", function () {
         if (started) {
@@ -52,22 +62,36 @@
         });
       });
 
+      form.addEventListener(
+        "invalid",
+        function () {
+          setStatus(form, "Please complete the required fields before submitting.", "error");
+        },
+        true
+      );
+
       form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        if (!form.getAttribute("action")) {
+        if (!form.checkValidity()) {
+          setStatus(form, "Please complete the required fields before submitting.", "error");
+          form.reportValidity();
+          return;
+        }
+
+        var action = form.getAttribute("action");
+        var method = form.getAttribute("method") || "POST";
+
+        if (!action) {
           setStatus(form, "This form needs a live endpoint before launch.", "error");
           return;
         }
 
         setStatus(form, "Sending...", "loading");
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = "Sending...";
-        }
+        setSubmitting(submitButton, true, originalButtonText);
 
-        fetch(form.getAttribute("action"), {
-          method: "POST",
+        fetch(action, {
+          method: method.toUpperCase(),
           body: new FormData(form),
           headers: {
             Accept: "application/json"
@@ -78,20 +102,17 @@
               throw new Error("Form submission failed");
             }
 
+            form.reset();
+            setStatus(form, successMessage, "success");
             trackEvent(form.getAttribute("data-analytics-submit"), {
               form: form.getAttribute("data-form-name")
             });
-            form.reset();
-            setStatus(form, "Thank you. Your response was sent.", "success");
           })
           .catch(function () {
             setStatus(form, "Something went wrong. Please try again or email mytaeducation@gmail.com.", "error");
           })
           .finally(function () {
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.textContent = originalButtonText;
-            }
+            setSubmitting(submitButton, false, originalButtonText);
           });
       });
     });
