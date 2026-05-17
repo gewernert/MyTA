@@ -31,6 +31,16 @@
     }, 6000);
   };
 
+  var getSuccessFormFromUrl = function () {
+    return new URLSearchParams(window.location.search).get("form_success");
+  };
+
+  var clearSuccessUrl = function () {
+    var url = new URL(window.location.href);
+    url.searchParams.delete("form_success");
+    window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+  };
+
   var setSubmitting = function (button, isSubmitting, originalText) {
     if (!button) {
       return;
@@ -38,6 +48,22 @@
 
     button.disabled = isSubmitting;
     button.textContent = isSubmitting ? "Sending..." : originalText;
+  };
+
+  var submitWithNativePost = function (form) {
+    var successUrl = new URL(window.location.href);
+    successUrl.searchParams.set("form_success", form.getAttribute("data-form-name"));
+
+    var nextInput = form.querySelector('input[name="_next"]');
+    if (!nextInput) {
+      nextInput = document.createElement("input");
+      nextInput.type = "hidden";
+      nextInput.name = "_next";
+      form.appendChild(nextInput);
+    }
+    nextInput.value = successUrl.toString();
+
+    window.HTMLFormElement.prototype.submit.call(form);
   };
 
   var initCtaTracking = function () {
@@ -57,6 +83,17 @@
       var submitButton = form.querySelector('button[type="submit"]');
       var originalButtonText = submitButton ? submitButton.textContent : "";
       var successMessage = form.getAttribute("data-success-message") || "Thank you. Your response was sent.";
+
+      var showRedirectSuccess = function () {
+        if (getSuccessFormFromUrl() !== form.getAttribute("data-form-name")) {
+          return;
+        }
+
+        form.reset();
+        setStatus(form, successMessage, "success");
+        clearStatusLater(form);
+        clearSuccessUrl();
+      };
 
       var getMissingRequiredField = function () {
         var requiredFields = form.querySelectorAll("[required]");
@@ -118,7 +155,11 @@
         })
           .then(function (response) {
             if (!response.ok) {
-              throw new Error("Form submission failed");
+              return response.text().then(function (body) {
+                var responseError = new Error("Formspree returned " + response.status + ": " + body);
+                responseError.formspreeResponseReceived = true;
+                throw responseError;
+              });
             }
 
             form.reset();
@@ -128,13 +169,31 @@
               form: form.getAttribute("data-form-name")
             });
           })
-          .catch(function () {
-            setStatus(form, "Something went wrong. Please try again or email mytaeducation@gmail.com.", "error");
+          .catch(function (error) {
+            if (window.console && typeof window.console.warn === "function") {
+              window.console.warn("MyTA Formspree submission failed.", error);
+            }
+
+            if (error.formspreeResponseReceived) {
+              setStatus(form, "Something went wrong. Please try again or email mytaeducation@gmail.com.", "error");
+              return;
+            }
+
+            try {
+              submitWithNativePost(form);
+            } catch (nativePostError) {
+              if (window.console && typeof window.console.warn === "function") {
+                window.console.warn("MyTA native Formspree submission failed.", nativePostError);
+              }
+              setStatus(form, "Something went wrong. Please try again or email mytaeducation@gmail.com.", "error");
+            }
           })
           .finally(function () {
             setSubmitting(submitButton, false, originalButtonText);
           });
       });
+
+      showRedirectSuccess();
     });
   };
 
