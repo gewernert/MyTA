@@ -226,18 +226,27 @@ h3 {
 }
 
 .hero {
-  padding: 88px 0 72px;
+  padding: 76px 0 78px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(460px, 1.05fr);
-  gap: 56px;
+  grid-template-columns: 1fr;
+  gap: 38px;
   align-items: center;
 }
 
 .hero-copy {
-  max-width: 760px;
+  max-width: 880px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero h1 {
+  max-width: 840px;
+  margin-inline: auto;
+  font-size: clamp(2.55rem, 4.4vw, 4rem);
+  line-height: 1.08;
 }
 
 .eyebrow {
@@ -250,13 +259,20 @@ h3 {
 }
 
 .hero-text {
-  max-width: 680px;
+  max-width: 690px;
+  margin-inline: auto;
   margin-bottom: 30px;
   font-size: 1.08rem;
 }
 
+.hero .button-row {
+  justify-content: center;
+}
+
 .hero-visual {
   position: relative;
+  width: min(100%, 940px);
+  justify-self: center;
   padding: 20px;
   border: 1px solid var(--border-blue);
   border-radius: var(--radius-lg);
@@ -614,6 +630,26 @@ h3 {
   color: #8a2f2f;
 }
 
+.form-validation-message {
+  max-width: 440px;
+}
+
+.form-validation-message[hidden] {
+  display: none;
+}
+
+.form-success-banner {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-blue);
+  border-radius: var(--radius-md);
+  background: var(--pale-blue-soft);
+}
+
+.form-success-banner[hidden] {
+  display: none;
+}
+
 .form-hidden {
   position: absolute;
   left: -9999px;
@@ -654,6 +690,10 @@ h3 {
 .demo-hero h1 {
   max-width: 900px;
   font-size: clamp(2.55rem, 5.3vw, 4.25rem);
+}
+
+.demo-hero .hero-text {
+  margin-inline: 0;
 }
 
 .demo-video {

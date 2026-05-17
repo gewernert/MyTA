@@ -11,61 +11,6 @@
     }
   };
 
-  var setStatus = function (form, message, state) {
-    var status = form.querySelector("[data-form-status]");
-    if (!status) {
-      return;
-    }
-
-    window.clearTimeout(form.statusTimer);
-    status.textContent = message;
-    status.className = "form-status";
-    if (state) {
-      status.classList.add(state);
-    }
-  };
-
-  var clearStatusLater = function (form) {
-    form.statusTimer = window.setTimeout(function () {
-      setStatus(form, "", "");
-    }, 6000);
-  };
-
-  var getSuccessFormFromUrl = function () {
-    return new URLSearchParams(window.location.search).get("form_success");
-  };
-
-  var clearSuccessUrl = function () {
-    var url = new URL(window.location.href);
-    url.searchParams.delete("form_success");
-    window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
-  };
-
-  var setSubmitting = function (button, isSubmitting, originalText) {
-    if (!button) {
-      return;
-    }
-
-    button.disabled = isSubmitting;
-    button.textContent = isSubmitting ? "Sending..." : originalText;
-  };
-
-  var submitWithNativePost = function (form) {
-    var successUrl = new URL(window.location.href);
-    successUrl.searchParams.set("form_success", form.getAttribute("data-form-name"));
-
-    var nextInput = form.querySelector('input[name="_next"]');
-    if (!nextInput) {
-      nextInput = document.createElement("input");
-      nextInput.type = "hidden";
-      nextInput.name = "_next";
-      form.appendChild(nextInput);
-    }
-    nextInput.value = successUrl.toString();
-
-    window.HTMLFormElement.prototype.submit.call(form);
-  };
-
   var initCtaTracking = function () {
     document.querySelectorAll("[data-analytics-event]").forEach(function (element) {
       element.addEventListener("click", function () {
@@ -77,42 +22,9 @@
     });
   };
 
-  var initForms = function () {
+  var initFormStartTracking = function () {
     document.querySelectorAll("form[data-form-name]").forEach(function (form) {
       var started = false;
-      var submitButton = form.querySelector('button[type="submit"]');
-      var originalButtonText = submitButton ? submitButton.textContent : "";
-      var successMessage = form.getAttribute("data-success-message") || "Thank you. Your response was sent.";
-
-      var showRedirectSuccess = function () {
-        if (getSuccessFormFromUrl() !== form.getAttribute("data-form-name")) {
-          return;
-        }
-
-        form.reset();
-        setStatus(form, successMessage, "success");
-        clearStatusLater(form);
-        clearSuccessUrl();
-      };
-
-      var getMissingRequiredField = function () {
-        var requiredFields = form.querySelectorAll("[required]");
-        for (var index = 0; index < requiredFields.length; index += 1) {
-          var field = requiredFields[index];
-          var type = (field.getAttribute("type") || "").toLowerCase();
-          var isHidden = type === "hidden" || field.classList.contains("form-hidden") || field.offsetParent === null;
-
-          if (field.disabled || isHidden) {
-            continue;
-          }
-
-          if (!field.value.trim()) {
-            return field;
-          }
-        }
-
-        return null;
-      };
 
       form.addEventListener("focusin", function () {
         if (started) {
@@ -124,77 +36,105 @@
           form: form.getAttribute("data-form-name")
         });
       });
+    });
+  };
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
+  var isVisibleField = function (field) {
+    var type = (field.getAttribute("type") || "").toLowerCase();
+    return !field.disabled && type !== "hidden" && !field.classList.contains("form-hidden") && field.offsetParent !== null;
+  };
 
-        var missingRequiredField = getMissingRequiredField();
-        if (missingRequiredField) {
-          setStatus(form, "Please complete the required fields before submitting.", "error");
-          missingRequiredField.focus();
-          return;
-        }
+  var fieldHasValue = function (field) {
+    return field.value.trim() !== "";
+  };
 
-        var action = form.getAttribute("action");
-        var method = form.getAttribute("method") || "POST";
+  var emailLooksValid = function (field) {
+    var value = field.value.trim();
+    return value.indexOf("@") !== -1 && value.indexOf(".") !== -1;
+  };
 
-        if (!action) {
-          setStatus(form, "This form needs a live endpoint before launch.", "error");
-          return;
-        }
+  var showValidationMessage = function (form, message) {
+    var messageElement = form.querySelector("[data-validation-message]");
+    if (!messageElement) {
+      return;
+    }
 
-        setStatus(form, "Sending...", "loading");
-        setSubmitting(submitButton, true, originalButtonText);
+    messageElement.textContent = message;
+    messageElement.hidden = false;
+  };
 
-        fetch(action, {
-          method: method.toUpperCase(),
-          body: new FormData(form),
-          headers: {
-            Accept: "application/json"
-          }
-        })
-          .then(function (response) {
-            if (!response.ok) {
-              return response.text().then(function (body) {
-                var responseError = new Error("Formspree returned " + response.status + ": " + body);
-                responseError.formspreeResponseReceived = true;
-                throw responseError;
-              });
-            }
+  var clearValidationMessage = function (form) {
+    var messageElement = form.querySelector("[data-validation-message]");
+    if (!messageElement) {
+      return;
+    }
 
-            form.reset();
-            setStatus(form, successMessage, "success");
-            clearStatusLater(form);
-            trackEvent(form.getAttribute("data-analytics-submit"), {
-              form: form.getAttribute("data-form-name")
-            });
-          })
-          .catch(function (error) {
-            if (window.console && typeof window.console.warn === "function") {
-              window.console.warn("MyTA Formspree submission failed.", error);
-            }
+    messageElement.textContent = "";
+    messageElement.hidden = true;
+  };
 
-            if (error.formspreeResponseReceived) {
-              setStatus(form, "Something went wrong. Please try again or email mytaeducation@gmail.com.", "error");
-              return;
-            }
-
-            try {
-              submitWithNativePost(form);
-            } catch (nativePostError) {
-              if (window.console && typeof window.console.warn === "function") {
-                window.console.warn("MyTA native Formspree submission failed.", nativePostError);
-              }
-              setStatus(form, "Something went wrong. Please try again or email mytaeducation@gmail.com.", "error");
-            }
-          })
-          .finally(function () {
-            setSubmitting(submitButton, false, originalButtonText);
-          });
+  var initFormValidation = function () {
+    document.querySelectorAll("form[data-form-name]").forEach(function (form) {
+      form.addEventListener("input", function () {
+        clearValidationMessage(form);
       });
 
-      showRedirectSuccess();
+      form.addEventListener("change", function () {
+        clearValidationMessage(form);
+      });
+
+      form.addEventListener("submit", function (event) {
+        var requiredFields = Array.from(form.querySelectorAll("[required]")).filter(isVisibleField);
+        var missingRequired = requiredFields.some(function (field) {
+          return !fieldHasValue(field);
+        });
+        var emailField = form.querySelector('input[type="email"]');
+        var invalidEmail = emailField && isVisibleField(emailField) && fieldHasValue(emailField) && !emailLooksValid(emailField);
+
+        if (!missingRequired && !invalidEmail) {
+          clearValidationMessage(form);
+          return;
+        }
+
+        event.preventDefault();
+
+        if (missingRequired && invalidEmail) {
+          showValidationMessage(form, "Please complete all required fields and enter a valid email address with an @ and a dot.");
+        } else if (missingRequired) {
+          showValidationMessage(form, "Please complete all required fields before submitting.");
+        } else {
+          showValidationMessage(form, "Please enter a valid email address with an @ and a dot.");
+        }
+      });
     });
+  };
+
+  var initFormRedirectTargets = function () {
+    document.querySelectorAll("[data-success-redirect]").forEach(function (input) {
+      input.value = new URL(input.getAttribute("data-success-redirect"), window.location.origin).toString();
+    });
+  };
+
+  var initFormSuccessMessages = function () {
+    var successKey = window.location.hash.replace("#", "");
+    if (!successKey) {
+      return;
+    }
+
+    var message = document.querySelector('[data-success-message="' + successKey + '"]');
+    if (!message) {
+      return;
+    }
+
+    message.hidden = false;
+
+    if (window.history && typeof window.history.replaceState === "function") {
+      window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    }
+
+    window.setTimeout(function () {
+      message.hidden = true;
+    }, 6000);
   };
 
   var initDemoTracking = function () {
@@ -249,6 +189,9 @@
   };
 
   initCtaTracking();
-  initForms();
+  initFormRedirectTargets();
+  initFormStartTracking();
+  initFormValidation();
+  initFormSuccessMessages();
   initDemoTracking();
 })();

@@ -189,47 +189,47 @@
             </div>
 
             <form
+              id="pilot-waitlist-form"
               class="site-form"
               action="https://formspree.io/f/xwvydkla"
               method="POST"
               novalidate
               data-form-name="pilot_waitlist"
               data-analytics-start="Pilot waitlist form started"
-              data-analytics-submit="Pilot waitlist form submitted"
-              data-success-message="Thanks for joining the pilot waitlist. Your response has been submitted."
             >
               <input type="hidden" name="_subject" value="New MyTA pilot waitlist signup">
               <input type="hidden" name="form_type" value="pilot_waitlist">
+              <input type="hidden" name="_next" value="/#pilot-submitted" data-success-redirect="/#pilot-submitted">
               <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
 
               <div class="form-grid">
-                <label class="form-field">
+                <label class="form-field" for="pilot-name">
                   <span>Name</span>
-                  <input type="text" name="name" autocomplete="name" required>
+                  <input id="pilot-name" type="text" name="name" autocomplete="name" required>
                 </label>
-                <label class="form-field">
+                <label class="form-field" for="pilot-email">
                   <span>Email</span>
-                  <input type="email" name="email" autocomplete="email" required>
+                  <input id="pilot-email" type="email" name="email" autocomplete="email" required>
                 </label>
-                <label class="form-field">
+                <label class="form-field" for="pilot-university-or-organization">
                   <span>University or organization</span>
-                  <input type="text" name="organization" autocomplete="organization" required>
+                  <input id="pilot-university-or-organization" type="text" name="university_or_organization" autocomplete="organization" required>
                 </label>
-                <label class="form-field">
+                <label class="form-field" for="pilot-role">
                   <span>Role</span>
-                  <input type="text" name="role" required>
+                  <input id="pilot-role" type="text" name="role" required>
                 </label>
-                <label class="form-field">
+                <label class="form-field" for="pilot-course-name-or-number">
                   <span>Course name or number</span>
-                  <input type="text" name="course_name_or_number">
+                  <input id="pilot-course-name-or-number" type="text" name="course_name_or_number" required>
                 </label>
-                <label class="form-field">
+                <label class="form-field" for="pilot-approximate-class-size">
                   <span>Approximate class size</span>
-                  <input type="text" name="approximate_class_size">
+                  <input id="pilot-approximate-class-size" type="text" name="approximate_class_size" required>
                 </label>
-                <label class="form-field">
+                <label class="form-field" for="pilot-timing">
                   <span>When would you be interested in piloting?</span>
-                  <select name="pilot_timing" required>
+                  <select id="pilot-timing" name="when_interested_in_piloting" required>
                     <option value="">Select timing</option>
                     <option value="Fall 2026">Fall 2026</option>
                     <option value="Spring 2027">Spring 2027</option>
@@ -237,19 +237,23 @@
                     <option value="Other">Other</option>
                   </select>
                 </label>
-                <label class="form-field form-field-full">
+                <label class="form-field form-field-full" for="pilot-academic-integrity-issue">
                   <span>What is the biggest academic integrity issue you are hoping to solve?</span>
-                  <textarea name="biggest_academic_integrity_issue" required></textarea>
+                  <textarea id="pilot-academic-integrity-issue" name="academic_integrity_issue" required></textarea>
                 </label>
-                <label class="form-field form-field-full">
+                <label class="form-field form-field-full" for="pilot-optional-notes">
                   <span>Optional notes</span>
-                  <textarea name="optional_notes"></textarea>
+                  <textarea id="pilot-optional-notes" name="optional_notes"></textarea>
                 </label>
               </div>
 
+              <p class="form-status success form-success-banner" data-success-message="pilot-submitted" role="status" aria-live="polite" hidden>
+                Thanks for joining the pilot waitlist. Your response has been submitted.
+              </p>
+
               <div class="form-actions">
                 <button class="button button-primary" type="submit">Join pilot waitlist</button>
-                <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+                <p class="form-status error form-validation-message" data-validation-message role="alert" hidden></p>
               </div>
             </form>
           </div>
@@ -279,6 +283,6 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="assets/js/site.js?v=forms-submit-fix"></script>
+    <script defer src="assets/js/site.js?v=plain-form-post"></script>
   </body>
 </html>
