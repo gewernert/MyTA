@@ -10,6 +10,7 @@
   var submitButton = form.querySelector("[data-submit-button]");
   var submittedAt = form.querySelector("[data-submitted-at]");
   var submitError = form.querySelector("[data-submit-error]");
+  var successCard = document.querySelector("[data-survey-success]");
   var submitButtonText = submitButton ? submitButton.textContent : "";
 
   var showElement = function (element) {
@@ -180,6 +181,18 @@
     }
   };
 
+  var showSuccess = function () {
+    hideElement(form);
+    showElement(successCard);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    var heading = successCard ? successCard.querySelector("h2") : null;
+    if (heading) {
+      heading.setAttribute("tabindex", "-1");
+      heading.focus({ preventScroll: true });
+    }
+  };
+
   nextButton.addEventListener("click", function () {
     hideStepError("1");
     var result = validateStep(stepOne);
@@ -247,7 +260,7 @@
         if (!response.ok) {
           throw new Error("Submission failed");
         }
-        window.location.href = "/";
+        showSuccess();
       })
       .catch(function () {
         showElement(submitError);
