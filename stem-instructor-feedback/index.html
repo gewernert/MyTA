@@ -16,14 +16,14 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="survey.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/stem-instructor-feedback/survey.css">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <main id="main" class="survey-main">
-      <section class="survey-hero">
+      <section class="survey-hero" data-survey-hero>
         <div class="wrap survey-wrap">
           <p class="eyebrow">Instructor research survey</p>
           <h1>STEM Instructor Feedback</h1>
@@ -378,10 +378,23 @@
               </div>
             </div>
           </form>
+
+          <div class="form-card survey-card survey-success-card" data-survey-success hidden>
+            <div class="form-heading">
+              <p class="eyebrow">Submitted</p>
+              <h2>Thank you for your feedback.</h2>
+              <p>
+                Your responses have been submitted to the MyTA team. We appreciate your time and honest input.
+              </p>
+            </div>
+            <div class="form-actions survey-actions">
+              <a class="button button-primary" href="/">Return to homepage</a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <script defer src="survey.js"></script>
+    <script defer src="/stem-instructor-feedback/survey.js"></script>
   </body>
 </html>
