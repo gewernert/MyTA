@@ -12,7 +12,6 @@
   var submitError = form.querySelector("[data-submit-error]");
   var surveyHero = document.querySelector("[data-survey-hero]");
   var successCard = document.querySelector("[data-survey-success]");
-  var clearDraftButton = form.querySelector("[data-clear-draft]");
   var submitButtonText = submitButton ? submitButton.textContent : "";
   var draftKey = "myta_stem_instructor_feedback_draft";
 
@@ -312,21 +311,6 @@
     }
   };
 
-  var resetSurvey = function () {
-    form.reset();
-    clearDraft();
-    showElement(surveyHero);
-    showElement(form);
-    hideElement(successCard);
-    showElement(stepOne);
-    hideElement(stepTwo);
-    hideStepError("1");
-    hideStepError("2");
-    hideElement(submitError);
-    getQuestions(form).forEach(clearQuestionError);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   nextButton.addEventListener("click", function () {
     hideStepError("1");
     var result = validateStep(stepOne);
@@ -406,10 +390,6 @@
         submitButton.textContent = submitButtonText;
       });
   });
-
-  if (clearDraftButton) {
-    clearDraftButton.addEventListener("click", resetSurvey);
-  }
 
   restoreDraft();
 })();
