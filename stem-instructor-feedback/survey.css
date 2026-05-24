@@ -63,6 +63,10 @@
   line-height: 1.35;
 }
 
+.survey-question legend {
+  margin-bottom: 10px;
+}
+
 .survey-question legend span,
 .survey-question .form-field strong {
   color: var(--blue-ink);
@@ -81,11 +85,16 @@
 }
 
 .survey-helper {
-  margin-bottom: 2px;
+  margin-bottom: 6px;
 }
 
 .survey-question .form-field {
-  gap: 12px;
+  gap: 16px;
+}
+
+.survey-question > .survey-options,
+.survey-question > .scale-row {
+  margin-top: 4px;
 }
 
 .survey-options,
@@ -177,6 +186,10 @@
 .survey-success-card {
   max-width: 760px;
   margin-inline: auto;
+}
+
+.survey-success-card[hidden] {
+  display: none;
 }
 
 .survey-actions {

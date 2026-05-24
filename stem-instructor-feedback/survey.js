@@ -10,6 +10,7 @@
   var submitButton = form.querySelector("[data-submit-button]");
   var submittedAt = form.querySelector("[data-submitted-at]");
   var submitError = form.querySelector("[data-submit-error]");
+  var surveyHero = document.querySelector("[data-survey-hero]");
   var successCard = document.querySelector("[data-survey-success]");
   var submitButtonText = submitButton ? submitButton.textContent : "";
 
@@ -182,6 +183,7 @@
   };
 
   var showSuccess = function () {
+    hideElement(surveyHero);
     hideElement(form);
     showElement(successCard);
     window.scrollTo({ top: 0, behavior: "smooth" });
