@@ -13,6 +13,7 @@
   var surveyHero = document.querySelector("[data-survey-hero]");
   var successCard = document.querySelector("[data-survey-success]");
   var submitButtonText = submitButton ? submitButton.textContent : "";
+  var draftKey = "myta_stem_instructor_feedback_draft";
 
   var showElement = function (element) {
     if (element) {
@@ -32,6 +33,13 @@
 
   var getInputs = function (question) {
     return Array.from(question.querySelectorAll("input, textarea, select"));
+  };
+
+  var getAllFields = function () {
+    return Array.from(form.querySelectorAll("input, textarea, select")).filter(function (field) {
+      var name = field.getAttribute("name");
+      return name && name !== "form_name" && name !== "source_page" && name !== "submitted_at";
+    });
   };
 
   var getError = function (question) {
@@ -174,6 +182,7 @@
   var goToStepTwo = function () {
     hideElement(stepOne);
     showElement(stepTwo);
+    saveDraft("2");
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     var heading = document.getElementById("part-2-heading");
@@ -183,6 +192,7 @@
   };
 
   var showSuccess = function () {
+    clearDraft();
     hideElement(surveyHero);
     hideElement(form);
     showElement(successCard);
@@ -192,6 +202,112 @@
     if (heading) {
       heading.setAttribute("tabindex", "-1");
       heading.focus({ preventScroll: true });
+    }
+  };
+
+  var getCurrentStep = function () {
+    return stepTwo && !stepTwo.hidden ? "2" : "1";
+  };
+
+  var buildDraft = function (step) {
+    var draft = {
+      step: step || getCurrentStep(),
+      fields: {}
+    };
+
+    getAllFields().forEach(function (field) {
+      var name = field.getAttribute("name");
+      var type = (field.getAttribute("type") || "").toLowerCase();
+
+      if (type === "checkbox") {
+        if (!Array.isArray(draft.fields[name])) {
+          draft.fields[name] = [];
+        }
+        if (field.checked) {
+          draft.fields[name].push(field.value);
+        }
+        return;
+      }
+
+      if (type === "radio") {
+        if (field.checked) {
+          draft.fields[name] = field.value;
+        } else if (draft.fields[name] === undefined) {
+          draft.fields[name] = "";
+        }
+        return;
+      }
+
+      draft.fields[name] = field.value;
+    });
+
+    return draft;
+  };
+
+  var saveDraft = function (step) {
+    try {
+      window.localStorage.setItem(draftKey, JSON.stringify(buildDraft(step)));
+    } catch (error) {
+      return;
+    }
+  };
+
+  var clearDraft = function () {
+    try {
+      window.localStorage.removeItem(draftKey);
+    } catch (error) {
+      return;
+    }
+  };
+
+  var restoreDraft = function () {
+    var saved;
+
+    try {
+      saved = window.localStorage.getItem(draftKey);
+    } catch (error) {
+      return;
+    }
+
+    if (!saved) {
+      return;
+    }
+
+    try {
+      var draft = JSON.parse(saved);
+      var fields = draft.fields || {};
+
+      getAllFields().forEach(function (field) {
+        var name = field.getAttribute("name");
+        var type = (field.getAttribute("type") || "").toLowerCase();
+        var savedValue = fields[name];
+
+        if (savedValue === undefined) {
+          return;
+        }
+
+        if (type === "checkbox") {
+          field.checked = Array.isArray(savedValue) && savedValue.indexOf(field.value) !== -1;
+          return;
+        }
+
+        if (type === "radio") {
+          field.checked = savedValue === field.value;
+          return;
+        }
+
+        field.value = savedValue;
+      });
+
+      if (draft.step === "2") {
+        hideElement(stepOne);
+        showElement(stepTwo);
+      } else {
+        showElement(stepOne);
+        hideElement(stepTwo);
+      }
+    } catch (error) {
+      clearDraft();
     }
   };
 
@@ -219,6 +335,7 @@
     hideStepError("1");
     hideStepError("2");
     hideElement(submitError);
+    saveDraft();
   });
 
   form.addEventListener("change", function (event) {
@@ -227,6 +344,7 @@
       clearQuestionError(question);
       validateQuestion(question);
     }
+    saveDraft();
   });
 
   form.addEventListener("submit", function (event) {
@@ -236,6 +354,7 @@
 
     var result = validateStep(stepTwo);
     if (!result.isValid) {
+      saveDraft("2");
       var banner = showStepError("2");
       if (banner) {
         banner.focus();
@@ -271,4 +390,6 @@
         submitButton.textContent = submitButtonText;
       });
   });
+
+  restoreDraft();
 })();

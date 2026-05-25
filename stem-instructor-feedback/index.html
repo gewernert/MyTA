@@ -28,7 +28,7 @@
           <p class="eyebrow">Instructor research survey</p>
           <h1>STEM Instructor Feedback</h1>
           <p class="survey-subheading">
-            We are Purdue students researching how STEM instructors are handling AI use, academic integrity, and verifying whether students understand the work they submit.
+            We are Purdue students researching how STEM instructors are adapting assessment, homework, and student learning workflows in an AI driven classroom.
           </p>
           <p class="survey-trust">This takes about 3 to 5 minutes and does not ask for student data.</p>
         </div>
@@ -54,10 +54,10 @@
                   <p class="eyebrow">Part 1</p>
                   <h2>Part 1: Current Experience</h2>
                   <p>
-                    We are Purdue students researching how STEM instructors are handling AI use, academic integrity, and verifying whether students understand the work they submit.
+                    We are Purdue students researching how STEM instructors are adapting assessment, homework, and student learning workflows in an AI driven classroom.
                   </p>
                   <p>
-                    This first section asks about your current experience. It should take about 2 minutes and does not ask for student data.
+                    It should take about 2 minutes and does not ask for student data.
                   </p>
                 </div>
 
@@ -95,7 +95,7 @@
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please rate how significant this problem is in your courses." tabindex="-1">
                   <legend>How significant is this problem in your courses right now? <span>Required</span></legend>
-                  <p class="survey-helper">By this problem, we mean AI use, academic integrity concerns, or difficulty knowing whether students understand the work they submit.</p>
+                  <p class="survey-helper">By "this problem," we mean outdated homework or assessment workflows, difficulty understanding how students are learning, and uncertainty around responsible AI use in coursework.</p>
                   <div class="scale-row" aria-label="1 equals not a problem and 10 equals major problem">
                     <label><input type="radio" name="problem_significance" value="1"> 1</label>
                     <label><input type="radio" name="problem_significance" value="2"> 2</label>
@@ -116,11 +116,13 @@
                   <legend>Which part of this problem is most difficult for you? <span>Required</span></legend>
                   <p class="survey-helper">Select the top two.</p>
                   <div class="survey-options">
-                    <label><input type="checkbox" name="most_difficult_parts" value="Detecting possible misuse"> Detecting possible misuse</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Knowing whether students actually understand submitted work"> Knowing whether students actually understand submitted work</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Handling suspicious work fairly"> Handling suspicious work fairly</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Designing assignments that still measure real understanding"> Designing assignments that still measure real understanding</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Helping students use AI responsibly while learning"> Helping students use AI responsibly while learning</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Knowing how students arrived at their answers"> Knowing how students arrived at their answers</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Getting useful insight into student learning gaps"> Getting useful insight into student learning gaps</label>
                     <label><input type="checkbox" name="most_difficult_parts" value="Reducing grading or review time"> Reducing grading or review time</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Redesigning assignments around AI"> Redesigning assignments around AI</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Updating old homework or assessment workflows"> Updating old homework or assessment workflows</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Handling academic integrity concerns related to AI"> Handling academic integrity concerns related to AI</label>
                     <label><input type="checkbox" name="most_difficult_parts" value="Knowing what tools or policies to trust"> Knowing what tools or policies to trust</label>
                     <label><input type="checkbox" name="most_difficult_parts" value="Other"> Other</label>
                   </div>
@@ -129,7 +131,7 @@
 
                 <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please briefly describe the problems or frustrations you have experienced." tabindex="-1">
                   <label class="form-field" for="specific-frustrations">
-                    <span>What specific problems or frustrations have you experienced around AI use, academic integrity, or verifying student learning? <strong>Required</strong></span>
+                    <span>What specific problems or frustrations have you experienced with homework, assessment, student learning insights, or responsible AI use? <strong>Required</strong></span>
                     <textarea id="specific-frustrations" name="specific_frustrations" placeholder="Example: I am unsure whether students understand submitted work, but manually checking takes too much time."></textarea>
                   </label>
                   <p class="survey-field-error" id="specific-frustrations-error" data-field-error hidden></p>
@@ -138,7 +140,7 @@
                 <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please briefly describe how you currently handle these problems." tabindex="-1">
                   <label class="form-field" for="current-approach">
                     <span>How do you currently handle these problems? <strong>Required</strong></span>
-                    <small>Examples: changing assignments, oral follow ups, plagiarism tools, higher weighted exams, manual review, department policies, doing nothing, etc.</small>
+                    <small>Examples: changing assignments, adding reflection questions, using LMS quizzes, using homework platforms, checking work manually, requiring exams, creating AI policies, oral follow ups, doing nothing, etc.</small>
                     <textarea id="current-approach" name="current_approach"></textarea>
                   </label>
                   <p class="survey-field-error" id="current-approach-error" data-field-error hidden></p>
@@ -164,8 +166,8 @@
 
                 <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe what the ideal solution would do." tabindex="-1">
                   <label class="form-field" for="magic-wand-solution">
-                    <span>If you could wave a magic wand, what would the ideal solution do? <strong>Required</strong></span>
-                    <small>Think about what would reduce uncertainty, improve fairness, verify learning, or make your workflow easier. Please be as creative and detailed as possible.</small>
+                    <span>If you could wave a magic wand, what would the ideal assessment or homework solution do? <strong>Required</strong></span>
+                    <small>Think about what would help students learn with AI responsibly, show how they reached answers, reveal learning gaps, reduce grading burden, or make assessment more meaningful.</small>
                     <textarea id="magic-wand-solution" name="magic_wand_solution"></textarea>
                   </label>
                   <p class="survey-field-error" id="magic-wand-solution-error" data-field-error hidden></p>
@@ -200,7 +202,7 @@
                     Thank you. Based on this problem area, we are working on a student built solution called MyTA.
                   </p>
                   <p>
-                    Please watch the short demo below, then answer a few questions about whether it matches the problem you described. Honest feedback is most helpful, especially if something does not match your workflow or would prevent adoption.
+                    Please watch the short demo below, then answer a few questions about whether it fits the assessment, homework, and responsible AI use problems you described. Honest feedback is most helpful, especially if something does not match your workflow or would prevent adoption.
                   </p>
                 </div>
 
@@ -264,7 +266,7 @@
                 </div>
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please select whether you would be willing to test MyTA." tabindex="-1">
-                  <legend>Would you be willing to test MyTA on one assignment? <span>Required</span></legend>
+                  <legend>Would you be willing to test MyTA on one assignment or assessment? <span>Required</span></legend>
                   <div class="survey-options inline-options">
                     <label><input type="radio" name="willing_to_test_one_assignment" value="Yes"> Yes</label>
                     <label><input type="radio" name="willing_to_test_one_assignment" value="Maybe"> Maybe</label>
@@ -320,10 +322,12 @@
                   <legend>What would need to be true before your department, college, or university would pay for a tool like this? <span>Required</span></legend>
                   <p class="survey-helper">Select all that apply.</p>
                   <div class="survey-options">
+                    <label><input type="checkbox" name="institution_payment_requirements" value="Proven improvement in student learning"> Proven improvement in student learning</label>
                     <label><input type="checkbox" name="institution_payment_requirements" value="Proven time savings for instructors"> Proven time savings for instructors</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Better evidence that students understand their work"> Better evidence that students understand their work</label>
+                    <label><input type="checkbox" name="institution_payment_requirements" value="Better insight into how students are learning"> Better insight into how students are learning</label>
+                    <label><input type="checkbox" name="institution_payment_requirements" value="Better support for responsible AI use"> Better support for responsible AI use</label>
                     <label><input type="checkbox" name="institution_payment_requirements" value="Reduction in academic integrity issues"> Reduction in academic integrity issues</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="LMS or Brightspace integration"> LMS or Brightspace integration</label>
+                    <label><input type="checkbox" name="institution_payment_requirements" value="LMS (Brightspace) integration"> LMS (Brightspace) integration</label>
                     <label><input type="checkbox" name="institution_payment_requirements" value="Data security"> Data security</label>
                     <label><input type="checkbox" name="institution_payment_requirements" value="Successful department pilot"> Successful department pilot</label>
                     <label><input type="checkbox" name="institution_payment_requirements" value="Student acceptance"> Student acceptance</label>
@@ -349,7 +353,7 @@
                     <label><input type="checkbox" name="follow_up_options" value="Short email follow up"> Short email follow up</label>
                     <label><input type="checkbox" name="follow_up_options" value="10 minute phone call before 8am"> 10 minute phone call before 8am</label>
                     <label><input type="checkbox" name="follow_up_options" value="10 minute phone call after 5pm"> 10 minute phone call after 5pm</label>
-                    <label><input type="checkbox" name="follow_up_options" value="Testing MyTA on one assignment"> Testing MyTA on one assignment</label>
+                    <label><input type="checkbox" name="follow_up_options" value="Testing MyTA on one assignment or assessment"> Testing MyTA on one assignment or assessment</label>
                     <label><input type="checkbox" name="follow_up_options" value="Introducing us to someone involved in approval or budget"> Introducing us to someone involved in approval or budget</label>
                     <label><input type="checkbox" name="follow_up_options" value="Not interested"> Not interested</label>
                   </div>
@@ -384,7 +388,7 @@
               <p class="eyebrow">Submitted</p>
               <h2>Thank you for your feedback.</h2>
               <p>
-                Your responses have been submitted to the MyTA team. We appreciate your time and honest input.
+                Your responses will help us understand how assessment and homework need to evolve in an AI driven classroom, what instructors would actually use, and who would realistically pay for a solution.
               </p>
             </div>
             <div class="form-actions survey-actions">
