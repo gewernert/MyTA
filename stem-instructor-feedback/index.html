@@ -265,6 +265,19 @@
                   <p class="survey-field-error" id="needed-changes-for-real-course-error" data-field-error hidden></p>
                 </div>
 
+                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="2" data-max="2" data-error="Please select exactly two features." data-max-error="Please select only your top two features." tabindex="-1">
+                  <legend>What are the top 2 most important features for you? <span>Required</span></legend>
+                  <p class="survey-helper">Select exactly two.</p>
+                  <div class="survey-options">
+                    <label><input type="checkbox" name="top_two_important_features" value="Integration with LMS"> Integration with LMS</label>
+                    <label><input type="checkbox" name="top_two_important_features" value="Group assigning"> Group assigning</label>
+                    <label><input type="checkbox" name="top_two_important_features" value="Attendance tool"> Attendance tool</label>
+                    <label><input type="checkbox" name="top_two_important_features" value="AI grader"> AI grader</label>
+                    <label><input type="checkbox" name="top_two_important_features" value="Individual student statistics showing struggle points"> Individual student statistics showing struggle points</label>
+                  </div>
+                  <p class="survey-field-error" id="top-two-important-features-error" data-field-error hidden></p>
+                </fieldset>
+
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please select whether you would be willing to test MyTA." tabindex="-1">
                   <legend>Would you be willing to test MyTA on one assignment or assessment? <span>Required</span></legend>
                   <div class="survey-options inline-options">
