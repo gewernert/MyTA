@@ -41,6 +41,11 @@
   max-width: 760px;
 }
 
+.survey-card .form-heading .survey-intro-trust {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
 .survey-question {
   display: grid;
   gap: 18px;
