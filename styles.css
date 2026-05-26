@@ -708,6 +708,7 @@ h3 {
 }
 
 .demo-video iframe,
+.demo-video video,
 .video-placeholder {
   position: absolute;
   inset: 0;
@@ -715,8 +716,14 @@ h3 {
   height: 100%;
 }
 
-.demo-video iframe {
+.demo-video iframe,
+.demo-video video {
   border: 0;
+}
+
+.demo-video video {
+  background: var(--ink);
+  object-fit: contain;
 }
 
 .video-placeholder {
