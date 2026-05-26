@@ -83,7 +83,7 @@
   };
 
   var emailLooksValid = function (value) {
-    return value.indexOf("@") !== -1 && value.indexOf(".") !== -1;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   };
 
   var validateQuestion = function (question) {
