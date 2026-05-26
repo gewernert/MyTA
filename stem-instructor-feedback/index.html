@@ -28,9 +28,9 @@
           <p class="eyebrow">Instructor research survey</p>
           <h1>STEM Instructor Feedback</h1>
           <p class="survey-subheading">
-            We are Purdue students researching how STEM instructors are adapting assessment, homework, and student learning workflows in an AI driven classroom.
+            We are Purdue students researching how STEM instructors are adapting homework, assessment, and student learning workflows in the age of AI.
           </p>
-          <p class="survey-trust">This takes about 3 to 5 minutes and does not ask for student data.</p>
+          <p class="survey-trust">This survey does not ask for student data.</p>
         </div>
       </section>
 
@@ -52,12 +52,24 @@
               <div class="form-card survey-card">
                 <div class="form-heading">
                   <p class="eyebrow">Part 1</p>
-                  <h2>Part 1: Current Experience</h2>
+                  <h2>Current Assessment Experience</h2>
                   <p>
-                    We are Purdue students researching how STEM instructors are adapting assessment, homework, and student learning workflows in an AI driven classroom.
+                    We are Purdue students researching how STEM instructors are adapting homework, assessment, and student learning workflows in the age of AI.
                   </p>
                   <p>
-                    It should take about 2 minutes and does not ask for student data.
+                    This first section asks about your current experience.
+                  </p>
+                  <p>
+                    Estimated time: 5 minutes.
+                  </p>
+                  <p>
+                    For short answer questions, 1-2 sentences is enough.
+                  </p>
+                  <p>
+                    This survey does not ask for student data.
+                  </p>
+                  <p>
+                    Your responses will be treated as your personal opinions and will not be used to represent your university, department, or affiliated institution on your behalf.
                   </p>
                 </div>
 
@@ -95,7 +107,7 @@
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please rate how significant this problem is in your courses." tabindex="-1">
                   <legend>How significant is this problem in your courses right now? <span>Required</span></legend>
-                  <p class="survey-helper">By "this problem," we mean outdated homework or assessment workflows, difficulty understanding how students are learning, and uncertainty around responsible AI use in coursework.</p>
+                  <p class="survey-helper">By “this problem,” we mean that traditional homework and assessment methods may not fully reflect how students are using AI, learning course material, or demonstrating understanding.</p>
                   <div class="scale-row" aria-label="1 equals not a problem and 10 equals major problem">
                     <label><input type="radio" name="problem_significance" value="1"> 1</label>
                     <label><input type="radio" name="problem_significance" value="2"> 2</label>
@@ -116,35 +128,35 @@
                   <legend>Which part of this problem is most difficult for you? <span>Required</span></legend>
                   <p class="survey-helper">Select the top two.</p>
                   <div class="survey-options">
-                    <label><input type="checkbox" name="most_difficult_parts" value="Designing assignments that still measure real understanding"> Designing assignments that still measure real understanding</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Helping students use AI responsibly while learning"> Helping students use AI responsibly while learning</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Knowing how students arrived at their answers"> Knowing how students arrived at their answers</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Getting useful insight into student learning gaps"> Getting useful insight into student learning gaps</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Knowing whether students actually understand submitted work"> Knowing whether students actually understand submitted work</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Designing assignments that work in an AI environment"> Designing assignments that work in an AI environment</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Encouraging responsible AI use instead of shortcutting"> Encouraging responsible AI use instead of shortcutting</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Getting useful insight into where students struggle"> Getting useful insight into where students struggle</label>
                     <label><input type="checkbox" name="most_difficult_parts" value="Reducing grading or review time"> Reducing grading or review time</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Updating old homework or assessment workflows"> Updating old homework or assessment workflows</label>
-                    <label><input type="checkbox" name="most_difficult_parts" value="Handling academic integrity concerns related to AI"> Handling academic integrity concerns related to AI</label>
                     <label><input type="checkbox" name="most_difficult_parts" value="Knowing what tools or policies to trust"> Knowing what tools or policies to trust</label>
+                    <label><input type="checkbox" name="most_difficult_parts" value="Academic integrity concerns"> Academic integrity concerns</label>
                     <label><input type="checkbox" name="most_difficult_parts" value="Other"> Other</label>
                   </div>
                   <p class="survey-field-error" id="most-difficult-parts-error" data-field-error hidden></p>
                 </fieldset>
 
-                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please briefly describe the problems or frustrations you have experienced." tabindex="-1">
-                  <label class="form-field" for="specific-frustrations">
-                    <span>What specific problems or frustrations have you experienced with homework, assessment, student learning insights, or responsible AI use? <strong>Required</strong></span>
-                    <textarea id="specific-frustrations" name="specific_frustrations" placeholder="Example: I am unsure whether students understand submitted work, but manually checking takes too much time."></textarea>
-                  </label>
-                  <p class="survey-field-error" id="specific-frustrations-error" data-field-error hidden></p>
-                </div>
-
-                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please briefly describe how you currently handle these problems." tabindex="-1">
-                  <label class="form-field" for="current-approach">
-                    <span>How do you currently handle these problems? <strong>Required</strong></span>
-                    <small>Examples: changing assignments, adding reflection questions, using LMS quizzes, using homework platforms, checking work manually, requiring exams, creating AI policies, oral follow ups, doing nothing, etc.</small>
-                    <textarea id="current-approach" name="current_approach"></textarea>
-                  </label>
-                  <p class="survey-field-error" id="current-approach-error" data-field-error hidden></p>
-                </div>
+                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-error="Please complete this question." tabindex="-1">
+                  <legend>How do you currently handle this? <span>Required</span></legend>
+                  <p class="survey-helper">Select all that apply.</p>
+                  <div class="survey-options">
+                    <label><input type="checkbox" name="current_handling_methods" value="Redesigned assignments"> Redesigned assignments</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Increased exam weight"> Increased exam weight</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Oral follow ups or check-ins"> Oral follow ups or check-ins</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Require students to show work or explain reasoning"> Require students to show work or explain reasoning</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Use plagiarism or AI detection tools"> Use plagiarism or AI detection tools</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Use stricter AI policies"> Use stricter AI policies</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Manually review suspicious work"> Manually review suspicious work</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Discuss responsible AI use with students"> Discuss responsible AI use with students</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="I do not currently have a clear approach"> I do not currently have a clear approach</label>
+                    <label><input type="checkbox" name="current_handling_methods" value="Other"> Other</label>
+                  </div>
+                  <p class="survey-field-error" id="current-handling-methods-error" data-field-error hidden></p>
+                </fieldset>
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please rate how effective your current approach is." tabindex="-1">
                   <legend>How effective is your current approach? <span>Required</span></legend>
@@ -164,13 +176,24 @@
                   <p class="survey-field-error" id="current-approach-effectiveness-error" data-field-error hidden></p>
                 </fieldset>
 
-                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe what the ideal solution would do." tabindex="-1">
-                  <label class="form-field" for="magic-wand-solution">
-                    <span>If you could wave a magic wand, what would the ideal assessment or homework solution do? <strong>Required</strong></span>
-                    <small>Think about what would help students learn with AI responsibly, show how they reached answers, reveal learning gaps, reduce grading burden, or make assessment more meaningful.</small>
-                    <textarea id="magic-wand-solution" name="magic_wand_solution"></textarea>
+                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please complete this question." tabindex="-1">
+                  <label class="form-field" for="biggest-frustration-current-approach">
+                    <span>In one sentence, what is the biggest frustration with your current approach? <strong>Required</strong></span>
+                    <small>Short answer.</small>
+                    <textarea id="biggest-frustration-current-approach" name="biggest_frustration_current_approach"></textarea>
                   </label>
-                  <p class="survey-field-error" id="magic-wand-solution-error" data-field-error hidden></p>
+                  <p class="survey-field-error" id="biggest-frustration-current-approach-error" data-field-error hidden></p>
+                </div>
+
+                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please complete this question." tabindex="-1">
+                  <label class="form-field" for="ideal-solution-description">
+                    <span>If you could have your ideal solution, what would it do? <strong>Required</strong></span>
+                    <small>Think about what would make assessment more useful, help students use AI responsibly, show how students are learning, or reduce instructor workload.</small>
+                    <small>1-2 sentences is enough.</small>
+                    <textarea id="ideal-solution-description" name="ideal_solution_description"></textarea>
+                    <small>Short answer.</small>
+                  </label>
+                  <p class="survey-field-error" id="ideal-solution-description-error" data-field-error hidden></p>
                 </div>
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please select who you think would most likely pay." tabindex="-1">
@@ -197,12 +220,15 @@
               <div class="form-card survey-card">
                 <div class="form-heading">
                   <p class="eyebrow">Part 2</p>
-                  <h2 id="part-2-heading" tabindex="-1">Part 2: Demo and Feedback</h2>
+                  <h2 id="part-2-heading" tabindex="-1">Demo and Feedback</h2>
                   <p>
                     Thank you. Based on this problem area, we are working on a student built solution called MyTA.
                   </p>
                   <p>
-                    Please watch the short demo below, then answer a few questions about whether it fits the assessment, homework, and responsible AI use problems you described. Honest feedback is most helpful, especially if something does not match your workflow or would prevent adoption.
+                    MyTA is designed to help students use AI responsibly while giving instructors better insight into how students complete assignments, where they struggle, and whether they understand the material.
+                  </p>
+                  <p>
+                    Please watch the short demo below, then answer a few quick questions. Honest feedback is most helpful, especially if something does not match your workflow or would prevent adoption.
                   </p>
                 </div>
 
@@ -241,42 +267,25 @@
                 <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe what part seems most useful." tabindex="-1">
                   <label class="form-field" for="most-useful-part">
                     <span>What part of MyTA seems most useful? <strong>Required</strong></span>
+                    <small>1 sentence is enough.</small>
                     <textarea id="most-useful-part" name="most_useful_part"></textarea>
+                    <small>Short answer.</small>
                   </label>
                   <p class="survey-field-error" id="most-useful-part-error" data-field-error hidden></p>
-                </div>
-
-                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe anything confusing, unnecessary, or concerning. If nothing comes to mind, write None." tabindex="-1">
-                  <label class="form-field" for="confusing-unnecessary-concerning">
-                    <span>What part of MyTA seems confusing, unnecessary, or concerning? <strong>Required</strong></span>
-                    <textarea id="confusing-unnecessary-concerning" name="confusing_unnecessary_concerning"></textarea>
-                  </label>
-                  <p class="survey-field-error" id="confusing-unnecessary-concerning-error" data-field-error hidden></p>
                 </div>
 
                 <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe what would need to change. If nothing comes to mind, write None." tabindex="-1">
                   <label class="form-field" for="needed-changes-for-real-course">
                     <span>What would need to be added, removed, or changed before you would use this in a real course? <strong>Required</strong></span>
+                    <small>1 sentence is enough. If nothing comes to mind, write “None.”</small>
                     <textarea id="needed-changes-for-real-course" name="needed_changes_for_real_course"></textarea>
+                    <small>Short answer.</small>
                   </label>
                   <p class="survey-field-error" id="needed-changes-for-real-course-error" data-field-error hidden></p>
                 </div>
 
-                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="2" data-max="2" data-error="Please select exactly two features." data-max-error="Please select only your top two features." tabindex="-1">
-                  <legend>What are the top 2 most important features for you? <span>Required</span></legend>
-                  <p class="survey-helper">Select exactly two.</p>
-                  <div class="survey-options">
-                    <label><input type="checkbox" name="top_two_important_features" value="Integration with LMS"> Integration with LMS</label>
-                    <label><input type="checkbox" name="top_two_important_features" value="Group assigning"> Group assigning</label>
-                    <label><input type="checkbox" name="top_two_important_features" value="Attendance tool"> Attendance tool</label>
-                    <label><input type="checkbox" name="top_two_important_features" value="AI grader"> AI grader</label>
-                    <label><input type="checkbox" name="top_two_important_features" value="Individual student statistics showing struggle points"> Individual student statistics showing struggle points</label>
-                  </div>
-                  <p class="survey-field-error" id="top-two-important-features-error" data-field-error hidden></p>
-                </fieldset>
-
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please select whether you would be willing to test MyTA." tabindex="-1">
-                  <legend>Would you be willing to test MyTA on one assignment or assessment? <span>Required</span></legend>
+                  <legend>Would you be willing to test MyTA on one assignment? <span>Required</span></legend>
                   <div class="survey-options inline-options">
                     <label><input type="radio" name="willing_to_test_one_assignment" value="Yes"> Yes</label>
                     <label><input type="radio" name="willing_to_test_one_assignment" value="Maybe"> Maybe</label>
@@ -285,21 +294,27 @@
                   <p class="survey-field-error" id="willing-to-test-error" data-field-error hidden></p>
                 </fieldset>
 
-                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-max="3" data-error="Please select up to three adoption blockers." data-max-error="Please select only your top three adoption blockers." tabindex="-1">
-                  <legend>What would stop you from adopting a tool like this? <span>Required</span></legend>
-                  <p class="survey-helper">Select up to 3.</p>
+                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-max="4" data-error="Please complete this question." data-max-error="Please select up to 4." tabindex="-1">
+                  <legend>What would need to be true before you, your department, college, or university would adopt or pay for a tool like this? <span>Required</span></legend>
+                  <p class="survey-helper">Select up to 4.</p>
                   <div class="survey-options">
-                    <label><input type="checkbox" name="adoption_blockers" value="Too much setup time"> Too much setup time</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="Not integrated with the LMS"> Not integrated with the LMS</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="Student privacy concerns"> Student privacy concerns</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="University approval process"> University approval process</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="Cost"> Cost</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="Student resistance"> Student resistance</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="Accuracy or fairness concerns"> Accuracy or fairness concerns</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="I do not want another tool"> I do not want another tool</label>
-                    <label><input type="checkbox" name="adoption_blockers" value="Other"> Other</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Minimal setup time"> Minimal setup time</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="LMS integration"> LMS integration</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Data security"> Data security</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Student privacy protections"> Student privacy protections</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Proven time savings for instructors"> Proven time savings for instructors</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Better evidence that students understand their work"> Better evidence that students understand their work</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Better support for responsible AI use"> Better support for responsible AI use</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Improved insight into student struggles"> Improved insight into student struggles</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Reduction in academic integrity issues"> Reduction in academic integrity issues</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Successful department pilot"> Successful department pilot</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Student acceptance"> Student acceptance</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Reasonable cost"> Reasonable cost</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="I do not think anyone would adopt or pay"> I do not think anyone would adopt or pay</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Not sure"> Not sure</label>
+                    <label><input type="checkbox" name="adoption_or_payment_requirements" value="Other"> Other</label>
                   </div>
-                  <p class="survey-field-error" id="adoption-blockers-error" data-field-error hidden></p>
+                  <p class="survey-field-error" id="adoption-or-payment-requirements-error" data-field-error hidden></p>
                 </fieldset>
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please select whether you would support student or course based payment." tabindex="-1">
@@ -328,41 +343,12 @@
                   <p class="survey-field-error" id="reasonable-price-error" data-field-error hidden></p>
                 </fieldset>
 
-                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-error="Please select what would need to be true before an institution would pay." tabindex="-1">
-                  <legend>What would need to be true before your department, college, or university would pay for a tool like this? <span>Required</span></legend>
-                  <p class="survey-helper">Select all that apply.</p>
-                  <div class="survey-options">
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Proven improvement in student learning"> Proven improvement in student learning</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Proven time savings for instructors"> Proven time savings for instructors</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Better insight into how students are learning"> Better insight into how students are learning</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Better support for responsible AI use"> Better support for responsible AI use</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Reduction in academic integrity issues"> Reduction in academic integrity issues</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="LMS integration"> LMS integration</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Data security"> Data security</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Successful department pilot"> Successful department pilot</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Student acceptance"> Student acceptance</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="I do not think anyone would pay"> I do not think anyone would pay</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Not sure"> Not sure</label>
-                    <label><input type="checkbox" name="institution_payment_requirements" value="Other"> Other</label>
-                  </div>
-                  <p class="survey-field-error" id="institution-payment-requirements-error" data-field-error hidden></p>
-                </fieldset>
-
-                <div class="survey-question" data-question data-type="optional" tabindex="-1">
-                  <label class="form-field" for="likely-approval-or-purchase-people">
-                    <span>Who would likely be involved in approving or purchasing a tool like this at your institution?</span>
-                    <small>Examples: department head, course coordinator, teaching and learning office, academic integrity office, IT, dean, provost, etc.</small>
-                    <textarea id="likely-approval-or-purchase-people" name="likely_approval_or_purchase_people" placeholder="Example: Department head, teaching and learning office, IT security review."></textarea>
-                  </label>
-                </div>
-
                 <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-error="Please select at least one follow up option." tabindex="-1">
                   <legend>Would you be open to any of the following? <span>Required</span></legend>
                   <p class="survey-helper">Select all that apply.</p>
                   <div class="survey-options">
                     <label><input type="checkbox" name="follow_up_options" value="Short email follow up"> Short email follow up</label>
                     <label><input type="checkbox" name="follow_up_options" value="10 minute phone call"> 10 minute phone call</label>
-                    <label><input type="checkbox" name="follow_up_options" value="Testing MyTA on one assignment or assessment"> Testing MyTA on one assignment or assessment</label>
                     <label><input type="checkbox" name="follow_up_options" value="Introducing us to someone involved in approval or budget"> Introducing us to someone involved in approval or budget</label>
                     <label><input type="checkbox" name="follow_up_options" value="Introducing us to an instructor who may be interested"> Introducing us to an instructor who may be interested</label>
                     <label><input type="checkbox" name="follow_up_options" value="Not interested"> Not interested</label>
@@ -375,6 +361,7 @@
                     <span>Email address, optional</span>
                     <small>Only needed if you are open to follow up.</small>
                     <input id="follow-up-email" type="email" name="email" autocomplete="email">
+                    <small>Short answer.</small>
                   </label>
                   <p class="survey-field-error" id="follow-up-email-error" data-field-error hidden></p>
                 </div>
@@ -382,7 +369,9 @@
                 <div class="survey-question" data-question data-type="optional" tabindex="-1">
                   <label class="form-field" for="other-thoughts">
                     <span>Other thoughts?</span>
-                    <textarea id="other-thoughts" name="other_thoughts" placeholder="Any other feedback, concerns, or suggestions?"></textarea>
+                    <small>Optional. Longer response welcome here.</small>
+                    <textarea id="other-thoughts" name="other_thoughts"></textarea>
+                    <small>Short answer.</small>
                   </label>
                 </div>
 
@@ -398,7 +387,7 @@
               <p class="eyebrow">Submitted</p>
               <h2>Thank you for your feedback.</h2>
               <p>
-                Your responses will help us understand how assessment and homework need to evolve in an AI driven classroom, what instructors would actually use, and who would realistically pay for a solution.
+                Thank you for your feedback. Your responses will help us understand what instructors actually need, whether MyTA fits that workflow, and who would realistically adopt or pay for a solution.
               </p>
             </div>
             <div class="form-actions survey-actions">
