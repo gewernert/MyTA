@@ -13,7 +13,8 @@
   var surveyHero = document.querySelector("[data-survey-hero]");
   var successCard = document.querySelector("[data-survey-success]");
   var submitButtonText = submitButton ? submitButton.textContent : "";
-  var draftKey = "myta_stem_instructor_feedback_draft";
+  var draftKey = "myta_stem_instructor_feedback_draft_v2";
+  var legacyDraftKeys = ["myta_stem_instructor_feedback_draft"];
 
   var showElement = function (element) {
     if (element) {
@@ -264,6 +265,9 @@
     var saved;
 
     try {
+      legacyDraftKeys.forEach(function (key) {
+        window.localStorage.removeItem(key);
+      });
       saved = window.localStorage.getItem(draftKey);
     } catch (error) {
       return;
