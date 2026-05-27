@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MyTA">
+  <defs>
+    <linearGradient id="myta-favicon-bg" x1="10" y1="6" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78a9d9"/>
+      <stop offset="1" stop-color="#345d86"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#myta-favicon-bg)"/>
+  <ellipse cx="32" cy="18" rx="9.5" ry="15" transform="rotate(35 32 18)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.2"/>
+  <ellipse cx="46" cy="32" rx="9.5" ry="15" transform="rotate(125 46 32)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.2"/>
+  <ellipse cx="32" cy="46" rx="9.5" ry="15" transform="rotate(35 32 46)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.2"/>
+  <ellipse cx="18" cy="32" rx="9.5" ry="15" transform="rotate(125 18 32)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.2"/>
+</svg>
