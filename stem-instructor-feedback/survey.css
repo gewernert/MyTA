@@ -16,10 +16,17 @@
   font-size: 1.08rem;
 }
 
+.survey-detail {
+  max-width: 760px;
+  margin-top: 14px;
+  font-size: 1rem;
+}
+
 .survey-trust {
-  margin-top: 18px;
-  color: var(--blue-ink);
-  font-weight: 700;
+  max-width: 760px;
+  margin-top: 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .survey-section {
