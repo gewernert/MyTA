@@ -240,25 +240,50 @@
                   <p class="survey-field-error" id="myta-problem-match-error" data-field-error hidden></p>
                 </fieldset>
 
-                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe what part seems most useful." tabindex="-1">
-                  <label class="form-field" for="most-useful-part">
-                    <span>What part of MyTA seems most useful? <strong>Required</strong></span>
-                    <small>1 sentence is enough.</small>
-                    <textarea id="most-useful-part" name="most_useful_part"></textarea>
-                    <small>Short answer.</small>
-                  </label>
-                  <p class="survey-field-error" id="most-useful-part-error" data-field-error hidden></p>
-                </div>
+                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-max="3" data-error="Please select at least one useful part." data-max-error="Please select only your top three." tabindex="-1">
+                  <legend>What parts of MyTA seem most useful? <span>Required</span></legend>
+                  <p class="survey-helper">Select up to 3.</p>
+                  <div class="survey-options">
+                    <label><input type="checkbox" name="most_useful_parts" value="AI tutor that guides students without giving direct answers"> AI tutor that guides students without giving direct answers</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Connecting AI help to course material or lecture notes"> Connecting AI help to course material or lecture notes</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Seeing how students worked through an assignment"> Seeing how students worked through an assignment</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Identifying where students struggled"> Identifying where students struggled</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Class-level summaries of common learning gaps"> Class-level summaries of common learning gaps</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="AI-assisted grading recommendations"> AI-assisted grading recommendations</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Student-by-student learning insights"> Student-by-student learning insights</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Encouraging responsible AI use"> Encouraging responsible AI use</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Reducing manual review or grading time"> Reducing manual review or grading time</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Nothing seems especially useful"> Nothing seems especially useful</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Not sure"> Not sure</label>
+                    <label><input type="checkbox" name="most_useful_parts" value="Other"> Other</label>
+                  </div>
+                  <p class="survey-field-error" id="most-useful-parts-error" data-field-error hidden></p>
+                </fieldset>
 
-                <div class="survey-question" data-question data-required="true" data-type="field" data-error="Please describe what would need to change. If nothing comes to mind, write None." tabindex="-1">
-                  <label class="form-field" for="needed-changes-for-real-course">
-                    <span>What would need to be added, removed, or changed before you would consider using this in a real course? <strong>Required</strong></span>
-                    <small>1 sentence is enough. If nothing comes to mind, write “None.”</small>
-                    <textarea id="needed-changes-for-real-course" name="needed_changes_for_real_course"></textarea>
-                    <small>Short answer.</small>
-                  </label>
+                <fieldset class="survey-question" data-question data-required="true" data-type="checkbox" data-min="1" data-max="4" data-error="Please select at least one needed change." data-max-error="Please select only your top four." tabindex="-1">
+                  <legend>What would need to change before you would consider using MyTA in a real course? <span>Required</span></legend>
+                  <p class="survey-helper">Select up to 4.</p>
+                  <div class="survey-options">
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Better LMS integration"> Better LMS integration</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Stronger data security or privacy protections"> Stronger data security or privacy protections</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="More instructor control over AI behavior"> More instructor control over AI behavior</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Ability to customize assignments and grading criteria"> Ability to customize assignments and grading criteria</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Ability to upload or connect lecture notes/course materials"> Ability to upload or connect lecture notes/course materials</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Clearer student consent or AI use policy"> Clearer student consent or AI use policy</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="More accurate AI grading or scoring"> More accurate AI grading or scoring</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Easier setup for instructors"> Easier setup for instructors</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Less student friction"> Less student friction</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="More evidence that it improves learning"> More evidence that it improves learning</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="More evidence that it saves instructor time"> More evidence that it saves instructor time</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="A successful pilot with similar courses"> A successful pilot with similar courses</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Lower cost"> Lower cost</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Nothing major would need to change"> Nothing major would need to change</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="I would not consider using it"> I would not consider using it</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Not sure"> Not sure</label>
+                    <label><input type="checkbox" name="needed_changes_for_real_course" value="Other"> Other</label>
+                  </div>
                   <p class="survey-field-error" id="needed-changes-for-real-course-error" data-field-error hidden></p>
-                </div>
+                </fieldset>
 
                 <fieldset class="survey-question" data-question data-required="true" data-type="radio" data-error="Please select whether you would be willing to test MyTA." tabindex="-1">
                   <legend>Would you be willing to test MyTA on one assignment or assessment? <span>Required</span></legend>

@@ -13,8 +13,8 @@
   var surveyHero = document.querySelector("[data-survey-hero]");
   var successCard = document.querySelector("[data-survey-success]");
   var submitButtonText = submitButton ? submitButton.textContent : "";
-  var draftKey = "myta_stem_instructor_feedback_draft_v2";
-  var legacyDraftKeys = ["myta_stem_instructor_feedback_draft"];
+  var draftKey = "myta_stem_instructor_feedback_draft_v3";
+  var legacyDraftKeys = ["myta_stem_instructor_feedback_draft", "myta_stem_instructor_feedback_draft_v2"];
 
   var showElement = function (element) {
     if (element) {
