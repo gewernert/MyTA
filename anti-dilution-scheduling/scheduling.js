@@ -28,6 +28,7 @@
   var timezoneSelect = document.querySelector("[data-timezone-select]");
   var signInButton = document.querySelector("[data-signin-button]");
   var saveButton = document.querySelector("[data-save-button]");
+  var clearButton = document.querySelector("[data-clear-button]");
   var refreshButton = document.querySelector("[data-refresh-button]");
   var statusMessage = document.querySelector("[data-status-message]");
   var editingStatus = document.querySelector("[data-editing-status]");
@@ -40,7 +41,7 @@
   var markPrankOverlay = document.getElementById("mark-prank-overlay");
   var markPrankTimer = null;
 
-  if (!grid || !nameInput || !timezoneSelect || !signInButton || !saveButton) {
+  if (!grid || !nameInput || !timezoneSelect || !signInButton || !saveButton || !clearButton) {
     return;
   }
 
@@ -335,6 +336,7 @@
     var isSignedIn = Boolean(signedInIdentity);
     grid.classList.toggle("is-locked", !isSignedIn);
     saveButton.disabled = !isSignedIn;
+    clearButton.disabled = !isSignedIn;
     editingStatus.textContent = isSignedIn ? "Editing as " + signedInIdentity.displayName : "Sign in to edit your availability.";
     gridMode.textContent = isSignedIn ? "Click or drag to mark your availability." : "Sign in to edit. You can still view team overlap.";
   }
@@ -878,6 +880,52 @@
     await loadAvailability({ preserveStatus: true });
   }
 
+  async function clearAvailability() {
+    if (!supabaseClient) {
+      showStatus("Supabase is not ready. Check the connection and try again.", "error");
+      return;
+    }
+
+    if (!signedInIdentity) {
+      showStatus("Enter your name and click Sign in before clearing.", "error");
+      nameInput.focus();
+      return;
+    }
+
+    if (!window.confirm("Clear all availability for this week?")) {
+      return;
+    }
+
+    var payload = {
+      week_start: weekStart,
+      participant_name: signedInIdentity.displayName,
+      timezone: timezoneSelect.value,
+      availability_slots: [],
+      updated_at: new Date().toISOString()
+    };
+
+    clearButton.disabled = true;
+    clearButton.textContent = "Clearing...";
+
+    var response = await supabaseClient
+      .from(TABLE_NAME)
+      .upsert(payload, { onConflict: "week_start,participant_name" })
+      .select();
+
+    clearButton.disabled = false;
+    clearButton.textContent = "Clear my availability";
+    updateEditingState();
+
+    if (response.error) {
+      showStatus("We could not clear your availability. Please try again.", "error");
+      return;
+    }
+
+    selectedSlots = new Set();
+    showStatus("Availability cleared.", "success");
+    await loadAvailability({ preserveStatus: true });
+  }
+
   function restoreLastName() {
     try {
       var saved = window.localStorage.getItem(LAST_NAME_KEY);
@@ -926,6 +974,7 @@
 
     signInButton.addEventListener("click", signIn);
     saveButton.addEventListener("click", saveAvailability);
+    clearButton.addEventListener("click", clearAvailability);
     refreshButton.addEventListener("click", loadAvailability);
     nameInput.addEventListener("input", handleNameInput);
     timezoneSelect.addEventListener("change", handleTimezoneChange);
