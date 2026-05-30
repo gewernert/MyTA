@@ -493,6 +493,22 @@
     grid-template-columns: 1fr;
   }
 
+  .scheduler-layout,
+  .scheduler-layout > *,
+  .scheduler-card,
+  .scheduler-fields,
+  .scheduler-actions,
+  .schedule-grid-wrap,
+  .scheduler-side {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .scheduler-card,
+  .schedule-grid-wrap {
+    width: 100%;
+  }
+
   .grid-legend {
     justify-content: flex-start;
   }
@@ -504,10 +520,15 @@
   .schedule-grid-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   .schedule-grid {
     min-width: 720px;
+  }
+
+  .slot-tooltip {
+    max-width: calc(100vw - 28px);
   }
 }
 
@@ -518,5 +539,9 @@
 
   .scheduler-actions .button {
     width: 100%;
+  }
+
+  .mark-prank-overlay img {
+    max-width: calc(100vw - 32px);
   }
 }
