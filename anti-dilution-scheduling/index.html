@@ -33,7 +33,7 @@
           <p class="eyebrow">Internal MyTA scheduler</p>
           <h1>Anti Dilution Scheduling</h1>
           <p class="scheduler-subtitle">
-            Pick the times you can meet this week. The grid shows where the team overlaps so we can stop negotiating in the group chat.
+            Pick the times you can meet this week. The schedule shows where the team overlaps so we can stop negotiating in the group chat.
           </p>
           <p class="scheduler-note">No login needed. Enter your name, mark your availability, and save.</p>
           <div class="week-pill" data-week-label>Loading week...</div>
@@ -44,10 +44,10 @@
         <div class="wrap scheduler-wrap scheduler-layout">
           <section class="scheduler-card controls-card" aria-labelledby="controls-heading">
             <div class="section-heading compact-heading">
-              <p class="eyebrow">Your availability</p>
-              <h2 id="controls-heading">Add your times</h2>
+                <p class="eyebrow">Your availability</p>
+                <h2 id="controls-heading">Add your times</h2>
               <p data-timezone-note>
-                The grid is shown in your selected timezone. This first version keeps overlap simple and does not convert each person across timezones.
+                The schedule is shown in your selected timezone. This first version keeps overlap simple and does not convert each person across timezones.
               </p>
             </div>
 
@@ -75,7 +75,7 @@
             <div class="grid-card-heading">
               <div>
                 <p class="eyebrow">Availability grid</p>
-                <h2 id="grid-heading">Click and drag your open times</h2>
+                <h2 id="grid-heading">Choose your open times</h2>
               </div>
               <div class="grid-legend" aria-label="Grid legend">
                 <span><i class="legend-own"></i>Your availability</span>
@@ -83,8 +83,8 @@
               </div>
             </div>
 
-            <div class="schedule-grid-wrap" tabindex="0" aria-label="Weekly availability grid">
-              <div class="schedule-grid" data-grid></div>
+            <div class="schedule-days" tabindex="0" aria-label="Scheduling availability by day">
+              <div class="day-card-grid" data-grid></div>
             </div>
           </section>
 
@@ -95,7 +95,7 @@
                 <h2 id="best-times-heading">Best overlap times</h2>
               </div>
               <div class="best-times-list" data-best-times>
-                <p class="empty-state">No one has submitted availability for this week yet.</p>
+                <p class="empty-state">No one has submitted availability for this scheduling window yet.</p>
               </div>
             </section>
 
@@ -105,7 +105,7 @@
                 <h2 id="participants-heading">Submitted availability</h2>
               </div>
               <div class="participant-list" data-participants>
-                <p class="empty-state">No one has submitted availability for this week yet.</p>
+                <p class="empty-state">No one has submitted availability for this scheduling window yet.</p>
               </div>
             </section>
           </aside>

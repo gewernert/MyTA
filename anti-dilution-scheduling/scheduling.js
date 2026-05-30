@@ -1,14 +1,13 @@
 (function () {
   var SUPABASE_URL = "https://vhayeiyuafaltrfnbqce.supabase.co";
-  var SUPABASE_PUBLIC_KEY = "REPLACE_WITH_SUPABASE_PUBLIC_ANON_KEY";
+  var SUPABASE_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZoYXllaXl1YWZhbHRyZm5icWNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODgwNDgsImV4cCI6MjA5NTY2NDA0OH0.cOeVUWGxTMRlBQl7VoL-F1PQp1N1bVXiFVv6tpyCeFY";
   var TABLE_NAME = "meeting_availability";
   var LAST_NAME_KEY = "myta_anti_dilution_last_name";
   var SLOT_START_MINUTES = 7 * 60;
   var SLOT_END_MINUTES = 23 * 60;
   var SLOT_SIZE_MINUTES = 30;
-  var DAY_KEYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
   var DAY_LABELS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  var SHORT_DAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var DAY_COUNT = 8;
 
   var weekLabel = document.querySelector("[data-week-label]");
   var nameInput = document.querySelector("[data-name-input]");
@@ -25,7 +24,7 @@
   }
 
   var supabaseClient = null;
-  var weekStart = getRelevantWeekStart(new Date());
+  var weekStart = getSchedulingStart(new Date());
   var selectedSlots = new Set();
   var records = [];
   var isDragging = false;
@@ -47,18 +46,16 @@
     return next;
   }
 
-  function getRelevantWeekStart(date) {
+  function getSchedulingStart(date) {
     var local = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    var day = local.getDay();
-    var offset = day === 0 ? 1 : 1 - day;
-    return formatDateKey(addDays(local, offset));
+    return formatDateKey(local);
   }
 
-  function getWeekDates() {
+  function getScheduleDates() {
     var parts = weekStart.split("-").map(Number);
-    var monday = new Date(parts[0], parts[1] - 1, parts[2]);
-    return DAY_KEYS.map(function (_, index) {
-      return addDays(monday, index);
+    var start = new Date(parts[0], parts[1] - 1, parts[2]);
+    return Array.from({ length: DAY_COUNT }, function (_, index) {
+      return addDays(start, index);
     });
   }
 
@@ -91,12 +88,13 @@
   }
 
   function getSlotId(dayIndex, minutes) {
-    return weekStart + "|" + DAY_KEYS[dayIndex] + "|" + minutesToValue(minutes);
+    return weekStart + "|" + formatDateKey(getScheduleDates()[dayIndex]) + "|" + minutesToValue(minutes);
   }
 
   function parseSlot(slotId) {
     var parts = String(slotId).split("|");
-    var dayIndex = DAY_KEYS.indexOf(parts[1]);
+    var dates = getScheduleDates().map(formatDateKey);
+    var dayIndex = dates.indexOf(parts[1]);
     var timeParts = (parts[2] || "00:00").split(":").map(Number);
     return {
       dayIndex: dayIndex,
@@ -188,44 +186,40 @@
   }
 
   function setWeekLabel() {
-    var dates = getWeekDates();
-    weekLabel.textContent = "Week of " + formatLongDate(dates[0]) + " to " + formatLongDate(dates[6]);
+    var dates = getScheduleDates();
+    weekLabel.textContent = "Scheduling window: " + formatShortDate(dates[0]) + " to " + formatShortDate(dates[dates.length - 1]);
   }
 
   function renderGrid() {
     grid.innerHTML = "";
-    var dates = getWeekDates();
-    var corner = document.createElement("div");
-    corner.className = "grid-day grid-corner";
-    corner.textContent = "Time";
-    grid.appendChild(corner);
+    var dates = getScheduleDates();
 
     dates.forEach(function (date, index) {
-      var day = document.createElement("div");
-      day.className = "grid-day";
-      day.innerHTML = SHORT_DAY_LABELS[index] + "<small>" + formatShortDate(date) + "</small>";
-      grid.appendChild(day);
-    });
+      var dayCard = document.createElement("section");
+      var dayName = DAY_LABELS[date.getDay() === 0 ? 6 : date.getDay() - 1];
+      dayCard.className = "day-card";
+      dayCard.innerHTML = '<div class="day-card-header"><strong>' + dayName + '</strong><span>' + formatShortDate(date) + '</span></div>';
 
-    for (var minutes = SLOT_START_MINUTES; minutes < SLOT_END_MINUTES; minutes += SLOT_SIZE_MINUTES) {
-      var time = document.createElement("div");
-      time.className = "grid-time";
-      time.textContent = formatSlotTime(minutes);
-      grid.appendChild(time);
+      var slots = document.createElement("div");
+      slots.className = "slot-grid";
 
-      for (var dayIndex = 0; dayIndex < 7; dayIndex += 1) {
-        var slotId = getSlotId(dayIndex, minutes);
-        var cell = document.createElement("button");
-        cell.type = "button";
-        cell.className = "grid-cell";
-        cell.dataset.slotId = slotId;
-        cell.setAttribute("aria-label", DAY_LABELS[dayIndex] + " at " + formatSlotTime(minutes));
-        cell.addEventListener("pointerdown", handlePointerDown);
-        cell.addEventListener("pointerenter", handlePointerEnter);
-        cell.addEventListener("click", handleCellClick);
-        grid.appendChild(cell);
+      for (var minutes = SLOT_START_MINUTES; minutes < SLOT_END_MINUTES; minutes += SLOT_SIZE_MINUTES) {
+        var slotId = getSlotId(index, minutes);
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "time-slot";
+        button.dataset.slotId = slotId;
+        button.textContent = formatSlotTime(minutes);
+        button.setAttribute("aria-label", dayName + " " + formatShortDate(date) + " at " + formatSlotTime(minutes));
+        button.addEventListener("pointerdown", handlePointerDown);
+        button.addEventListener("pointerenter", handlePointerEnter);
+        button.addEventListener("click", handleCellClick);
+        slots.appendChild(button);
       }
-    }
+
+      dayCard.appendChild(slots);
+      grid.appendChild(dayCard);
+    });
 
     document.addEventListener("pointerup", function () {
       isDragging = false;
@@ -250,10 +244,10 @@
   function updateGrid() {
     var counts = getSlotCounts();
     var maxCount = Math.max(records.length, 1);
-    grid.querySelectorAll(".grid-cell").forEach(function (cell) {
+    grid.querySelectorAll(".time-slot").forEach(function (cell) {
       var slotId = cell.dataset.slotId;
       var count = counts[slotId] ? counts[slotId].length : 0;
-      cell.className = "grid-cell";
+      cell.className = "time-slot";
       if (count > 0) {
         cell.classList.add("heat-" + Math.min(5, Math.ceil((count / maxCount) * 5)));
       }
@@ -327,7 +321,7 @@
   function renderParticipants() {
     participants.innerHTML = "";
     if (!records.length) {
-      participants.innerHTML = '<p class="empty-state">No one has submitted availability for this week yet.</p>';
+      participants.innerHTML = '<p class="empty-state">No one has submitted availability for this scheduling window yet.</p>';
       return;
     }
 
@@ -351,7 +345,7 @@
     var windows = [];
     var current = null;
 
-    for (var dayIndex = 0; dayIndex < 7; dayIndex += 1) {
+    for (var dayIndex = 0; dayIndex < DAY_COUNT; dayIndex += 1) {
       current = null;
       for (var minutes = SLOT_START_MINUTES; minutes < SLOT_END_MINUTES; minutes += SLOT_SIZE_MINUTES) {
         var slotId = getSlotId(dayIndex, minutes);
@@ -402,7 +396,7 @@
   function renderBestTimes() {
     bestTimes.innerHTML = "";
     if (!records.length) {
-      bestTimes.innerHTML = '<p class="empty-state">No one has submitted availability for this week yet.</p>';
+      bestTimes.innerHTML = '<p class="empty-state">No one has submitted availability for this scheduling window yet.</p>';
       return;
     }
 
@@ -425,7 +419,9 @@
       if (records.length > 1 && windowItem.count === records.length) {
         item.classList.add("perfect");
       }
-      item.innerHTML = "<strong>" + DAY_LABELS[windowItem.dayIndex] + ", " + formatSlotTime(windowItem.start) + " to " + formatSlotTime(windowItem.end) + "</strong><p>" + windowItem.count + " available: " + windowItem.names.join(", ") + "</p>";
+      var date = getScheduleDates()[windowItem.dayIndex];
+      var dayName = DAY_LABELS[date.getDay() === 0 ? 6 : date.getDay() - 1];
+      item.innerHTML = "<strong>" + dayName + ", " + formatShortDate(date) + ", " + formatSlotTime(windowItem.start) + " to " + formatSlotTime(windowItem.end) + "</strong><p>" + windowItem.count + " available: " + windowItem.names.join(", ") + "</p>";
       bestTimes.appendChild(item);
     });
   }
@@ -454,7 +450,7 @@
 
   async function saveAvailability() {
     if (!supabaseClient) {
-      showStatus("Supabase public key is not configured yet. Add the browser-safe anon key before saving availability.", "error");
+      showStatus("Supabase is not ready. Check the connection and try again.", "error");
       return;
     }
 

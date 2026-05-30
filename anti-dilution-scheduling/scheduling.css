@@ -3,7 +3,7 @@
 }
 
 .scheduler-hero {
-  padding: 96px 0 38px;
+  padding: 82px 0 32px;
 }
 
 .scheduler-wrap {
@@ -13,18 +13,20 @@
 .scheduler-subtitle {
   max-width: 780px;
   margin-top: 18px;
-  font-size: 1.08rem;
+  font-size: 1rem;
 }
 
 .scheduler-note {
   max-width: 680px;
   margin-top: 14px;
   color: var(--blue-ink);
+  font-size: 0.94rem;
   font-weight: 700;
 }
 
 .week-pill {
   display: inline-flex;
+  max-width: 100%;
   margin-top: 22px;
   padding: 10px 14px;
   border: 1px solid var(--border-blue);
@@ -33,15 +35,16 @@
   color: var(--ink);
   font-size: 0.92rem;
   font-weight: 750;
+  line-height: 1.35;
 }
 
 .scheduler-section {
-  padding: 22px 0 84px;
+  padding: 18px 0 80px;
 }
 
 .scheduler-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(290px, 340px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
   gap: 22px;
 }
 
@@ -50,7 +53,7 @@
   border-radius: var(--radius-lg);
   background: var(--surface-strong);
   box-shadow: var(--soft-shadow);
-  padding: 28px;
+  padding: 24px;
 }
 
 .controls-card,
@@ -109,6 +112,7 @@
 
 .grid-card-heading h2 {
   margin-bottom: 0;
+  font-size: clamp(1.65rem, 2.8vw, 2.25rem);
 }
 
 .grid-legend {
@@ -142,109 +146,109 @@
   background: var(--pale-blue);
 }
 
-.schedule-grid-wrap {
-  overflow: auto;
+.schedule-days {
+  border-radius: var(--radius-md);
+}
+
+.day-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.day-card {
+  min-width: 0;
   border: 1px solid var(--soft-line);
   border-radius: var(--radius-md);
-  background: var(--white);
-}
-
-.schedule-grid {
-  display: grid;
-  min-width: 820px;
-  grid-template-columns: 92px repeat(7, minmax(98px, 1fr));
-}
-
-.grid-cell,
-.grid-time,
-.grid-day {
-  min-height: 32px;
-  border-right: 1px solid var(--soft-line);
-  border-bottom: 1px solid var(--soft-line);
-}
-
-.grid-day,
-.grid-time {
-  position: sticky;
-  z-index: 2;
   background: #f8fbfd;
-  color: var(--ink);
-  font-size: 0.78rem;
-  font-weight: 800;
+  overflow: hidden;
 }
 
-.grid-day {
-  top: 0;
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  min-height: 58px;
-  padding: 8px 6px;
-  text-align: center;
-}
-
-.grid-day small {
-  color: var(--muted);
-  font-weight: 700;
-}
-
-.grid-time {
-  left: 0;
+.day-card-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 7px 10px 0 6px;
-  text-align: right;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--soft-line);
+  background: var(--surface-blue);
 }
 
-.grid-corner {
-  left: 0;
-  z-index: 3;
+.day-card-header strong {
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.2;
 }
 
-.grid-cell {
+.day-card-header span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 12px;
+}
+
+.time-slot {
   position: relative;
-  min-height: 30px;
+  min-height: 36px;
+  padding: 0 4px;
+  border: 1px solid var(--border-blue);
+  border-radius: 7px;
   background: var(--white);
+  color: var(--ink);
   cursor: pointer;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 750;
+  line-height: 1;
   transition: background 120ms ease, box-shadow 120ms ease;
 }
 
-.grid-cell:hover {
+.time-slot:hover {
   box-shadow: inset 0 0 0 2px rgba(52, 93, 134, 0.24);
 }
 
-.grid-cell.heat-1 {
+.time-slot.heat-1 {
   background: rgba(186, 220, 254, 0.28);
 }
 
-.grid-cell.heat-2 {
+.time-slot.heat-2 {
   background: rgba(186, 220, 254, 0.46);
 }
 
-.grid-cell.heat-3 {
+.time-slot.heat-3 {
   background: rgba(120, 169, 217, 0.42);
 }
 
-.grid-cell.heat-4 {
+.time-slot.heat-4 {
   background: rgba(120, 169, 217, 0.62);
 }
 
-.grid-cell.heat-5 {
+.time-slot.heat-5 {
   background: rgba(52, 93, 134, 0.7);
+  color: var(--white);
 }
 
-.grid-cell.is-selected {
+.time-slot.is-selected {
   background: var(--ink);
+  border-color: var(--ink);
   box-shadow: inset 0 0 0 2px var(--white);
+  color: var(--white);
 }
 
-.grid-cell.is-selected::after {
-  content: "";
+.time-slot.is-selected::after {
+  content: "✓";
   position: absolute;
-  inset: 8px;
-  border-radius: 3px;
-  background: var(--pale-blue);
+  top: 4px;
+  right: 5px;
+  color: var(--pale-blue);
+  font-size: 0.68rem;
 }
 
 .best-times-list,
@@ -266,6 +270,7 @@
   display: block;
   color: var(--ink);
   font-size: 0.98rem;
+  overflow-wrap: anywhere;
 }
 
 .best-time p,
@@ -327,7 +332,25 @@
     padding: 24px;
   }
 
-  .schedule-grid {
-    min-width: 760px;
+  .day-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 440px) {
+  .scheduler-card {
+    padding: 20px;
+  }
+
+  .slot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .time-slot {
+    min-height: 40px;
   }
 }
