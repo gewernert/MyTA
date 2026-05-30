@@ -34,9 +34,9 @@
             <p class="eyebrow">Internal MyTA scheduler</p>
             <h1>Anti Dilution Scheduling</h1>
             <p class="scheduler-subtitle">
-              Pick the times you can meet this week. The schedule shows where the team overlaps so we can stop negotiating in the group chat.
+              Pick the times you can meet this week. Prevent yourself from being diluted.
             </p>
-            <p class="scheduler-note">No login needed. Enter your name, mark your availability, and save.</p>
+            <p class="scheduler-note">Enter your name, mark your availability, and save.</p>
           </div>
           <div class="window-card" aria-live="polite">
             <span>Scheduling window</span>
@@ -52,7 +52,7 @@
                 <p class="eyebrow">Your availability</p>
                 <h2 id="controls-heading">Add your times</h2>
               <p data-timezone-note>
-                The schedule is shown in your selected timezone. This first version keeps overlap simple and does not convert each person across timezones.
+                Sign in with your name before editing. The schedule uses an Eastern Time source window and displays it in your selected timezone.
               </p>
             </div>
 
@@ -69,10 +69,12 @@
             </div>
 
             <div class="scheduler-actions">
-              <button class="button button-primary" type="button" data-save-button>Save availability</button>
+              <button class="button button-primary" type="button" data-signin-button>Sign in</button>
+              <button class="button button-secondary" type="button" data-save-button disabled>Save availability</button>
               <button class="button button-secondary" type="button" data-refresh-button>Refresh availability</button>
             </div>
 
+            <p class="editing-status" data-editing-status>Sign in to edit your availability.</p>
             <p class="scheduler-status" role="status" data-status-message hidden></p>
           </section>
 
@@ -81,9 +83,11 @@
               <div>
                 <p class="eyebrow">Availability grid</p>
                 <h2 id="grid-heading">Choose your open times</h2>
+                <p class="timezone-display" data-display-timezone>Showing times in Eastern</p>
+                <p class="grid-mode" data-grid-mode>Sign in to edit. You can still view team overlap.</p>
               </div>
               <div class="grid-legend" aria-label="Grid legend">
-                <span><i class="legend-0"></i>No overlap</span>
+                <span><i class="legend-0"></i>0 available</span>
                 <span><i class="legend-1"></i>1 available</span>
                 <span><i class="legend-2"></i>2 available</span>
                 <span><i class="legend-3"></i>3 available</span>
@@ -95,6 +99,7 @@
             <div class="schedule-grid-wrap" tabindex="0" aria-label="Scheduling availability grid">
               <div class="schedule-grid" data-grid></div>
             </div>
+            <div class="slot-tooltip" role="tooltip" data-slot-tooltip hidden></div>
           </section>
 
           <aside class="scheduler-side">

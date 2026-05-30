@@ -3,16 +3,17 @@
   var SUPABASE_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZoYXllaXl1YWZhbHRyZm5icWNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODgwNDgsImV4cCI6MjA5NTY2NDA0OH0.cOeVUWGxTMRlBQl7VoL-F1PQp1N1bVXiFVv6tpyCeFY";
   var TABLE_NAME = "meeting_availability";
   var LAST_NAME_KEY = "myta_anti_dilution_last_name";
-  var SLOT_START_MINUTES = 7 * 60;
+  var SOURCE_TIMEZONE = "America/New_York";
+  var SLOT_START_MINUTES = 8 * 60;
   var SLOT_END_MINUTES = 23 * 60;
   var SLOT_SIZE_MINUTES = 30;
   var DAY_COUNT = 8;
 
   var TEAM_MEMBERS = [
-    { key: "grant_goldsmith", displayName: "Grant Goldsmith", aliases: ["grant", "grant goldsmith"] },
-    { key: "gavin_wernert", displayName: "Gavin Wernert", aliases: ["gavin", "gavin wernert"] },
-    { key: "mark_rome", displayName: "Mark Rome", aliases: ["mark", "mark rome"] },
-    { key: "paul_cavounis", displayName: "Paul Cavounis", aliases: ["paul", "paul cavounis"] }
+    { key: "grant_goldsmith", displayName: "Grant Goldsmith", shortName: "Grant", aliases: ["grant", "grant goldsmith"] },
+    { key: "gavin_wernert", displayName: "Gavin Wernert", shortName: "Gavin", aliases: ["gavin", "gavin wernert"] },
+    { key: "mark_rome", displayName: "Mark Rome", shortName: "Mark", aliases: ["mark", "mark rome"] },
+    { key: "paul_cavounis", displayName: "Paul Cavounis", shortName: "Paul", aliases: ["paul", "paul cavounis"] }
   ];
 
   var TIMEZONES = [
@@ -25,14 +26,19 @@
   var weekLabel = document.querySelector("[data-week-label]");
   var nameInput = document.querySelector("[data-name-input]");
   var timezoneSelect = document.querySelector("[data-timezone-select]");
+  var signInButton = document.querySelector("[data-signin-button]");
   var saveButton = document.querySelector("[data-save-button]");
   var refreshButton = document.querySelector("[data-refresh-button]");
   var statusMessage = document.querySelector("[data-status-message]");
+  var editingStatus = document.querySelector("[data-editing-status]");
+  var displayTimezone = document.querySelector("[data-display-timezone]");
+  var gridMode = document.querySelector("[data-grid-mode]");
   var grid = document.querySelector("[data-grid]");
   var bestTimes = document.querySelector("[data-best-times]");
   var participants = document.querySelector("[data-participants]");
+  var tooltip = document.querySelector("[data-slot-tooltip]");
 
-  if (!grid || !nameInput || !timezoneSelect || !saveButton) {
+  if (!grid || !nameInput || !timezoneSelect || !signInButton || !saveButton) {
     return;
   }
 
@@ -40,10 +46,14 @@
   var weekStart = getSchedulingStart(new Date());
   var selectedSlots = new Set();
   var records = [];
+  var slotCatalog = [];
+  var slotInfoById = {};
+  var currentSlotIds = new Set();
+  var legacySlotMap = {};
+  var signedInIdentity = null;
   var isDragging = false;
   var dragShouldSelect = true;
   var pointerHandledCell = false;
-  var currentMatchedIdentity = "";
 
   function pad(number) {
     return String(number).padStart(2, "0");
@@ -71,6 +81,17 @@
     });
   }
 
+  function getTimezoneLabel(value) {
+    var zone = TIMEZONES.find(function (item) {
+      return item.value === value;
+    });
+    return zone ? zone.label : "Eastern";
+  }
+
+  function getSelectedTimezone() {
+    return timezoneSelect.value || SOURCE_TIMEZONE;
+  }
+
   function formatShortDate(date) {
     return new Intl.DateTimeFormat(undefined, {
       month: "short",
@@ -78,45 +99,106 @@
     }).format(date);
   }
 
-  function formatDayShort(date) {
-    return new Intl.DateTimeFormat(undefined, {
-      weekday: "short"
-    }).format(date);
+  function formatInTimezone(isoString, options) {
+    return new Intl.DateTimeFormat("en-US", Object.assign({
+      timeZone: getSelectedTimezone()
+    }, options)).format(new Date(isoString));
   }
 
-  function formatSlotTime(minutes) {
-    var hours = Math.floor(minutes / 60);
-    var mins = minutes % 60;
-    var suffix = hours >= 12 ? "PM" : "AM";
-    var displayHour = hours % 12 || 12;
-    return displayHour + ":" + pad(mins) + " " + suffix;
+  function formatDayShortInTimezone(isoString) {
+    return formatInTimezone(isoString, { weekday: "short" });
   }
 
-  function formatCompactTime(minutes) {
-    var hours = Math.floor(minutes / 60);
-    var mins = minutes % 60;
-    var suffix = hours >= 12 ? "p" : "a";
-    var displayHour = hours % 12 || 12;
-    return mins ? displayHour + ":" + pad(mins) + suffix : displayHour + suffix;
+  function formatShortDateInTimezone(isoString) {
+    return formatInTimezone(isoString, { month: "short", day: "numeric" });
+  }
+
+  function formatLongDayTimeInTimezone(isoString) {
+    return formatInTimezone(isoString, {
+      weekday: "long",
+      hour: "numeric",
+      minute: "2-digit"
+    });
+  }
+
+  function formatTimeInTimezone(isoString) {
+    return formatInTimezone(isoString, {
+      hour: "numeric",
+      minute: "2-digit"
+    });
+  }
+
+  function formatCompactTimeInTimezone(isoString) {
+    return formatTimeInTimezone(isoString)
+      .replace(":00 ", "")
+      .replace(" AM", "a")
+      .replace(" PM", "p");
   }
 
   function minutesToValue(minutes) {
     return pad(Math.floor(minutes / 60)) + ":" + pad(minutes % 60);
   }
 
-  function getSlotId(dayIndex, minutes) {
-    return weekStart + "|" + formatDateKey(getScheduleDates()[dayIndex]) + "|" + minutesToValue(minutes);
+  function getZonedParts(date, timeZone) {
+    var parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: timeZone,
+      hourCycle: "h23",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit"
+    }).formatToParts(date);
+    var map = {};
+    parts.forEach(function (part) {
+      if (part.type !== "literal") {
+        map[part.type] = Number(part.value);
+      }
+    });
+    return map;
   }
 
-  function parseSlot(slotId) {
-    var parts = String(slotId).split("|");
-    var dates = getScheduleDates().map(formatDateKey);
-    var dayIndex = dates.indexOf(parts[1]);
-    var timeParts = (parts[2] || "00:00").split(":").map(Number);
-    return {
-      dayIndex: dayIndex,
-      minutes: timeParts[0] * 60 + timeParts[1]
-    };
+  function zonedTimeToUtc(dateKey, minutes, timeZone) {
+    var dateParts = dateKey.split("-").map(Number);
+    var targetHour = Math.floor(minutes / 60);
+    var targetMinute = minutes % 60;
+    var targetAsUtc = Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2], targetHour, targetMinute);
+    var guess = targetAsUtc;
+
+    for (var index = 0; index < 3; index += 1) {
+      var actual = getZonedParts(new Date(guess), timeZone);
+      var actualAsUtc = Date.UTC(actual.year, actual.month - 1, actual.day, actual.hour, actual.minute);
+      guess += targetAsUtc - actualAsUtc;
+    }
+
+    return new Date(guess);
+  }
+
+  function buildSlotCatalog() {
+    var dates = getScheduleDates();
+    slotCatalog = [];
+    slotInfoById = {};
+    currentSlotIds = new Set();
+    legacySlotMap = {};
+
+    for (var minutes = SLOT_START_MINUTES; minutes <= SLOT_END_MINUTES; minutes += SLOT_SIZE_MINUTES) {
+      var row = [];
+      dates.forEach(function (date, dayIndex) {
+        var dateKey = formatDateKey(date);
+        var iso = zonedTimeToUtc(dateKey, minutes, SOURCE_TIMEZONE).toISOString();
+        var info = {
+          id: iso,
+          dayIndex: dayIndex,
+          sourceDateKey: dateKey,
+          easternMinutes: minutes
+        };
+        row.push(info);
+        slotInfoById[iso] = info;
+        currentSlotIds.add(iso);
+        legacySlotMap[weekStart + "|" + dateKey + "|" + minutesToValue(minutes)] = iso;
+      });
+      slotCatalog.push(row);
+    }
   }
 
   function normalizeName(name) {
@@ -149,6 +231,7 @@
       return {
         key: matched.key,
         displayName: matched.displayName,
+        shortName: matched.shortName,
         isCore: true
       };
     }
@@ -156,8 +239,33 @@
     return {
       key: normalizeKey(cleanName),
       displayName: titleCaseName(cleanName),
+      shortName: titleCaseName(cleanName),
       isCore: false
     };
+  }
+
+  function toShortNames(names) {
+    if (!names.length) {
+      return "None";
+    }
+    return names.map(function (name) {
+      var member = TEAM_MEMBERS.find(function (item) {
+        return item.displayName === name;
+      });
+      return member ? member.shortName : name;
+    }).join(", ");
+  }
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (character) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[character];
+    });
   }
 
   function showStatus(message, type) {
@@ -190,12 +298,12 @@
   }
 
   function populateTimezones() {
-    var browserTimezone = "America/New_York";
+    var browserTimezone = SOURCE_TIMEZONE;
 
     try {
       browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || browserTimezone;
     } catch (error) {
-      browserTimezone = "America/New_York";
+      browserTimezone = SOURCE_TIMEZONE;
     }
 
     TIMEZONES.forEach(function (zone) {
@@ -208,7 +316,7 @@
     var match = TIMEZONES.find(function (zone) {
       return zone.value === browserTimezone;
     });
-    timezoneSelect.value = match ? match.value : "America/New_York";
+    timezoneSelect.value = match ? match.value : SOURCE_TIMEZONE;
   }
 
   function setWeekLabel() {
@@ -216,8 +324,21 @@
     weekLabel.textContent = formatShortDate(dates[0]) + " to " + formatShortDate(dates[dates.length - 1]);
   }
 
+  function updateTimezoneLabels() {
+    var label = getTimezoneLabel(getSelectedTimezone());
+    displayTimezone.textContent = "Showing times in " + label;
+  }
+
+  function updateEditingState() {
+    var isSignedIn = Boolean(signedInIdentity);
+    grid.classList.toggle("is-locked", !isSignedIn);
+    saveButton.disabled = !isSignedIn;
+    editingStatus.textContent = isSignedIn ? "Editing as " + signedInIdentity.displayName : "Sign in to edit your availability.";
+    gridMode.textContent = isSignedIn ? "Click or drag to mark your availability." : "Sign in to edit. You can still view team overlap.";
+  }
+
   function renderGrid() {
-    var dates = getScheduleDates();
+    buildSlotCatalog();
     grid.innerHTML = "";
 
     var corner = document.createElement("div");
@@ -225,58 +346,78 @@
     corner.setAttribute("aria-hidden", "true");
     grid.appendChild(corner);
 
-    dates.forEach(function (date) {
+    for (var dayIndex = 0; dayIndex < DAY_COUNT; dayIndex += 1) {
+      var firstSlot = slotCatalog[0][dayIndex];
       var dayHeader = document.createElement("div");
       dayHeader.className = "grid-day";
-      dayHeader.innerHTML = "<strong>" + formatDayShort(date) + "</strong><span>" + formatShortDate(date) + "</span>";
+      dayHeader.innerHTML = "<strong>" + formatDayShortInTimezone(firstSlot.id) + "</strong><span>" + formatShortDateInTimezone(firstSlot.id) + "</span>";
       grid.appendChild(dayHeader);
-    });
+    }
 
-    for (var minutes = SLOT_START_MINUTES; minutes < SLOT_END_MINUTES; minutes += SLOT_SIZE_MINUTES) {
+    slotCatalog.forEach(function (row) {
       var timeLabel = document.createElement("div");
       timeLabel.className = "grid-time";
-      timeLabel.textContent = formatCompactTime(minutes);
+      timeLabel.textContent = formatCompactTimeInTimezone(row[0].id);
       grid.appendChild(timeLabel);
 
-      dates.forEach(function (date, dayIndex) {
-        var slotId = getSlotId(dayIndex, minutes);
+      row.forEach(function (slot) {
         var cell = document.createElement("button");
         cell.type = "button";
         cell.className = "grid-cell";
-        cell.dataset.slotId = slotId;
-        cell.setAttribute("aria-label", formatDayShort(date) + " " + formatShortDate(date) + " at " + formatSlotTime(minutes));
+        cell.dataset.slotId = slot.id;
+        cell.setAttribute("aria-label", formatLongDayTimeInTimezone(slot.id));
         cell.setAttribute("aria-pressed", "false");
         cell.addEventListener("pointerdown", handlePointerDown);
         cell.addEventListener("pointerenter", handlePointerEnter);
         cell.addEventListener("click", handleCellClick);
+        cell.addEventListener("mouseenter", showTooltip);
+        cell.addEventListener("mousemove", moveTooltip);
+        cell.addEventListener("mouseleave", hideTooltip);
+        cell.addEventListener("focus", showTooltip);
+        cell.addEventListener("blur", hideTooltip);
         grid.appendChild(cell);
       });
-    }
-
-    document.addEventListener("pointerup", function () {
-      isDragging = false;
     });
 
+    updateTimezoneLabels();
+    updateEditingState();
     updateGrid();
   }
 
-  function getRecordSlots(record) {
-    if (Array.isArray(record.availability_slots)) {
-      return record.availability_slots.filter(isCurrentWindowSlot);
+  function normalizeAvailabilitySlot(slotId) {
+    if (typeof slotId !== "string") {
+      return null;
     }
-    if (typeof record.availability_slots === "string") {
-      try {
-        var parsed = JSON.parse(record.availability_slots);
-        return Array.isArray(parsed) ? parsed.filter(isCurrentWindowSlot) : [];
-      } catch (error) {
-        return [];
-      }
+    if (currentSlotIds.has(slotId)) {
+      return slotId;
     }
-    return [];
+    if (legacySlotMap[slotId]) {
+      return legacySlotMap[slotId];
+    }
+
+    var parsedDate = new Date(slotId);
+    if (!Number.isNaN(parsedDate.getTime())) {
+      var iso = parsedDate.toISOString();
+      return currentSlotIds.has(iso) ? iso : null;
+    }
+
+    return null;
   }
 
-  function isCurrentWindowSlot(slotId) {
-    return typeof slotId === "string" && slotId.indexOf(weekStart + "|") === 0;
+  function getRecordSlots(record) {
+    var slots = [];
+    if (Array.isArray(record.availability_slots)) {
+      slots = record.availability_slots;
+    } else if (typeof record.availability_slots === "string") {
+      try {
+        var parsed = JSON.parse(record.availability_slots);
+        slots = Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        slots = [];
+      }
+    }
+
+    return slots.map(normalizeAvailabilitySlot).filter(Boolean);
   }
 
   function getLatestCoreRecords() {
@@ -316,12 +457,34 @@
     return counts;
   }
 
+  function getUnavailableNames(availableNames) {
+    return TEAM_MEMBERS.map(function (member) {
+      return member.displayName;
+    }).filter(function (name) {
+      return availableNames.indexOf(name) === -1;
+    });
+  }
+
+  function getTooltipText(slotId) {
+    var counts = getSlotCounts();
+    var available = (counts[slotId] || []).slice().sort();
+    var unavailable = getUnavailableNames(available);
+    return {
+      plain: formatLongDayTimeInTimezone(slotId) + "\n" + available.length + " of 4 available\nAvailable: " + toShortNames(available) + "\nUnavailable: " + toShortNames(unavailable),
+      html: "<strong>" + escapeHtml(formatLongDayTimeInTimezone(slotId)) + "</strong>" +
+        "<div>" + available.length + " of 4 available</div>" +
+        "<div>Available: " + escapeHtml(toShortNames(available)) + "</div>" +
+        "<div>Unavailable: " + escapeHtml(toShortNames(unavailable)) + "</div>"
+    };
+  }
+
   function updateGrid() {
     var counts = getSlotCounts();
     grid.querySelectorAll(".grid-cell").forEach(function (cell) {
       var slotId = cell.dataset.slotId;
       var names = counts[slotId] || [];
       var count = Math.min(names.length, TEAM_MEMBERS.length);
+      var tooltipText = getTooltipText(slotId);
       cell.className = "grid-cell";
       if (count > 0) {
         cell.classList.add("heat-" + count);
@@ -332,13 +495,26 @@
       } else {
         cell.setAttribute("aria-pressed", "false");
       }
-      cell.title = count ? count + " available: " + names.join(", ") : "No overlap yet";
+      cell.title = tooltipText.plain;
     });
     renderBestTimes();
     renderParticipants();
   }
 
+  function canEditGrid() {
+    if (signedInIdentity) {
+      return true;
+    }
+    showStatus("Enter your name and click Sign in before editing.", "error");
+    nameInput.focus();
+    return false;
+  }
+
   function handlePointerDown(event) {
+    if (!canEditGrid()) {
+      pointerHandledCell = true;
+      return;
+    }
     isDragging = true;
     pointerHandledCell = true;
     dragShouldSelect = !selectedSlots.has(event.currentTarget.dataset.slotId);
@@ -346,13 +522,17 @@
   }
 
   function handlePointerEnter(event) {
-    if (!isDragging) {
+    if (!isDragging || !signedInIdentity) {
       return;
     }
     setSlot(event.currentTarget.dataset.slotId, dragShouldSelect);
   }
 
   function handleCellClick(event) {
+    if (!signedInIdentity) {
+      pointerHandledCell = false;
+      return;
+    }
     if (isDragging || pointerHandledCell) {
       pointerHandledCell = false;
       return;
@@ -376,6 +556,48 @@
       selectedSlots.add(slotId);
     }
     updateGrid();
+  }
+
+  function moveTooltip(event) {
+    if (!tooltip || tooltip.hidden) {
+      return;
+    }
+    var offset = 14;
+    var left = event.clientX + offset;
+    var top = event.clientY + offset;
+    var tooltipRect = tooltip.getBoundingClientRect();
+
+    if (left + tooltipRect.width > window.innerWidth - 12) {
+      left = event.clientX - tooltipRect.width - offset;
+    }
+    if (top + tooltipRect.height > window.innerHeight - 12) {
+      top = event.clientY - tooltipRect.height - offset;
+    }
+
+    tooltip.style.left = Math.max(12, left) + "px";
+    tooltip.style.top = Math.max(12, top) + "px";
+  }
+
+  function showTooltip(event) {
+    if (!tooltip) {
+      return;
+    }
+    var slotId = event.currentTarget.dataset.slotId;
+    tooltip.innerHTML = getTooltipText(slotId).html;
+    tooltip.hidden = false;
+
+    if (event.type === "focus") {
+      var rect = event.currentTarget.getBoundingClientRect();
+      moveTooltip({ clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
+    } else {
+      moveTooltip(event);
+    }
+  }
+
+  function hideTooltip() {
+    if (tooltip) {
+      tooltip.hidden = true;
+    }
   }
 
   function formatUpdatedTime(record) {
@@ -424,70 +646,69 @@
     return Object.keys(getLatestCoreRecords()).length;
   }
 
-  function getUnavailableNames(availableNames) {
-    return TEAM_MEMBERS.map(function (member) {
-      return member.displayName;
-    }).filter(function (name) {
-      return availableNames.indexOf(name) === -1;
-    });
-  }
-
   function getBestWindows() {
     var counts = getSlotCounts();
     var windows = [];
     var current = null;
 
-    for (var dayIndex = 0; dayIndex < DAY_COUNT; dayIndex += 1) {
+    slotCatalog.forEach(function (row) {
       current = null;
-      for (var minutes = SLOT_START_MINUTES; minutes < SLOT_END_MINUTES; minutes += SLOT_SIZE_MINUTES) {
-        var slotId = getSlotId(dayIndex, minutes);
-        var names = (counts[slotId] || []).slice().sort();
+      row.forEach(function (slot) {
+        var names = (counts[slot.id] || []).slice().sort();
         var key = names.join("|");
+        var startMs = new Date(slot.id).getTime();
+        var endMs = startMs + SLOT_SIZE_MINUTES * 60 * 1000;
+
         if (!names.length) {
           if (current) {
             windows.push(current);
             current = null;
           }
-          continue;
+          return;
         }
-        if (current && current.dayIndex === dayIndex && current.namesKey === key && current.end === minutes) {
-          current.end = minutes + SLOT_SIZE_MINUTES;
+
+        if (current && current.dayIndex === slot.dayIndex && current.namesKey === key && current.endMs === startMs) {
+          current.endMs = endMs;
+          current.endIso = new Date(endMs).toISOString();
         } else {
           if (current) {
             windows.push(current);
           }
           current = {
-            dayIndex: dayIndex,
-            start: minutes,
-            end: minutes + SLOT_SIZE_MINUTES,
+            dayIndex: slot.dayIndex,
+            startMs: startMs,
+            endMs: endMs,
+            startIso: slot.id,
+            endIso: new Date(endMs).toISOString(),
             count: names.length,
             names: names,
             namesKey: key
           };
         }
-      }
+      });
       if (current) {
         windows.push(current);
       }
-    }
+    });
 
     return windows.sort(function (a, b) {
       if (b.count !== a.count) {
         return b.count - a.count;
       }
-      if ((b.end - b.start) !== (a.end - a.start)) {
-        return (b.end - b.start) - (a.end - a.start);
+      if ((b.endMs - b.startMs) !== (a.endMs - a.startMs)) {
+        return (b.endMs - b.startMs) - (a.endMs - a.startMs);
       }
       if (a.dayIndex !== b.dayIndex) {
         return a.dayIndex - b.dayIndex;
       }
-      return a.start - b.start;
+      return a.startMs - b.startMs;
     }).slice(0, 3);
   }
 
   function renderBestTimes() {
     bestTimes.innerHTML = "";
     var submittedCount = getSubmittedCoreCount();
+    var timezoneLabel = getTimezoneLabel(getSelectedTimezone());
 
     if (submittedCount < TEAM_MEMBERS.length) {
       bestTimes.innerHTML = '<p class="empty-state">Waiting for all 4 team members to submit availability.</p><p class="empty-state">' + submittedCount + " of 4 submitted</p>";
@@ -500,13 +721,16 @@
       return;
     }
 
+    var timezoneNote = document.createElement("p");
+    timezoneNote.className = "empty-state";
+    timezoneNote.textContent = "Times shown in " + timezoneLabel + ".";
+    bestTimes.appendChild(timezoneNote);
+
     windows.forEach(function (windowItem) {
       var item = document.createElement("article");
       var unavailableNames = getUnavailableNames(windowItem.names);
       item.className = "best-time" + (windowItem.count === TEAM_MEMBERS.length ? " perfect" : "");
-      var date = getScheduleDates()[windowItem.dayIndex];
-      var unavailableText = unavailableNames.length ? "<br>Unavailable: " + unavailableNames.join(", ") : "";
-      item.innerHTML = "<strong>" + formatDayShort(date) + ", " + formatShortDate(date) + ", " + formatSlotTime(windowItem.start) + " to " + formatSlotTime(windowItem.end) + "</strong><p>" + windowItem.count + " of 4 available: " + windowItem.names.join(", ") + unavailableText + "</p>";
+      item.innerHTML = "<strong>" + formatDayShortInTimezone(windowItem.startIso) + ", " + formatShortDateInTimezone(windowItem.startIso) + ", " + formatTimeInTimezone(windowItem.startIso) + " to " + formatTimeInTimezone(windowItem.endIso) + "</strong><p>" + windowItem.count + " of 4 available: " + windowItem.names.join(", ") + (unavailableNames.length ? "<br>Unavailable: " + unavailableNames.join(", ") : "") + "</p>";
       bestTimes.appendChild(item);
     });
   }
@@ -531,8 +755,47 @@
     }
 
     records = response.data || [];
+    restoreSignedInAvailability();
     updateGrid();
-    restoreCurrentParticipantSlots();
+  }
+
+  function restoreSignedInAvailability() {
+    if (!signedInIdentity) {
+      return;
+    }
+    var record = records.find(function (item) {
+      return getParticipantIdentity(item.participant_name).key === signedInIdentity.key;
+    });
+    selectedSlots = record ? new Set(getRecordSlots(record)) : new Set();
+  }
+
+  function signIn() {
+    var identity = getParticipantIdentity(nameInput.value);
+
+    if (!identity.displayName) {
+      showStatus("Enter your name before signing in.", "error");
+      nameInput.focus();
+      return;
+    }
+
+    signedInIdentity = identity;
+    nameInput.value = identity.displayName;
+    restoreSignedInAvailability();
+
+    try {
+      window.localStorage.setItem(LAST_NAME_KEY, identity.displayName);
+    } catch (error) {
+      // Remembering the local name is only a convenience.
+    }
+
+    updateEditingState();
+    updateGrid();
+
+    if (identity.isCore) {
+      clearStatus();
+    } else {
+      showStatus("This scheduler is set up for Grant, Gavin, Mark, and Paul. You can still save, but best overlap is based on the four core team members.", "warning");
+    }
   }
 
   async function saveAvailability() {
@@ -541,18 +804,13 @@
       return;
     }
 
-    var identity = getParticipantIdentity(nameInput.value);
-    var existingRecord = records.find(function (item) {
-      return getParticipantIdentity(item.participant_name).key === identity.key;
-    });
-    var participantName = existingRecord ? existingRecord.participant_name : identity.displayName;
-    var timezone = timezoneSelect.value;
-
-    if (!participantName) {
-      showStatus("Enter your name before saving.", "error");
+    if (!signedInIdentity) {
+      showStatus("Enter your name and click Sign in before saving.", "error");
       nameInput.focus();
       return;
     }
+
+    var timezone = timezoneSelect.value;
 
     if (!timezone) {
       showStatus("Select a timezone before saving.", "error");
@@ -568,7 +826,7 @@
 
     var payload = {
       week_start: weekStart,
-      participant_name: participantName,
+      participant_name: signedInIdentity.displayName,
       timezone: timezone,
       availability_slots: Array.from(selectedSlots).sort(),
       updated_at: new Date().toISOString()
@@ -584,6 +842,7 @@
 
     saveButton.disabled = false;
     saveButton.textContent = "Save availability";
+    updateEditingState();
 
     if (response.error) {
       showStatus("We could not save your availability. Please try again.", "error");
@@ -591,29 +850,13 @@
     }
 
     try {
-      window.localStorage.setItem(LAST_NAME_KEY, identity.displayName);
+      window.localStorage.setItem(LAST_NAME_KEY, signedInIdentity.displayName);
     } catch (error) {
       // Saving the shared record matters more than remembering the local name.
     }
 
-    nameInput.value = identity.displayName;
-    showStatus(identity.isCore ? "Availability saved." : "Availability saved. This scheduler is set up for Grant, Gavin, Mark, and Paul. Best overlap is based on the four core team members.", identity.isCore ? "success" : "warning");
+    showStatus(signedInIdentity.isCore ? "Availability saved." : "Availability saved. This scheduler is set up for Grant, Gavin, Mark, and Paul. Best overlap is based on the four core team members.", signedInIdentity.isCore ? "success" : "warning");
     await loadAvailability({ preserveStatus: true });
-  }
-
-  function restoreCurrentParticipantSlots() {
-    var identity = getParticipantIdentity(nameInput.value);
-    if (!identity.key || identity.key === currentMatchedIdentity) {
-      return;
-    }
-    currentMatchedIdentity = identity.key;
-    var record = records.find(function (item) {
-      return getParticipantIdentity(item.participant_name).key === identity.key;
-    });
-    if (record) {
-      selectedSlots = new Set(getRecordSlots(record));
-      updateGrid();
-    }
   }
 
   function restoreLastName() {
@@ -627,24 +870,31 @@
     }
   }
 
-  function handleNameChange() {
-    var identity = getParticipantIdentity(nameInput.value);
-    nameInput.value = identity.displayName;
-    restoreCurrentParticipantSlots();
-    if (identity.key && !identity.isCore) {
-      showStatus("This scheduler is set up for Grant, Gavin, Mark, and Paul. You can still save, but best overlap is based on the four core team members.", "warning");
-    } else {
-      clearStatus();
-    }
-  }
-
   function handleNameInput() {
     var identity = getParticipantIdentity(nameInput.value);
+
+    if (signedInIdentity && identity.key !== signedInIdentity.key) {
+      signedInIdentity = null;
+      selectedSlots = new Set();
+      updateEditingState();
+      updateGrid();
+      if (identity.displayName) {
+        showStatus("Click Sign in to edit as " + identity.displayName + ".", "warning");
+      }
+      return;
+    }
+
     if (identity.key && !identity.isCore) {
       showStatus("This scheduler is set up for Grant, Gavin, Mark, and Paul. You can still save, but best overlap is based on the four core team members.", "warning");
     } else if (identity.isCore) {
       clearStatus();
     }
+  }
+
+  function handleTimezoneChange() {
+    updateTimezoneLabels();
+    renderGrid();
+    clearStatus();
   }
 
   function init() {
@@ -655,13 +905,13 @@
     initSupabase();
     loadAvailability();
 
+    signInButton.addEventListener("click", signIn);
     saveButton.addEventListener("click", saveAvailability);
     refreshButton.addEventListener("click", loadAvailability);
     nameInput.addEventListener("input", handleNameInput);
-    nameInput.addEventListener("change", handleNameChange);
-    nameInput.addEventListener("blur", handleNameChange);
-    timezoneSelect.addEventListener("change", function () {
-      clearStatus();
+    timezoneSelect.addEventListener("change", handleTimezoneChange);
+    document.addEventListener("pointerup", function () {
+      isDragging = false;
     });
   }
 

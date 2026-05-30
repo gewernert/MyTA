@@ -124,6 +124,26 @@
   padding: 0.78rem 1.1rem;
 }
 
+.scheduler-actions .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  transform: none;
+}
+
+.editing-status,
+.timezone-display,
+.grid-mode {
+  margin-top: 8px;
+  color: var(--blue-ink);
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.grid-mode {
+  color: var(--muted);
+  font-weight: 650;
+}
+
 .scheduler-status {
   margin-top: 14px;
   padding: 12px 14px;
@@ -188,23 +208,23 @@
 }
 
 .legend-0 {
-  background: var(--white);
+  background: #f5f8fb;
 }
 
 .legend-1 {
-  background: rgba(186, 220, 254, 0.28);
+  background: #dceeff;
 }
 
 .legend-2 {
-  background: rgba(186, 220, 254, 0.5);
+  background: #a9d1f4;
 }
 
 .legend-3 {
-  background: rgba(120, 169, 217, 0.56);
+  background: #6f9fca;
 }
 
 .legend-4 {
-  background: rgba(52, 93, 134, 0.72);
+  background: #345d86;
 }
 
 .legend-own {
@@ -283,12 +303,17 @@
 }
 
 .grid-cell {
+  position: relative;
   min-height: 24px;
   border-radius: 0;
-  background: var(--white);
+  background: #f5f8fb;
   cursor: pointer;
   touch-action: none;
   transition: background 120ms ease, box-shadow 120ms ease;
+}
+
+.schedule-grid.is-locked .grid-cell {
+  cursor: not-allowed;
 }
 
 .grid-cell:hover {
@@ -301,32 +326,62 @@
 }
 
 .grid-cell.heat-1 {
-  background: rgba(186, 220, 254, 0.28);
+  background: #dceeff;
 }
 
 .grid-cell.heat-2 {
-  background: rgba(186, 220, 254, 0.5);
+  background: #a9d1f4;
 }
 
 .grid-cell.heat-3 {
-  background: rgba(120, 169, 217, 0.56);
+  background: #6f9fca;
 }
 
 .grid-cell.heat-4 {
-  background: rgba(52, 93, 134, 0.72);
+  background: #345d86;
 }
 
 .grid-cell.is-selected {
-  background: var(--ink);
-  box-shadow: inset 0 0 0 2px var(--white);
+  box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--white);
 }
 
-.grid-cell.is-selected.heat-1,
-.grid-cell.is-selected.heat-2,
-.grid-cell.is-selected.heat-3,
-.grid-cell.is-selected.heat-4 {
-  background:
-    linear-gradient(135deg, var(--ink) 0 52%, rgba(120, 169, 217, 0.72) 52% 100%);
+.grid-cell.is-selected::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--white);
+}
+
+.grid-cell.heat-4.is-selected {
+  box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--pale-blue);
+}
+
+.slot-tooltip {
+  position: fixed;
+  z-index: 20;
+  max-width: 280px;
+  padding: 10px 12px;
+  border: 1px solid rgba(52, 93, 134, 0.18);
+  border-radius: var(--radius-md);
+  background: var(--ink);
+  box-shadow: var(--soft-shadow);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.45;
+  pointer-events: none;
+}
+
+.slot-tooltip strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--white);
+  font-size: 0.82rem;
 }
 
 .best-times-list,
