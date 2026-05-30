@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Anti Dilution Scheduling | MyTA</title>
+    <meta
+      name="description"
+      content="A hidden internal MyTA scheduling page for weekly meeting availability."
+    >
+    <meta name="theme-color" content="#d0d7dd">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/anti-dilution-scheduling/scheduling.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="/anti-dilution-scheduling/scheduling.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="mark-prank-overlay" class="mark-prank-overlay" aria-hidden="true">
+      <img src="/assets/images/kissin-dude-prank.jpg" alt="">
+    </div>
+
+    <main id="main" class="scheduler-main">
+      <section class="scheduler-hero">
+        <div class="wrap scheduler-wrap scheduler-hero-grid">
+          <div>
+            <p class="eyebrow">Internal MyTA scheduler</p>
+            <h1>Anti Dilution Scheduling</h1>
+            <p class="scheduler-subtitle">
+              Pick the times you can meet this week. Prevent yourself from being diluted.
+            </p>
+            <p class="scheduler-note">Enter your name, mark your availability, and save.</p>
+          </div>
+          <div class="window-card" aria-live="polite">
+            <span>Scheduling window</span>
+            <strong data-week-label>Loading dates...</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="scheduler-section">
+        <div class="wrap scheduler-wrap scheduler-layout">
+          <section class="scheduler-card controls-card" aria-labelledby="controls-heading">
+            <div class="section-heading compact-heading">
+                <p class="eyebrow">Your availability</p>
+                <h2 id="controls-heading">Add your times</h2>
+              <p data-timezone-note>
+                Sign in with your name before editing. The schedule uses an Eastern Time source window and displays it in your selected timezone.
+              </p>
+            </div>
+
+            <div class="scheduler-fields">
+              <label class="form-field" for="participant-name">
+                <span>Your name</span>
+                <input id="participant-name" name="participant_name" type="text" autocomplete="name" data-name-input>
+              </label>
+
+              <label class="form-field" for="timezone-select">
+                <span>Timezone</span>
+                <select id="timezone-select" name="timezone" data-timezone-select></select>
+              </label>
+            </div>
+
+            <div class="scheduler-actions">
+              <button class="button button-primary" type="button" data-signin-button>Sign in</button>
+              <button class="button button-secondary" type="button" data-save-button disabled>Save availability</button>
+              <button class="button button-secondary" type="button" data-clear-button disabled>Clear my availability</button>
+              <button class="button button-secondary" type="button" data-refresh-button>Refresh availability</button>
+            </div>
+
+            <p class="editing-status" data-editing-status>Sign in to edit your availability.</p>
+            <p class="scheduler-status" role="status" data-status-message hidden></p>
+          </section>
+
+          <section class="scheduler-card grid-card" aria-labelledby="grid-heading">
+            <div class="grid-card-heading">
+              <div>
+                <p class="eyebrow">Availability grid</p>
+                <h2 id="grid-heading">Choose your open times</h2>
+                <p class="timezone-display" data-display-timezone>Showing times in Eastern</p>
+                <p class="grid-mode" data-grid-mode>Sign in to edit. You can still view team overlap.</p>
+              </div>
+              <div class="grid-legend" aria-label="Grid legend">
+                <span><i class="legend-0"></i>0 available</span>
+                <span><i class="legend-1"></i>1 available</span>
+                <span><i class="legend-2"></i>2 available</span>
+                <span><i class="legend-3"></i>3 available</span>
+                <span><i class="legend-4"></i>All 4 available</span>
+                <span><i class="legend-own"></i>Your times</span>
+              </div>
+            </div>
+
+            <div class="schedule-grid-wrap" tabindex="0" aria-label="Scheduling availability grid">
+              <div class="schedule-grid" data-grid></div>
+            </div>
+            <div class="slot-tooltip" role="tooltip" data-slot-tooltip hidden></div>
+          </section>
+
+          <aside class="scheduler-side">
+            <section class="scheduler-card" aria-labelledby="best-times-heading">
+              <div class="section-heading compact-heading">
+                <p class="eyebrow">Recommendations</p>
+                <h2 id="best-times-heading">Best overlap times</h2>
+              </div>
+              <div class="best-times-list" data-best-times>
+                <p class="empty-state">No one has submitted availability for this scheduling window yet.</p>
+              </div>
+            </section>
+
+            <section class="scheduler-card" aria-labelledby="participants-heading">
+              <div class="section-heading compact-heading">
+                <p class="eyebrow">Responses</p>
+                <h2 id="participants-heading">Submitted availability</h2>
+              </div>
+              <div class="participant-list" data-participants>
+                <p class="empty-state">No one has submitted availability for this scheduling window yet.</p>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
