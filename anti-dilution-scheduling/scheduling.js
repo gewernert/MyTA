@@ -37,6 +37,8 @@
   var bestTimes = document.querySelector("[data-best-times]");
   var participants = document.querySelector("[data-participants]");
   var tooltip = document.querySelector("[data-slot-tooltip]");
+  var markPrankOverlay = document.getElementById("mark-prank-overlay");
+  var markPrankTimer = null;
 
   if (!grid || !nameInput || !timezoneSelect || !signInButton || !saveButton) {
     return;
@@ -600,6 +602,19 @@
     }
   }
 
+  function flashMarkPrank() {
+    var image = markPrankOverlay ? markPrankOverlay.querySelector("img") : null;
+    if (!markPrankOverlay || !image || image.dataset.failed === "true" || !image.complete || !image.naturalWidth) {
+      return;
+    }
+
+    window.clearTimeout(markPrankTimer);
+    markPrankOverlay.classList.add("is-visible");
+    markPrankTimer = window.setTimeout(function () {
+      markPrankOverlay.classList.remove("is-visible");
+    }, 150);
+  }
+
   function formatUpdatedTime(record) {
     var updated = record.updated_at || record.created_at;
     if (!updated) {
@@ -791,6 +806,10 @@
     updateEditingState();
     updateGrid();
 
+    if (identity.key === "mark_rome") {
+      flashMarkPrank();
+    }
+
     if (identity.isCore) {
       clearStatus();
     } else {
@@ -910,6 +929,15 @@
     refreshButton.addEventListener("click", loadAvailability);
     nameInput.addEventListener("input", handleNameInput);
     timezoneSelect.addEventListener("change", handleTimezoneChange);
+    if (markPrankOverlay) {
+      var markPrankImage = markPrankOverlay.querySelector("img");
+      if (markPrankImage) {
+        markPrankImage.addEventListener("error", function () {
+          markPrankImage.dataset.failed = "true";
+          markPrankOverlay.classList.remove("is-visible");
+        });
+      }
+    }
     document.addEventListener("pointerup", function () {
       isDragging = false;
     });
