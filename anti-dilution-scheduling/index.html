@@ -29,14 +29,19 @@
 
     <main id="main" class="scheduler-main">
       <section class="scheduler-hero">
-        <div class="wrap scheduler-wrap">
-          <p class="eyebrow">Internal MyTA scheduler</p>
-          <h1>Anti Dilution Scheduling</h1>
-          <p class="scheduler-subtitle">
-            Pick the times you can meet this week. The schedule shows where the team overlaps so we can stop negotiating in the group chat.
-          </p>
-          <p class="scheduler-note">No login needed. Enter your name, mark your availability, and save.</p>
-          <div class="week-pill" data-week-label>Loading week...</div>
+        <div class="wrap scheduler-wrap scheduler-hero-grid">
+          <div>
+            <p class="eyebrow">Internal MyTA scheduler</p>
+            <h1>Anti Dilution Scheduling</h1>
+            <p class="scheduler-subtitle">
+              Pick the times you can meet this week. The schedule shows where the team overlaps so we can stop negotiating in the group chat.
+            </p>
+            <p class="scheduler-note">No login needed. Enter your name, mark your availability, and save.</p>
+          </div>
+          <div class="window-card" aria-live="polite">
+            <span>Scheduling window</span>
+            <strong data-week-label>Loading dates...</strong>
+          </div>
         </div>
       </section>
 
@@ -78,13 +83,17 @@
                 <h2 id="grid-heading">Choose your open times</h2>
               </div>
               <div class="grid-legend" aria-label="Grid legend">
-                <span><i class="legend-own"></i>Your availability</span>
-                <span><i class="legend-team"></i>Team overlap</span>
+                <span><i class="legend-0"></i>No overlap</span>
+                <span><i class="legend-1"></i>1 available</span>
+                <span><i class="legend-2"></i>2 available</span>
+                <span><i class="legend-3"></i>3 available</span>
+                <span><i class="legend-4"></i>All 4 available</span>
+                <span><i class="legend-own"></i>Your times</span>
               </div>
             </div>
 
-            <div class="schedule-days" tabindex="0" aria-label="Scheduling availability by day">
-              <div class="day-card-grid" data-grid></div>
+            <div class="schedule-grid-wrap" tabindex="0" aria-label="Scheduling availability grid">
+              <div class="schedule-grid" data-grid></div>
             </div>
           </section>
 
