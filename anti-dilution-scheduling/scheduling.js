@@ -424,23 +424,98 @@
     return slots.map(normalizeAvailabilitySlot).filter(Boolean);
   }
 
-  function getLatestCoreRecords() {
-    var latest = {};
+  function getRawRecordSlots(record) {
+    if (Array.isArray(record.availability_slots)) {
+      return record.availability_slots.filter(function (slot) {
+        return typeof slot === "string";
+      });
+    }
+    if (typeof record.availability_slots === "string") {
+      try {
+        var parsed = JSON.parse(record.availability_slots);
+        return Array.isArray(parsed) ? parsed.filter(function (slot) {
+          return typeof slot === "string";
+        }) : [];
+      } catch (error) {
+        return [];
+      }
+    }
+    return [];
+  }
+
+  function getRecordTime(record) {
+    return new Date(record.updated_at || record.created_at || 0).getTime();
+  }
+
+  function isRollingWindowSubmission(record) {
+    var recordStart = new Date(String(record.week_start || "") + "T00:00:00");
+    var currentStart = new Date(weekStart + "T00:00:00");
+
+    if (Number.isNaN(recordStart.getTime()) || Number.isNaN(currentStart.getTime())) {
+      return false;
+    }
+
+    var ageInDays = Math.round((currentStart.getTime() - recordStart.getTime()) / (24 * 60 * 60 * 1000));
+    return ageInDays >= 0 && ageInDays < DAY_COUNT;
+  }
+
+  function getParticipantRecords() {
+    var grouped = {};
 
     records.forEach(function (record) {
       var identity = getParticipantIdentity(record.participant_name);
-      if (!identity.isCore) {
+      if (!identity.key) {
         return;
       }
-      var previous = latest[identity.key];
-      var previousDate = previous ? new Date(previous.updated_at || previous.created_at || 0).getTime() : 0;
-      var currentDate = new Date(record.updated_at || record.created_at || 0).getTime();
-      if (!previous || currentDate >= previousDate) {
-        latest[identity.key] = record;
+      var visibleSlots = getRecordSlots(record);
+      if (!visibleSlots.length && !isRollingWindowSubmission(record)) {
+        return;
+      }
+
+      if (!grouped[identity.key]) {
+        grouped[identity.key] = {
+          participant_name: identity.displayName,
+          timezone: record.timezone,
+          availability_slots: [],
+          created_at: record.created_at,
+          updated_at: record.updated_at,
+          identity: identity,
+          records: [],
+          _slotSet: new Set(),
+          _latestTime: 0
+        };
+      }
+
+      var groupedRecord = grouped[identity.key];
+      visibleSlots.forEach(function (slotId) {
+        groupedRecord._slotSet.add(slotId);
+      });
+      groupedRecord.availability_slots = Array.from(groupedRecord._slotSet).sort();
+      groupedRecord.records.push(record);
+
+      var recordTime = getRecordTime(record);
+      if (recordTime >= groupedRecord._latestTime) {
+        groupedRecord._latestTime = recordTime;
+        groupedRecord.timezone = record.timezone || groupedRecord.timezone;
+        groupedRecord.created_at = record.created_at || groupedRecord.created_at;
+        groupedRecord.updated_at = record.updated_at || groupedRecord.updated_at;
       }
     });
 
-    return latest;
+    return grouped;
+  }
+
+  function getLatestCoreRecords() {
+    var grouped = getParticipantRecords();
+    var coreRecords = {};
+
+    Object.keys(grouped).forEach(function (key) {
+      if (grouped[key].identity.isCore) {
+        coreRecords[key] = grouped[key];
+      }
+    });
+
+    return coreRecords;
   }
 
   function getSlotCounts() {
@@ -647,7 +722,10 @@
       participants.appendChild(item);
     });
 
-    records.forEach(function (record) {
+    var participantRecords = getParticipantRecords();
+
+    Object.keys(participantRecords).forEach(function (key) {
+      var record = participantRecords[key];
       var identity = getParticipantIdentity(record.participant_name);
       if (identity.isCore) {
         return;
@@ -763,7 +841,6 @@
     var response = await supabaseClient
       .from(TABLE_NAME)
       .select("*")
-      .eq("week_start", weekStart)
       .order("updated_at", { ascending: false });
 
     if (response.error) {
@@ -780,10 +857,49 @@
     if (!signedInIdentity) {
       return;
     }
-    var record = records.find(function (item) {
-      return getParticipantIdentity(item.participant_name).key === signedInIdentity.key;
-    });
+    var record = getParticipantRecords()[signedInIdentity.key];
     selectedSlots = record ? new Set(getRecordSlots(record)) : new Set();
+  }
+
+  async function removeVisibleSlotsForSignedInUser() {
+    var matchingRecords = records.filter(function (record) {
+      return getParticipantIdentity(record.participant_name).key === signedInIdentity.key;
+    });
+    var timestamp = new Date().toISOString();
+
+    for (var index = 0; index < matchingRecords.length; index += 1) {
+      var record = matchingRecords[index];
+      var rawSlots = getRawRecordSlots(record);
+      var keptSlots = rawSlots.filter(function (slotId) {
+        return !normalizeAvailabilitySlot(slotId);
+      });
+
+      if (keptSlots.length === rawSlots.length) {
+        continue;
+      }
+
+      var query = supabaseClient
+        .from(TABLE_NAME)
+        .update({
+          availability_slots: keptSlots,
+          updated_at: timestamp
+        });
+
+      if (record.id) {
+        query = query.eq("id", record.id);
+      } else {
+        query = query
+          .eq("week_start", record.week_start)
+          .eq("participant_name", record.participant_name);
+      }
+
+      var response = await query.select();
+      if (response.error) {
+        return response.error;
+      }
+    }
+
+    return null;
   }
 
   function signIn() {
@@ -845,6 +961,18 @@
       return;
     }
 
+    saveButton.disabled = true;
+    saveButton.textContent = "Saving...";
+
+    var cleanupError = await removeVisibleSlotsForSignedInUser();
+    if (cleanupError) {
+      saveButton.disabled = false;
+      saveButton.textContent = "Save availability";
+      updateEditingState();
+      showStatus("We could not save your availability. Please try again.", "error");
+      return;
+    }
+
     var payload = {
       week_start: weekStart,
       participant_name: signedInIdentity.displayName,
@@ -852,9 +980,6 @@
       availability_slots: Array.from(selectedSlots).sort(),
       updated_at: new Date().toISOString()
     };
-
-    saveButton.disabled = true;
-    saveButton.textContent = "Saving...";
 
     var response = await supabaseClient
       .from(TABLE_NAME)
@@ -896,6 +1021,18 @@
       return;
     }
 
+    clearButton.disabled = true;
+    clearButton.textContent = "Clearing...";
+
+    var cleanupError = await removeVisibleSlotsForSignedInUser();
+    if (cleanupError) {
+      clearButton.disabled = false;
+      clearButton.textContent = "Clear my availability";
+      updateEditingState();
+      showStatus("We could not clear your availability. Please try again.", "error");
+      return;
+    }
+
     var payload = {
       week_start: weekStart,
       participant_name: signedInIdentity.displayName,
@@ -903,9 +1040,6 @@
       availability_slots: [],
       updated_at: new Date().toISOString()
     };
-
-    clearButton.disabled = true;
-    clearButton.textContent = "Clearing...";
 
     var response = await supabaseClient
       .from(TABLE_NAME)
