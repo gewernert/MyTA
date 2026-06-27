@@ -106,4 +106,54 @@
 
     setActive(steps[0].getAttribute("data-marketing-story-target"));
   });
+
+  var faqRoots = document.querySelectorAll("[data-marketing-faq]");
+
+  faqRoots.forEach(function (root) {
+    var items = Array.from(root.querySelectorAll("[data-marketing-faq-item]"));
+
+    if (!items.length) {
+      return;
+    }
+
+    root.classList.add("is-enhanced");
+
+    var setOpen = function (selectedItem) {
+      items.forEach(function (item) {
+        var button = item.querySelector("[data-marketing-faq-button]");
+        var panel = item.querySelector("[data-marketing-faq-panel]");
+        var isSelected = item === selectedItem;
+
+        if (!button || !panel) {
+          return;
+        }
+
+        button.setAttribute("aria-expanded", isSelected ? "true" : "false");
+        panel.hidden = !isSelected;
+      });
+    };
+
+    items.forEach(function (item) {
+      var button = item.querySelector("[data-marketing-faq-button]");
+
+      if (!button) {
+        return;
+      }
+
+      button.addEventListener("click", function () {
+        setOpen(item);
+      });
+
+      button.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+
+        event.preventDefault();
+        setOpen(item);
+      });
+    });
+
+    setOpen(items[0]);
+  });
 })();
