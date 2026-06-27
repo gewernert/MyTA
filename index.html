@@ -29,7 +29,7 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
+    <header class="site-header home-header">
       <nav class="nav wrap" aria-label="Main navigation">
         <a class="brand" href="/" aria-label="MyTA home">
           <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
@@ -85,36 +85,47 @@
             </p>
           </div>
           <div class="problem-points">
-            <p>AI use happens before the final submission.</p>
-            <p>Detectors miss confusion, reasoning, and help-seeking.</p>
-            <p>External AI tools pull learning data out of the course workflow.</p>
+            <article>
+              <span>01</span>
+              <p>AI use happens before the final submission.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <p>Detectors miss confusion, reasoning, and help-seeking.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <p>External AI tools pull learning data out of the course workflow.</p>
+            </article>
           </div>
         </div>
       </section>
 
       <section class="section product-section">
         <div class="wrap">
-          <div class="section-heading centered-heading">
-            <p class="eyebrow">What MyTA changes</p>
-            <h2>Guided AI becomes part of the assignment workflow.</h2>
+          <div class="product-intro">
+            <div class="section-heading compact-heading">
+              <p class="eyebrow">What MyTA changes</p>
+              <h2>Guided AI becomes part of the assignment workflow.</h2>
+            </div>
             <p>
               MyTA keeps AI support tied to course materials, student work, and instructor visibility.
             </p>
           </div>
 
-          <div class="feature-grid three-up">
+          <div class="feature-grid three-up product-feature-grid">
             <article class="feature-card">
-              <span>1</span>
+              <span>01</span>
               <h3>Guided AI during assignments</h3>
               <p>Students get help while they are still reasoning through the task, not only after work is submitted.</p>
             </article>
             <article class="feature-card">
-              <span>2</span>
+              <span>02</span>
               <h3>Visibility into learning</h3>
               <p>Instructors can see AI use, confusion, and help-seeking patterns before they are hidden in a final answer.</p>
             </article>
             <article class="feature-card">
-              <span>3</span>
+              <span>03</span>
               <h3>Built around the course workflow</h3>
               <p>Course materials and assignment directions shape the support, so AI becomes less disconnected from teaching.</p>
             </article>
@@ -124,23 +135,23 @@
 
       <section class="section workflow-section">
         <div class="wrap">
-          <div class="section-heading centered-heading">
+          <div class="section-heading workflow-heading">
             <p class="eyebrow">How it works</p>
             <h2>Set the context, support the work, see the patterns.</h2>
           </div>
           <div class="workflow-flow">
             <article class="step">
-              <span>1</span>
+              <span>01</span>
               <h3>Instructor controlled course context</h3>
               <p>Add materials, directions, and boundaries for AI help.</p>
             </article>
             <article class="step">
-              <span>2</span>
+              <span>02</span>
               <h3>Students work with guided AI</h3>
               <p>AI support sits in the assignment process instead of a separate tab.</p>
             </article>
             <article class="step">
-              <span>3</span>
+              <span>03</span>
               <h3>Instructors see what needs attention</h3>
               <p>Confusion and help-seeking patterns become visible earlier.</p>
             </article>
@@ -150,39 +161,41 @@
 
       <section class="section evidence-section">
         <div class="wrap evidence-panel">
-          <div>
+          <div class="evidence-copy">
             <p class="eyebrow">Market context</p>
             <h2>AI is already part of assessed work.</h2>
           </div>
           <div class="stat-row" aria-label="Market context statistics">
-            <div>
+            <article>
               <strong>94%</strong>
               <span>of students use generative AI to help with assessed work</span>
-            </div>
-            <div>
+            </article>
+            <article>
               <strong>79%</strong>
               <span>of faculty said GenAI will affect their teaching model</span>
-            </div>
-            <div>
+            </article>
+            <article>
               <strong>77%</strong>
               <span>of students would be likely to use AI even if banned</span>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section class="section cta-section">
         <div class="wrap cta-panel">
-          <p class="eyebrow">See the product</p>
-          <h2>Watch how MyTA keeps AI use visible inside the course workflow.</h2>
-          <div class="button-row centered-row">
+          <div class="cta-copy">
+            <p class="eyebrow">See the product</p>
+            <h2>Watch how MyTA keeps AI use visible inside the course workflow.</h2>
+          </div>
+          <div class="button-row centered-row cta-actions">
             <a class="button button-light" href="/demo/" data-analytics-event="Watch demo CTA clicked" data-analytics-location="homepage final cta">Watch demo</a>
             <a class="button button-dark-outline" href="mailto:contact@mytaeducation.com" data-analytics-event="Contact CTA clicked" data-analytics-location="homepage final cta">Contact us</a>
           </div>
         </div>
 
         <div class="wrap pilot-form-shell">
-          <div class="form-card">
+          <div class="form-card pilot-form-card">
             <div class="form-heading">
               <p class="eyebrow">Pilot waitlist</p>
               <h3>Interested in testing MyTA in a course?</h3>
@@ -266,15 +279,17 @@
 
     <footer class="site-footer">
       <div class="wrap footer-grid">
-        <a class="brand footer-brand" href="/" aria-label="MyTA home">
-          <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
-            <ellipse cx="32" cy="18" rx="9.5" ry="15" transform="rotate(35 32 18)" />
-            <ellipse cx="46" cy="32" rx="9.5" ry="15" transform="rotate(125 46 32)" />
-            <ellipse cx="32" cy="46" rx="9.5" ry="15" transform="rotate(35 32 46)" />
-            <ellipse cx="18" cy="32" rx="9.5" ry="15" transform="rotate(125 18 32)" />
-          </svg>
-          <span>MyTA</span>
-        </a>
+        <div class="footer-brand-column">
+          <a class="brand footer-brand" href="/" aria-label="MyTA home">
+            <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+              <ellipse cx="32" cy="18" rx="9.5" ry="15" transform="rotate(35 32 18)" />
+              <ellipse cx="46" cy="32" rx="9.5" ry="15" transform="rotate(125 46 32)" />
+              <ellipse cx="32" cy="46" rx="9.5" ry="15" transform="rotate(35 32 46)" />
+              <ellipse cx="18" cy="32" rx="9.5" ry="15" transform="rotate(125 18 32)" />
+            </svg>
+            <span>MyTA</span>
+          </a>
+        </div>
         <div class="footer-links">
           <a href="mailto:contact@mytaeducation.com">contact@mytaeducation.com</a>
           <a href="tel:+18127051008">(812) 705 1008</a>
