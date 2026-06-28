@@ -74,13 +74,97 @@
         </div>
       </section>
 
-      <section class="section shell-placeholder-section" id="pilot" aria-labelledby="pilot-placeholder-title">
-        <div class="wrap shell-placeholder">
-          <p class="eyebrow">Pilot</p>
-          <h2 id="pilot-placeholder-title">Tell us about your course.</h2>
-          <p>
-            The pilot request experience will be added here during Task 4. The existing working pilot form remains on the homepage until that migration is complete.
-          </p>
+      <section class="section pilot-section" id="pilot" aria-labelledby="pilot-title">
+        <div class="wrap educator-pilot-grid">
+          <div class="pilot-copy">
+            <p class="eyebrow">Request a pilot</p>
+            <h2 id="pilot-title">Tell us about your course.</h2>
+            <p>A focused pilot can begin with one course, one assignment, and a clear question about student learning.</p>
+            <p class="pilot-contact">Questions first? <a href="mailto:contact@mytaeducation.com">contact@mytaeducation.com</a></p>
+          </div>
+
+          <div class="form-card pilot-form-card">
+            <form
+              id="pilot-waitlist-form"
+              class="site-form"
+              action="https://formspree.io/f/xwvydkla"
+              method="POST"
+              novalidate
+              data-form-name="pilot_waitlist"
+              data-analytics-start="Pilot waitlist form started"
+            >
+              <input type="hidden" name="_subject" value="New MyTA pilot waitlist signup">
+              <input type="hidden" name="form_type" value="pilot_waitlist">
+              <input type="hidden" name="_next" value="/educators/#pilot-submitted" data-success-redirect="/educators/#pilot-submitted">
+              <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+
+              <div class="form-grid">
+                <label class="form-field" for="pilot-name">
+                  <span>Full name</span>
+                  <input id="pilot-name" type="text" name="name" autocomplete="name" required>
+                </label>
+                <label class="form-field" for="pilot-email">
+                  <span>Institutional email</span>
+                  <input id="pilot-email" type="email" name="email" autocomplete="email" required>
+                </label>
+                <label class="form-field" for="pilot-university-or-organization">
+                  <span>University or college</span>
+                  <input id="pilot-university-or-organization" type="text" name="university_or_organization" autocomplete="organization" required>
+                </label>
+                <label class="form-field" for="pilot-role">
+                  <span>Your role</span>
+                  <select id="pilot-role" name="role" required>
+                    <option value="">Select your role</option>
+                    <option value="Professor or instructor">Professor or instructor</option>
+                    <option value="Lecturer">Lecturer</option>
+                    <option value="Teaching assistant or course staff">Teaching assistant or course staff</option>
+                    <option value="Academic technology or administration">Academic technology or administration</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="form-field" for="pilot-course-name-or-number">
+                  <span>Course</span>
+                  <input id="pilot-course-name-or-number" type="text" name="course_name_or_number" placeholder="e.g. Introductory Biology" required>
+                </label>
+                <label class="form-field" for="pilot-approximate-class-size">
+                  <span>Approximate class size</span>
+                  <input id="pilot-approximate-class-size" type="text" name="approximate_class_size" required>
+                </label>
+                <label class="form-field" for="pilot-timing">
+                  <span>When would you be interested in piloting?</span>
+                  <select id="pilot-timing" name="when_interested_in_piloting" required>
+                    <option value="">Select timing</option>
+                    <option value="Fall 2026">Fall 2026</option>
+                    <option value="Spring 2027">Spring 2027</option>
+                    <option value="Summer 2027">Summer 2027</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="form-field form-field-full" for="pilot-academic-integrity-issue">
+                  <span>What are you hoping to learn from a pilot?</span>
+                  <textarea id="pilot-academic-integrity-issue" name="academic_integrity_issue" placeholder="Tell us about the course, assignment, or learning challenge." required></textarea>
+                </label>
+                <label class="form-field form-field-full" for="pilot-optional-notes">
+                  <span>Optional notes</span>
+                  <textarea id="pilot-optional-notes" name="optional_notes"></textarea>
+                </label>
+                <label class="checkbox-field form-field-full" for="pilot-contact-agreement">
+                  <input id="pilot-contact-agreement" type="checkbox" name="pilot_contact_agreement" value="I agree to be contacted about a MyTA pilot.">
+                  <span>I agree to be contacted about a MyTA pilot.</span>
+                </label>
+              </div>
+
+              <p class="form-status success form-success-banner" data-success-message="pilot-submitted" role="status" aria-live="polite" hidden>
+                Thanks for joining the pilot waitlist. Your response has been submitted.
+              </p>
+
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">Request a Pilot</button>
+                <p class="form-status error form-validation-message" data-validation-message role="alert" hidden></p>
+              </div>
+              <p class="privacy-note">We respect your privacy. Your information is never shared.</p>
+            </form>
+          </div>
         </div>
       </section>
     </main>
