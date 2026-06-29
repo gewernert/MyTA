@@ -33,45 +33,98 @@
     setOpen(false);
   });
 
-  var faqRoots = document.querySelectorAll("[data-marketing-faq]");
+  var carouselRoots = document.querySelectorAll("[data-hero-carousel]");
+  var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  faqRoots.forEach(function (root) {
-    var items = Array.from(root.querySelectorAll("[data-marketing-faq-item]"));
+  carouselRoots.forEach(function (root) {
+    var slides = Array.from(root.querySelectorAll("[data-hero-slide]"));
+    var controls = Array.from(root.querySelectorAll("[data-hero-slide-control]"));
+    var activeIndex = 0;
+    var timer = null;
+    var isPaused = false;
 
-    if (!items.length) {
+    if (!slides.length || !controls.length) {
       return;
     }
 
-    root.classList.add("is-enhanced");
+    var setActiveSlide = function (index) {
+      activeIndex = (index + slides.length) % slides.length;
 
-    var setOpen = function (selectedItem) {
-      items.forEach(function (item) {
-        var button = item.querySelector("[data-marketing-faq-button]");
-        var panel = item.querySelector("[data-marketing-faq-panel]");
-        var isSelected = item === selectedItem;
+      slides.forEach(function (slide, slideIndex) {
+        slide.classList.toggle("is-active", slideIndex === activeIndex);
+      });
 
-        if (!button || !panel) {
-          return;
-        }
-
-        button.setAttribute("aria-expanded", isSelected ? "true" : "false");
-        panel.hidden = !isSelected;
+      controls.forEach(function (control, controlIndex) {
+        var isActive = controlIndex === activeIndex;
+        control.classList.toggle("is-active", isActive);
+        control.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
     };
 
-    items.forEach(function (item) {
-      var button = item.querySelector("[data-marketing-faq-button]");
+    var stopRotation = function () {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    };
 
-      if (!button) {
+    var startRotation = function () {
+      stopRotation();
+
+      if (isPaused || reducedMotionQuery.matches || document.hidden) {
         return;
       }
 
-      button.addEventListener("click", function () {
-        setOpen(item);
+      timer = window.setInterval(function () {
+        setActiveSlide(activeIndex + 1);
+      }, 5000);
+    };
+
+    controls.forEach(function (control, index) {
+      control.addEventListener("click", function () {
+        setActiveSlide(index);
+        startRotation();
       });
     });
 
-    setOpen(items[0]);
+    root.addEventListener("mouseenter", function () {
+      isPaused = true;
+      stopRotation();
+    });
+
+    root.addEventListener("mouseleave", function () {
+      isPaused = false;
+      startRotation();
+    });
+
+    root.addEventListener("focusin", function () {
+      isPaused = true;
+      stopRotation();
+    });
+
+    root.addEventListener("focusout", function () {
+      if (!root.contains(document.activeElement)) {
+        isPaused = false;
+        startRotation();
+      }
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stopRotation();
+      } else {
+        startRotation();
+      }
+    });
+
+    if (typeof reducedMotionQuery.addEventListener === "function") {
+      reducedMotionQuery.addEventListener("change", startRotation);
+    } else if (typeof reducedMotionQuery.addListener === "function") {
+      reducedMotionQuery.addListener(startRotation);
+    }
+
+    setActiveSlide(0);
+    startRotation();
   });
 
   var processRoot = document.querySelector("[data-myta-process]");
