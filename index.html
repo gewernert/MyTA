@@ -75,9 +75,24 @@
                 </a>
               </div>
               <ul class="proof-points" aria-label="MyTA product principles">
-                <li><span aria-hidden="true"></span>Course Grounded</li>
-                <li><span aria-hidden="true"></span>Privacy minded</li>
-                <li><span aria-hidden="true"></span>Instructor controlled</li>
+                <li>
+                  <span aria-hidden="true">
+                    <svg viewBox="0 0 12 12" focusable="false"><path d="m3 6 2 2 4-5"></path></svg>
+                  </span>
+                  Course-grounded
+                </li>
+                <li>
+                  <span aria-hidden="true">
+                    <svg viewBox="0 0 12 12" focusable="false"><path d="m3 6 2 2 4-5"></path></svg>
+                  </span>
+                  Secure
+                </li>
+                <li>
+                  <span aria-hidden="true">
+                    <svg viewBox="0 0 12 12" focusable="false"><path d="m3 6 2 2 4-5"></path></svg>
+                  </span>
+                  Instructor controlled
+                </li>
               </ul>
             </div>
 
@@ -480,9 +495,21 @@
               </ol>
 
               <div class="course-context-map" aria-hidden="true">
-                <div class="course-connectors">
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
+                <svg class="course-connectors" viewBox="0 0 180 420" preserveAspectRatio="none" focusable="false">
+                  <defs>
+                    <marker id="course-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                      <path d="M0 0 8 4 0 8Z"></path>
+                    </marker>
+                  </defs>
+                  <path d="M0 34 H84"></path>
+                  <path d="M0 104 H84"></path>
+                  <path d="M0 174 H84"></path>
+                  <path d="M0 244 H84"></path>
+                  <path d="M0 314 H84"></path>
+                  <path d="M0 384 H84"></path>
+                  <path d="M84 34 V384"></path>
+                  <path d="M84 210 H168" marker-end="url(#course-arrowhead)"></path>
+                </svg>
                 <div class="course-context-core">
                   <span>
                     <svg viewBox="0 0 32 32" focusable="false">
@@ -524,7 +551,7 @@
               </span>
               <div>
                 <h3>Designed to make students think</h3>
-                <p>MyTA uses proven learning principles to build understanding.</p>
+                <p>MyTA uses research backed learning principles to build understanding.</p>
               </div>
             </header>
 
@@ -874,9 +901,9 @@
               <span>MyTA pilot?</span>
             </h2>
 
-            <p class="pilot-cta__copy">A pilot can begin with one course. We’re happy to share the details, answer questions, and help determine whether MyTA is a good fit, with no obligation.</p>
+            <p class="pilot-cta__copy">A pilot can begin with one course. We're happy to share the details, answer questions, and help determine whether MyTA is a good fit, with no obligation.</p>
 
-            <a class="button button-primary pilot-cta__button" href="/pilot/" data-analytics-event="pilot_cta_click" data-analytics-location="homepage_pilot_cta">
+            <a class="button button-primary pilot-cta__button" href="/educators/#pilot" data-analytics-event="pilot_cta_click" data-analytics-location="homepage_pilot_cta">
               Explore a Pilot
               <span class="button-arrow" aria-hidden="true"></span>
             </a>

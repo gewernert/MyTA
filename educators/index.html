@@ -57,29 +57,133 @@
       </div>
     </header>
 
-    <main id="main" class="page-main">
-      <section class="page-hero">
-        <div class="wrap page-hero-grid">
-          <div class="page-hero-copy">
-            <p class="eyebrow">Educators</p>
-            <h1>See what students need before grading begins.</h1>
-            <p class="hero-text">
-              MyTA gives instructors a course grounded way to guide AI use during assignments and gives institutions a clearer, more consistent learning workflow.
-            </p>
+    <main id="main" class="page-main audience-page audience-page--educators">
+      <section class="audience-hero" aria-labelledby="educators-title">
+        <div class="wrap audience-hero__grid">
+          <div class="audience-hero__copy">
+            <p class="eyebrow">FOR EDUCATORS</p>
+            <h1 id="educators-title">See how students learn, not just what they submit.</h1>
+            <p class="hero-text">MyTA brings course-grounded AI into assignments so you can set the boundaries, guide support, and see where students need help.</p>
             <div class="button-row">
-              <a class="button button-primary" href="#pilot" data-analytics-event="Request pilot CTA clicked" data-analytics-location="educators hero">Request a Pilot</a>
-              <a class="button button-secondary" href="/demo/" data-analytics-event="Watch demo CTA clicked" data-analytics-location="educators hero">Watch the Demo</a>
+              <a class="button button-primary" href="/demo/" data-analytics-event="Watch demo CTA clicked" data-analytics-location="educators hero">Watch the Demo</a>
+              <a class="button button-secondary" href="#pilot" data-analytics-event="Explore pilot CTA clicked" data-analytics-location="educators hero">Explore a Pilot</a>
             </div>
+          </div>
+          <div class="audience-visual audience-visual--dashboard">
+            <img src="/assets/images/process-step-3.png" width="1536" height="960" alt="Instructor insight dashboard showing student learning signals.">
           </div>
         </div>
       </section>
 
-      <section class="section pilot-section" id="pilot" aria-labelledby="pilot-title">
+      <section class="audience-section audience-problem" aria-labelledby="educator-problem-title">
+        <div class="wrap audience-split">
+          <div>
+            <p class="eyebrow">THE INSTRUCTOR PROBLEM</p>
+            <h2 id="educator-problem-title">The final answer hides the learning process.</h2>
+            <p>Students struggle, seek help, revise, and build understanding before they submit. Most of that process is invisible to the instructor.</p>
+          </div>
+          <ul class="audience-line-list">
+            <li>AI use happens outside the course context.</li>
+            <li>Struggle and revision remain hidden.</li>
+            <li>Useful feedback arrives after the learning moment.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="audience-section audience-workflow" aria-labelledby="educator-workflow-title">
+        <div class="wrap">
+          <div class="audience-section__heading">
+            <p class="eyebrow">THE MYTA WORKFLOW</p>
+            <h2 id="educator-workflow-title">Set the context. Guide the work. See the learning.</h2>
+          </div>
+          <ol class="audience-steps">
+            <li>
+              <span>1</span>
+              <h3>Create the assignment</h3>
+              <p>Add course materials, define the objective, and choose how AI may support students.</p>
+            </li>
+            <li>
+              <span>2</span>
+              <h3>Students work with guided AI</h3>
+              <p>Students receive course-grounded questions, hints, references, and checks while completing the assignment.</p>
+            </li>
+            <li>
+              <span>3</span>
+              <h3>Review learning signals</h3>
+              <p>See class and student patterns in confusion, help seeking, revision, and understanding.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="audience-section audience-features" aria-labelledby="educator-features-title">
+        <div class="wrap">
+          <div class="audience-section__heading">
+            <p class="eyebrow">INSTRUCTOR FEATURES</p>
+            <h2 id="educator-features-title">Control the experience. Understand the process.</h2>
+          </div>
+          <div class="audience-feature-grid">
+            <article>
+              <h3>Course context</h3>
+              <p>Bring slides, notes, readings, examples, and assignment directions into one bounded context.</p>
+            </article>
+            <article>
+              <h3>AI guidance rules</h3>
+              <p>Choose what support is allowed, how the AI should respond, and when understanding should be checked.</p>
+            </article>
+            <article>
+              <h3>Guided student reasoning</h3>
+              <p>Keep help focused on questions, hints, explanations, course references, and revision.</p>
+            </article>
+            <article>
+              <h3>Instructor insight</h3>
+              <p>Surface where students struggled, what support they used, and what may need attention.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="audience-section audience-readiness" aria-labelledby="educator-readiness-title">
+        <div class="wrap">
+          <div class="audience-section__heading">
+            <p class="eyebrow">BUILT TO FIT</p>
+            <h2 id="educator-readiness-title">Designed around the systems instructors already use.</h2>
+          </div>
+          <div class="audience-two-panel">
+            <article>
+              <h3>LMS workflow</h3>
+              <p>MyTA is being designed to work alongside systems such as Brightspace, Canvas, Moodle, and other LMS platforms.</p>
+              <ul>
+                <li>Single sign on</li>
+                <li>Roster sync</li>
+                <li>Assignment access</li>
+                <li>Grade return</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Institutional readiness</h3>
+              <p>Privacy, accessibility, security, and production readiness controls remain active areas of development and institutional review.</p>
+              <ul>
+                <li>Student privacy</li>
+                <li>Role based access</li>
+                <li>Accessibility</li>
+                <li>Security controls</li>
+                <li>Data boundaries</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="audience-section pilot-section" id="pilot" aria-labelledby="pilot-title">
         <div class="wrap educator-pilot-grid">
           <div class="pilot-copy">
-            <p class="eyebrow">Request a pilot</p>
-            <h2 id="pilot-title">Tell us about your course.</h2>
-            <p>A focused pilot can begin with one course, one assignment, and a clear question about student learning.</p>
+            <p class="eyebrow">REQUEST A PILOT</p>
+            <h2 id="pilot-title">Start with one course.</h2>
+            <p>Explore how a focused pilot could fit an instructor, assignment, and learning question.</p>
+            <div class="button-row">
+              <a class="button button-secondary" href="/demo/" data-analytics-event="Watch demo CTA clicked" data-analytics-location="educators pilot">Watch the Demo</a>
+            </div>
             <p class="pilot-contact">Questions first? <a href="mailto:contact@mytaeducation.com">contact@mytaeducation.com</a></p>
           </div>
 
