@@ -246,4 +246,36 @@
       initializeProcessState();
     });
   }
+
+  var differenceRoot = document.querySelector("[data-difference-accordion]");
+
+  if (differenceRoot) {
+    var differenceItems = Array.from(differenceRoot.querySelectorAll("details"));
+
+    var syncDifferenceState = function () {
+      differenceItems.forEach(function (item) {
+        var summary = item.querySelector("summary");
+
+        if (summary) {
+          summary.setAttribute("aria-expanded", item.open ? "true" : "false");
+        }
+      });
+    };
+
+    differenceItems.forEach(function (item) {
+      item.addEventListener("toggle", function () {
+        if (item.open) {
+          differenceItems.forEach(function (otherItem) {
+            if (otherItem !== item) {
+              otherItem.open = false;
+            }
+          });
+        }
+
+        syncDifferenceState();
+      });
+    });
+
+    syncDifferenceState();
+  }
 })();
