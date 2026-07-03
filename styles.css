@@ -2173,9 +2173,11 @@ textarea {
 }
 
 .myta-difference__intro h2 {
+  max-width: 1120px;
   margin: 0 auto 16px;
-  font-size: clamp(3.05rem, 4.25vw, 3.75rem);
+  font-size: clamp(2.65rem, 4vw, 3.55rem);
   line-height: 1.08;
+  text-wrap: balance;
 }
 
 .myta-difference__intro h2 span:first-child {
@@ -5217,13 +5219,13 @@ textarea {
 
 .control-panel {
   display: flex;
-  min-height: 620px;
+  min-height: 560px;
   flex-direction: column;
   padding: var(--space-6);
 }
 
 .control-panel__header {
-  min-height: 84px;
+  min-height: 76px;
   margin-bottom: var(--space-5);
 }
 
@@ -5232,7 +5234,7 @@ textarea {
   flex: 1;
   flex-direction: column;
   align-items: stretch;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .course-inputs {
@@ -5241,18 +5243,18 @@ textarea {
 }
 
 .course-inputs li {
-  min-height: 76px;
+  min-height: 68px;
   padding: var(--space-4);
 }
 
 .course-context-map {
   position: relative;
-  min-height: 110px;
+  min-height: 72px;
 }
 
 .course-connectors {
   width: 100%;
-  height: 110px;
+  height: 72px;
   overflow: visible;
 }
 
@@ -5270,16 +5272,16 @@ textarea {
 .course-context-destination {
   display: grid;
   justify-items: center;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .course-context-core {
-  width: 146px;
-  height: 146px;
+  width: 138px;
+  height: 138px;
 }
 
 .course-context-core::before {
-  inset: -26px;
+  inset: -22px;
 }
 
 .course-bound-callout {
@@ -5289,9 +5291,9 @@ textarea {
 }
 
 .control-panel__conclusion {
-  min-height: 76px;
+  min-height: 70px;
   align-items: center;
-  margin-top: var(--space-6);
+  margin-top: var(--space-5);
   padding: var(--space-5) 0 0;
 }
 
@@ -5302,16 +5304,16 @@ textarea {
 .learning-principles {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .learning-principles__featured {
   grid-column: 1 / -1;
-  min-height: 104px;
+  min-height: 96px;
 }
 
 .learning-principles li {
-  min-height: 126px;
+  min-height: 114px;
   align-content: center;
   justify-items: center;
   padding: var(--space-5);
@@ -5334,7 +5336,7 @@ textarea {
 
 .workflow-panel {
   display: flex;
-  min-height: 430px;
+  min-height: 420px;
   flex-direction: column;
   padding: var(--space-6);
 }
@@ -5345,11 +5347,12 @@ textarea {
 }
 
 .lms-flow {
-  grid-template-columns: minmax(112px, 1fr) 34px minmax(118px, 1fr) 34px minmax(118px, 1fr) 34px minmax(118px, 1fr);
-  gap: var(--space-3);
+  grid-template-columns: minmax(104px, 112px) 20px minmax(88px, 96px) 20px minmax(88px, 96px) 20px minmax(88px, 96px);
+  justify-content: center;
+  gap: var(--space-2);
   align-items: center;
   margin-bottom: var(--space-6);
-  padding: var(--space-5);
+  padding: var(--space-5) var(--space-4);
 }
 
 .lms-flow__sources li {
@@ -5360,11 +5363,12 @@ textarea {
 
 .lms-flow__node {
   width: 100%;
-  min-height: 116px;
+  min-height: 104px;
+  padding: var(--space-3);
 }
 
 .lms-flow__arrow {
-  width: 26px;
+  width: 18px;
   justify-self: center;
 }
 
@@ -5411,7 +5415,7 @@ textarea {
 }
 
 .difference-accordion__summary {
-  grid-template-columns: 46px minmax(240px, 0.9fr) minmax(300px, 1.25fr) 34px;
+  grid-template-columns: 46px minmax(240px, 0.9fr) minmax(280px, 1.25fr) 34px;
   min-height: 88px;
   gap: var(--space-5);
   padding: var(--space-5) var(--space-6);
@@ -5462,7 +5466,8 @@ textarea {
 }
 
 .difference-row--myta {
-  grid-template-columns: minmax(190px, 0.65fr) minmax(0, 2.15fr) minmax(260px, 0.95fr);
+  min-height: 230px;
+  grid-template-columns: minmax(190px, 0.62fr) minmax(0, 2.1fr) minmax(270px, 0.98fr);
 }
 
 .difference-myta-identity,
@@ -5482,17 +5487,17 @@ textarea {
 
 .myta-system-flow {
   min-width: 0;
-  padding: var(--space-6);
+  padding: var(--space-6) var(--space-5);
 }
 
 .myta-system-flow h4 {
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   text-align: center;
 }
 
 .myta-system-flow ol {
   grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .myta-system-flow li {
@@ -5515,7 +5520,7 @@ textarea {
 
 .myta-system-flow strong {
   max-width: 86px;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   line-height: 1.15;
 }
 
