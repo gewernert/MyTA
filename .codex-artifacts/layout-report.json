@@ -1,0 +1,1255 @@
+{
+  "url": "http://127.0.0.1:4214/",
+  "screenshots": [
+    "hero-carousel-slide-1-1440.png",
+    "hero-carousel-slide-2-1440.png",
+    "hero-carousel-slide-3-1440.png",
+    "before-myta-1440.png",
+    "control-learning-1440.png",
+    "lms-workflow-1440.png",
+    "comparison-publisher-1440.png",
+    "comparison-lms-1440.png",
+    "comparison-tutors-1440.png",
+    "myta-panel-1440.png",
+    "home-1440.png",
+    "home-1024.png",
+    "home-390.png"
+  ],
+  "consoleMessages": [
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "type": "log",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    }
+  ],
+  "carousel": [
+    {
+      "viewport": {
+        "width": 766.171875,
+        "height": 429.078125
+      },
+      "element": {
+        "width": 764.171875,
+        "height": 427.078125
+      },
+      "renderedImage": {
+        "width": 766.1693521031208,
+        "height": 429.078125
+      },
+      "natural": {
+        "width": 1316,
+        "height": 737,
+        "src": "/assets/images/hero-carousel/student-assignment-ai-tutor.png",
+        "objectFit": "contain"
+      }
+    },
+    {
+      "viewport": {
+        "width": 766.171875,
+        "height": 429.078125
+      },
+      "element": {
+        "width": 764.171875,
+        "height": 427.078125
+      },
+      "renderedImage": {
+        "width": 766.171875,
+        "height": 426.56501629601223
+      },
+      "natural": {
+        "width": 1304,
+        "height": 726,
+        "src": "/assets/images/hero-carousel/instructor-assignment-creation.png",
+        "objectFit": "contain"
+      }
+    },
+    {
+      "viewport": {
+        "width": 766.171875,
+        "height": 429.078125
+      },
+      "element": {
+        "width": 764.171875,
+        "height": 427.078125
+      },
+      "renderedImage": {
+        "width": 766.171875,
+        "height": 401.9455528846154
+      },
+      "natural": {
+        "width": 1300,
+        "height": 682,
+        "src": "/assets/images/hero-carousel/assignment-analytics.png",
+        "objectFit": "contain"
+      }
+    }
+  ],
+  "beforeMyTA": {
+    "summaryColumns": [
+      {
+        "width": 346.66,
+        "height": 112,
+        "top": 1147.28,
+        "left": 192.5,
+        "right": 539.16,
+        "bottom": 1259.28
+      },
+      {
+        "width": 346.67,
+        "height": 112,
+        "top": 1147.28,
+        "left": 539.16,
+        "right": 885.83,
+        "bottom": 1259.28
+      },
+      {
+        "width": 346.66,
+        "height": 112,
+        "top": 1147.28,
+        "left": 885.83,
+        "right": 1232.48,
+        "bottom": 1259.28
+      }
+    ],
+    "timelineCards": [
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 48,
+        "right": 203.63,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 215.63,
+        "right": 371.25,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 383.25,
+        "right": 538.88,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 550.88,
+        "right": 706.5,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 718.5,
+        "right": 874.13,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 886.13,
+        "right": 1041.75,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 1053.75,
+        "right": 1209.38,
+        "bottom": 1551.28
+      },
+      {
+        "width": 155.63,
+        "height": 100,
+        "top": 1451.28,
+        "left": 1221.38,
+        "right": 1377,
+        "bottom": 1551.28
+      }
+    ],
+    "timelineIcons": [
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 99.81,
+        "right": 151.81,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 267.44,
+        "right": 319.44,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 435.06,
+        "right": 487.06,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 602.69,
+        "right": 654.69,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 770.31,
+        "right": 822.31,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 937.94,
+        "right": 989.94,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 1105.56,
+        "right": 1157.56,
+        "bottom": 1411.28
+      },
+      {
+        "width": 52,
+        "height": 52,
+        "top": 1359.28,
+        "left": 1273.19,
+        "right": 1325.19,
+        "bottom": 1411.28
+      }
+    ],
+    "timelineNumbers": [
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 113.81,
+        "right": 137.81,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 281.44,
+        "right": 305.44,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 449.06,
+        "right": 473.06,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 616.69,
+        "right": 640.69,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 784.31,
+        "right": 808.31,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 951.94,
+        "right": 975.94,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 1119.56,
+        "right": 1143.56,
+        "bottom": 1443.28
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "top": 1419.28,
+        "left": 1287.19,
+        "right": 1311.19,
+        "bottom": 1443.28
+      }
+    ],
+    "iconToNumberGaps": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    "numberToCardGaps": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ]
+  },
+  "controlLearning": {
+    "coursePanel": {
+      "width": 604,
+      "height": 823.91,
+      "top": 5208.88,
+      "left": 92.5,
+      "right": 696.5,
+      "bottom": 6032.78
+    },
+    "centers": {
+      "panel": {
+        "x": 394.5,
+        "y": 5620.83
+      },
+      "arrow": {
+        "x": 394.5,
+        "y": 5545.34
+      },
+      "circle": {
+        "x": 394.5,
+        "y": 5660.34
+      },
+      "callout": {
+        "x": 394.5,
+        "y": 5828.06
+      }
+    },
+    "sourceTiles": [
+      {
+        "width": 262,
+        "height": 74,
+        "top": 5346.34,
+        "left": 125.5,
+        "right": 387.5,
+        "bottom": 5420.34
+      },
+      {
+        "width": 262,
+        "height": 74,
+        "top": 5346.34,
+        "left": 401.5,
+        "right": 663.5,
+        "bottom": 5420.34
+      },
+      {
+        "width": 262,
+        "height": 74,
+        "top": 5434.34,
+        "left": 125.5,
+        "right": 387.5,
+        "bottom": 5508.34
+      },
+      {
+        "width": 262,
+        "height": 74,
+        "top": 5434.34,
+        "left": 401.5,
+        "right": 663.5,
+        "bottom": 5508.34
+      }
+    ],
+    "principleCards": [
+      {
+        "width": 261,
+        "height": 108,
+        "top": 5470.34,
+        "left": 761.5,
+        "right": 1022.5,
+        "bottom": 5578.34
+      },
+      {
+        "width": 261,
+        "height": 108,
+        "top": 5470.34,
+        "left": 1038.5,
+        "right": 1299.5,
+        "bottom": 5578.34
+      },
+      {
+        "width": 261,
+        "height": 108,
+        "top": 5594.34,
+        "left": 761.5,
+        "right": 1022.5,
+        "bottom": 5702.34
+      },
+      {
+        "width": 261,
+        "height": 108,
+        "top": 5594.34,
+        "left": 1038.5,
+        "right": 1299.5,
+        "bottom": 5702.34
+      }
+    ],
+    "outerPanels": [
+      {
+        "width": 604,
+        "height": 823.91,
+        "top": 5208.88,
+        "left": 92.5,
+        "right": 696.5,
+        "bottom": 6032.78
+      },
+      {
+        "width": 604,
+        "height": 823.91,
+        "top": 5208.88,
+        "left": 728.5,
+        "right": 1332.5,
+        "bottom": 6032.78
+      }
+    ]
+  },
+  "lmsContainment": {
+    "1024": {
+      "panel": {
+        "width": 761.75,
+        "height": 697.44,
+        "top": 7508.23,
+        "left": 123.63,
+        "right": 885.38,
+        "bottom": 8205.67
+      },
+      "surface": {
+        "width": 695.75,
+        "height": 310,
+        "top": 7637.23,
+        "left": 156.63,
+        "right": 852.38,
+        "bottom": 7947.23
+      },
+      "sourceTiles": [
+        {
+          "width": 130,
+          "height": 54,
+          "top": 7664.23,
+          "left": 244.5,
+          "right": 374.5,
+          "bottom": 7718.23
+        },
+        {
+          "width": 130,
+          "height": 54,
+          "top": 7664.23,
+          "left": 374.5,
+          "right": 504.5,
+          "bottom": 7718.23
+        },
+        {
+          "width": 130,
+          "height": 54,
+          "top": 7664.23,
+          "left": 504.5,
+          "right": 634.5,
+          "bottom": 7718.23
+        },
+        {
+          "width": 130,
+          "height": 54,
+          "top": 7664.23,
+          "left": 634.5,
+          "right": 764.5,
+          "bottom": 7718.23
+        }
+      ],
+      "nodes": [
+        {
+          "width": 145.33,
+          "height": 124,
+          "top": 7796.23,
+          "left": 254.5,
+          "right": 399.83,
+          "bottom": 7920.23
+        },
+        {
+          "width": 145.33,
+          "height": 124,
+          "top": 7796.23,
+          "left": 431.83,
+          "right": 577.16,
+          "bottom": 7920.23
+        },
+        {
+          "width": 145.33,
+          "height": 124,
+          "top": 7796.23,
+          "left": 609.16,
+          "right": 754.48,
+          "bottom": 7920.23
+        }
+      ],
+      "contains": true
+    },
+    "1280": {
+      "panel": {
+        "width": 568.5,
+        "height": 697.44,
+        "top": 6096.45,
+        "left": 48,
+        "right": 616.5,
+        "bottom": 6793.89
+      },
+      "surface": {
+        "width": 502.5,
+        "height": 310,
+        "top": 6225.45,
+        "left": 81,
+        "right": 583.5,
+        "bottom": 6535.45
+      },
+      "sourceTiles": [
+        {
+          "width": 112.13,
+          "height": 54,
+          "top": 6252.45,
+          "left": 108,
+          "right": 220.13,
+          "bottom": 6306.45
+        },
+        {
+          "width": 112.13,
+          "height": 54,
+          "top": 6252.45,
+          "left": 220.13,
+          "right": 332.25,
+          "bottom": 6306.45
+        },
+        {
+          "width": 112.13,
+          "height": 54,
+          "top": 6252.45,
+          "left": 332.25,
+          "right": 444.38,
+          "bottom": 6306.45
+        },
+        {
+          "width": 112.13,
+          "height": 54,
+          "top": 6252.45,
+          "left": 444.38,
+          "right": 556.5,
+          "bottom": 6306.45
+        }
+      ],
+      "nodes": [
+        {
+          "width": 128.16,
+          "height": 124,
+          "top": 6384.45,
+          "left": 108,
+          "right": 236.16,
+          "bottom": 6508.45
+        },
+        {
+          "width": 128.17,
+          "height": 124,
+          "top": 6384.45,
+          "left": 268.16,
+          "right": 396.33,
+          "bottom": 6508.45
+        },
+        {
+          "width": 128.17,
+          "height": 124,
+          "top": 6384.45,
+          "left": 428.33,
+          "right": 556.5,
+          "bottom": 6508.45
+        }
+      ],
+      "contains": true
+    },
+    "1440": {
+      "panel": {
+        "width": 604,
+        "height": 697.44,
+        "top": 6206.91,
+        "left": 92.5,
+        "right": 696.5,
+        "bottom": 6904.34
+      },
+      "surface": {
+        "width": 538,
+        "height": 310,
+        "top": 6335.91,
+        "left": 125.5,
+        "right": 663.5,
+        "bottom": 6645.91
+      },
+      "sourceTiles": [
+        {
+          "width": 121,
+          "height": 54,
+          "top": 6362.91,
+          "left": 152.5,
+          "right": 273.5,
+          "bottom": 6416.91
+        },
+        {
+          "width": 121,
+          "height": 54,
+          "top": 6362.91,
+          "left": 273.5,
+          "right": 394.5,
+          "bottom": 6416.91
+        },
+        {
+          "width": 121,
+          "height": 54,
+          "top": 6362.91,
+          "left": 394.5,
+          "right": 515.5,
+          "bottom": 6416.91
+        },
+        {
+          "width": 121,
+          "height": 54,
+          "top": 6362.91,
+          "left": 515.5,
+          "right": 636.5,
+          "bottom": 6416.91
+        }
+      ],
+      "nodes": [
+        {
+          "width": 140,
+          "height": 124,
+          "top": 6494.91,
+          "left": 152.5,
+          "right": 292.5,
+          "bottom": 6618.91
+        },
+        {
+          "width": 140,
+          "height": 124,
+          "top": 6494.91,
+          "left": 324.5,
+          "right": 464.5,
+          "bottom": 6618.91
+        },
+        {
+          "width": 140,
+          "height": 124,
+          "top": 6494.91,
+          "left": 496.5,
+          "right": 636.5,
+          "bottom": 6618.91
+        }
+      ],
+      "contains": true
+    }
+  },
+  "comparison": {
+    "publisher": {
+      "cards": [
+        {
+          "width": 380.66,
+          "height": 184,
+          "top": 7696.81,
+          "left": 125.5,
+          "right": 506.16,
+          "bottom": 7880.81
+        },
+        {
+          "width": 380.67,
+          "height": 184,
+          "top": 7696.81,
+          "left": 522.16,
+          "right": 902.83,
+          "bottom": 7880.81
+        },
+        {
+          "width": 380.66,
+          "height": 184,
+          "top": 7696.81,
+          "left": 918.83,
+          "right": 1299.48,
+          "bottom": 7880.81
+        }
+      ],
+      "headings": [
+        {
+          "width": 378.66,
+          "height": 48,
+          "top": 7697.81,
+          "left": 126.5,
+          "right": 505.16,
+          "bottom": 7745.81
+        },
+        {
+          "width": 378.67,
+          "height": 48,
+          "top": 7697.81,
+          "left": 523.16,
+          "right": 901.83,
+          "bottom": 7745.81
+        },
+        {
+          "width": 378.66,
+          "height": 48,
+          "top": 7697.81,
+          "left": 919.83,
+          "right": 1298.48,
+          "bottom": 7745.81
+        }
+      ],
+      "chips": [
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7767.81,
+          "left": 154.83,
+          "right": 310.83,
+          "bottom": 7807.81
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7767.81,
+          "left": 320.83,
+          "right": 476.83,
+          "bottom": 7807.81
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7817.81,
+          "left": 154.83,
+          "right": 310.83,
+          "bottom": 7857.81
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7817.81,
+          "left": 320.83,
+          "right": 476.83,
+          "bottom": 7857.81
+        }
+      ]
+    },
+    "lms": {
+      "cards": [
+        {
+          "width": 380.66,
+          "height": 234,
+          "top": 7815.83,
+          "left": 125.5,
+          "right": 506.16,
+          "bottom": 8049.83
+        },
+        {
+          "width": 380.67,
+          "height": 234,
+          "top": 7815.83,
+          "left": 522.16,
+          "right": 902.83,
+          "bottom": 8049.83
+        },
+        {
+          "width": 380.66,
+          "height": 234,
+          "top": 7815.83,
+          "left": 918.83,
+          "right": 1299.48,
+          "bottom": 8049.83
+        }
+      ],
+      "headings": [
+        {
+          "width": 378.66,
+          "height": 48,
+          "top": 7816.83,
+          "left": 126.5,
+          "right": 505.16,
+          "bottom": 7864.83
+        },
+        {
+          "width": 378.67,
+          "height": 48,
+          "top": 7816.83,
+          "left": 523.16,
+          "right": 901.83,
+          "bottom": 7864.83
+        },
+        {
+          "width": 378.66,
+          "height": 48,
+          "top": 7816.83,
+          "left": 919.83,
+          "right": 1298.48,
+          "bottom": 7864.83
+        }
+      ],
+      "chips": [
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7886.83,
+          "left": 154.83,
+          "right": 310.83,
+          "bottom": 7926.83
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7886.83,
+          "left": 320.83,
+          "right": 476.83,
+          "bottom": 7926.83
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7936.83,
+          "left": 154.83,
+          "right": 310.83,
+          "bottom": 7976.83
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7936.83,
+          "left": 320.83,
+          "right": 476.83,
+          "bottom": 7976.83
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 7986.83,
+          "left": 237.83,
+          "right": 393.83,
+          "bottom": 8026.83
+        }
+      ]
+    },
+    "tutors": {
+      "cards": [
+        {
+          "width": 380.66,
+          "height": 234,
+          "top": 7934.84,
+          "left": 125.5,
+          "right": 506.16,
+          "bottom": 8168.84
+        },
+        {
+          "width": 380.67,
+          "height": 234,
+          "top": 7934.84,
+          "left": 522.16,
+          "right": 902.83,
+          "bottom": 8168.84
+        },
+        {
+          "width": 380.66,
+          "height": 234,
+          "top": 7934.84,
+          "left": 918.83,
+          "right": 1299.48,
+          "bottom": 8168.84
+        }
+      ],
+      "headings": [
+        {
+          "width": 378.66,
+          "height": 48,
+          "top": 7935.84,
+          "left": 126.5,
+          "right": 505.16,
+          "bottom": 7983.84
+        },
+        {
+          "width": 378.67,
+          "height": 48,
+          "top": 7935.84,
+          "left": 523.16,
+          "right": 901.83,
+          "bottom": 7983.84
+        },
+        {
+          "width": 378.66,
+          "height": 48,
+          "top": 7935.84,
+          "left": 919.83,
+          "right": 1298.48,
+          "bottom": 7983.84
+        }
+      ],
+      "chips": [
+        {
+          "width": 156,
+          "height": 40,
+          "top": 8005.84,
+          "left": 154.83,
+          "right": 310.83,
+          "bottom": 8045.84
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 8005.84,
+          "left": 320.83,
+          "right": 476.83,
+          "bottom": 8045.84
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 8055.84,
+          "left": 154.83,
+          "right": 310.83,
+          "bottom": 8095.84
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 8055.84,
+          "left": 320.83,
+          "right": 476.83,
+          "bottom": 8095.84
+        },
+        {
+          "width": 156,
+          "height": 40,
+          "top": 8105.84,
+          "left": 237.83,
+          "right": 393.83,
+          "bottom": 8145.84
+        }
+      ]
+    }
+  },
+  "mytaPanel": {
+    "systemColumns": [
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8295.58,
+        "left": 382.05,
+        "right": 511.05,
+        "bottom": 8406.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8295.58,
+        "left": 539.05,
+        "right": 668.05,
+        "bottom": 8406.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8295.58,
+        "left": 696.05,
+        "right": 825.05,
+        "bottom": 8406.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8295.58,
+        "left": 853.05,
+        "right": 982.05,
+        "bottom": 8406.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8430.58,
+        "left": 382.05,
+        "right": 511.05,
+        "bottom": 8541.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8430.58,
+        "left": 539.05,
+        "right": 668.05,
+        "bottom": 8541.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8430.58,
+        "left": 696.05,
+        "right": 825.05,
+        "bottom": 8541.58
+      },
+      {
+        "width": 129,
+        "height": 111,
+        "top": 8430.58,
+        "left": 853.05,
+        "right": 982.05,
+        "bottom": 8541.58
+      }
+    ],
+    "systemCircles": [
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8295.58,
+        "left": 418.55,
+        "right": 474.55,
+        "bottom": 8351.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8295.58,
+        "left": 575.55,
+        "right": 631.55,
+        "bottom": 8351.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8295.58,
+        "left": 732.55,
+        "right": 788.55,
+        "bottom": 8351.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8295.58,
+        "left": 889.55,
+        "right": 945.55,
+        "bottom": 8351.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8430.58,
+        "left": 418.55,
+        "right": 474.55,
+        "bottom": 8486.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8430.58,
+        "left": 575.55,
+        "right": 631.55,
+        "bottom": 8486.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8430.58,
+        "left": 732.55,
+        "right": 788.55,
+        "bottom": 8486.58
+      },
+      {
+        "width": 56,
+        "height": 56,
+        "top": 8430.58,
+        "left": 889.55,
+        "right": 945.55,
+        "bottom": 8486.58
+      }
+    ],
+    "starCircle": {
+      "width": 56,
+      "height": 56,
+      "top": 8310.25,
+      "left": 1149.25,
+      "right": 1205.25,
+      "bottom": 8366.25
+    },
+    "centers": {
+      "identity": {
+        "x": 217.3,
+        "y": 8398.21
+      },
+      "systemGrid": {
+        "x": 682.05,
+        "y": 8418.58
+      },
+      "conclusion": {
+        "x": 1176.75,
+        "y": 8398.21
+      }
+    }
+  },
+  "overflow": {
+    "390": {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "hasHorizontalOverflow": false,
+      "offenders": []
+    },
+    "768": {
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "hasHorizontalOverflow": false,
+      "offenders": []
+    },
+    "1024": {
+      "clientWidth": 1009,
+      "scrollWidth": 1009,
+      "hasHorizontalOverflow": false,
+      "offenders": []
+    },
+    "1280": {
+      "clientWidth": 1265,
+      "scrollWidth": 1265,
+      "hasHorizontalOverflow": false,
+      "offenders": []
+    },
+    "1440": {
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "hasHorizontalOverflow": false,
+      "offenders": []
+    }
+  }
+}
