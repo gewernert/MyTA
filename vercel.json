@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/educators/",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/students/",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
+}
