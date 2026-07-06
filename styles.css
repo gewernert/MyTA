@@ -5758,7 +5758,7 @@ textarea {
 
 /* Final measured homepage component rebuild */
 .hero-carousel__slides {
-  aspect-ratio: 1316 / 737;
+  aspect-ratio: 1304 / 726;
   background: var(--color-white);
 }
 
@@ -5769,6 +5769,18 @@ textarea {
 
 .process-laptop__base {
   width: 100%;
+}
+
+.process-laptop__screen {
+  aspect-ratio: 1304 / 726;
+}
+
+.process-laptop__image,
+.myta-process.is-enhanced .process-laptop__image,
+.process-mobile-visual img {
+  object-fit: contain;
+  object-position: center;
+  background: var(--color-white);
 }
 
 .challenge-summary {
@@ -5866,11 +5878,12 @@ textarea {
 
 .control-panel {
   min-height: 0;
+  padding: 30px;
 }
 
 .control-panel__header {
-  min-height: 76px;
-  margin-bottom: 24px;
+  min-height: 74px;
+  margin-bottom: 22px;
 }
 
 .course-context-flow {
@@ -5878,33 +5891,33 @@ textarea {
   flex: 0 0 auto;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .course-inputs {
   width: 100%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .course-inputs li {
-  min-height: 74px;
+  min-height: 66px;
   grid-template-columns: 34px minmax(0, 1fr);
   gap: 12px;
-  padding: 16px;
+  padding: 14px 16px;
 }
 
 .course-context-arrow {
   display: grid;
-  width: 26px;
-  height: 42px;
+  width: 24px;
+  height: 38px;
   place-items: center;
   color: var(--color-secondary);
 }
 
 .course-context-arrow svg {
-  width: 24px;
-  height: 42px;
+  width: 22px;
+  height: 38px;
 }
 
 .course-context-arrow path:first-child {
@@ -5919,16 +5932,18 @@ textarea {
 }
 
 .course-context-core {
-  width: 156px;
-  height: 156px;
-  grid-template-rows: auto auto auto;
-  gap: 8px;
-  padding: 26px;
+  width: 144px;
+  height: 144px;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 24px;
   text-align: center;
 }
 
 .course-context-core::before {
-  inset: -24px;
+  inset: -18px;
 }
 
 .course-context-core svg {
@@ -5938,13 +5953,12 @@ textarea {
 
 .course-context-core strong {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 1.8rem;
+  line-height: 1;
 }
 
 .course-context-core small {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.2;
+  display: none;
 }
 
 .course-context-core i,
@@ -5956,11 +5970,12 @@ textarea {
 
 .course-bound-callout {
   display: grid;
-  width: min(100%, 270px);
+  width: min(100%, 292px);
   grid-template-columns: 1fr;
   justify-items: center;
   gap: 8px;
-  padding: 18px;
+  margin-top: 10px;
+  padding: 16px 18px;
   text-align: center;
 }
 
@@ -5977,39 +5992,40 @@ textarea {
 }
 
 .control-panel__conclusion {
-  margin-top: 28px;
+  margin-top: 24px;
   padding-top: 18px;
 }
 
 .learning-principles {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
-.learning-principles__featured {
-  grid-column: 1 / -1;
-  height: 104px;
-  min-height: 104px;
+.learning-principles > li.learning-principles__featured {
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .learning-principles li {
-  height: 108px;
-  min-height: 108px;
+  height: 92px;
+  min-height: 92px;
   grid-template-columns: 1fr;
   justify-items: center;
-  gap: 8px;
-  padding: 14px 18px;
+  gap: 7px;
+  padding: 12px 14px;
   text-align: center;
 }
 
 .learning-principles li > span {
-  width: 46px;
-  height: 46px;
+  width: 38px;
+  height: 38px;
 }
 
 .learning-principles h4 {
   margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.18;
 }
 
 .lms-flow {
@@ -6358,5 +6374,49 @@ textarea {
 
   .myta-system-flow ol {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .myta-process {
+    padding-block: var(--section-space-tablet);
+  }
+
+  .myta-process__scroll-region {
+    min-height: 0;
+  }
+
+  .myta-process__sticky {
+    position: static;
+    min-height: 0;
+    padding-block: 0;
+  }
+
+  .myta-process__triggers {
+    display: none;
+    height: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .myta-process.is-enhanced .process-checkpoint__details,
+  .myta-process.is-enhanced .process-checkpoint.is-active .process-checkpoint__details {
+    grid-template-rows: 1fr;
+    margin-top: 18px;
+    opacity: 1;
+  }
+
+  .myta-process.is-enhanced .process-mobile-visual {
+    display: block;
+  }
+
+  .myta-process__visual {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .myta-process {
+    padding-block: var(--section-space-mobile);
   }
 }
