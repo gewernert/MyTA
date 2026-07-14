@@ -6,19 +6,19 @@
     <title>Watch the MyTA Demo | MyTA</title>
     <meta
       name="description"
-      content="Watch the MyTA demo and see how guided AI can live inside the homework workflow while giving instructors visibility into student learning."
+      content="Follow one MyTA assignment from instructor setup through guided student work and instructor learning signals."
     >
     <meta property="og:title" content="Watch the MyTA Demo">
     <meta
       property="og:description"
-      content="See how MyTA brings guided AI into assignments and helps instructors understand student learning as work happens."
+      content="See the learning process unfold from course context to guided student work and instructor insight."
     >
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#fafaf7">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=public-rescue-4">
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -56,75 +56,106 @@
     </header>
 
     <main id="main" class="demo-main">
-      <section class="demo-hero">
-        <div class="wrap demo-wrap">
-          <div class="demo-hero-copy">
-            <p class="eyebrow">Product demo</p>
-            <h1>See how MyTA makes AI use visible while students work.</h1>
-            <p class="hero-text">
-              The demo shows how guided AI can support students during assignments while giving instructors clearer context on confusion, help seeking, and learning progress.
-            </p>
+      <section class="demo-hero" aria-labelledby="demo-title">
+        <div class="wrap demo-intro">
+          <p class="eyebrow">Product demo</p>
+          <h1 id="demo-title">Watch the learning process unfold.</h1>
+          <p>Follow one assignment from instructor setup through student support and instructor insight.</p>
+        </div>
+
+        <div class="wrap demo-stage">
+          <div class="demo-video">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="/assets/images/hero-carousel/student-assignment-ai-tutor.png"
+              aria-label="MyTA product demo video"
+            >
+              <source src="https://s2qflve5hgjt1ibb.public.blob.vercel-storage.com/MyTA%20Demo.mp4" type="video/mp4">
+              <p>
+                Your browser cannot play this video.
+                <a href="https://s2qflve5hgjt1ibb.public.blob.vercel-storage.com/MyTA%20Demo.mp4">Open the demo video directly.</a>
+              </p>
+            </video>
           </div>
 
-          <div class="demo-stage">
-            <div class="demo-video" aria-label="MyTA demo video">
-              <video controls playsinline preload="metadata" aria-label="MyTA product demo video.">
-                <source src="https://s2qflve5hgjt1ibb.public.blob.vercel-storage.com/MyTA%20Demo.mp4" type="video/mp4">
-                <p>
-                  Your browser cannot play this video.
-                  <a href="https://s2qflve5hgjt1ibb.public.blob.vercel-storage.com/MyTA%20Demo.mp4">Open the demo video directly.</a>
-                </p>
-              </video>
-            </div>
+          <ol class="demo-chapters" aria-label="Demo chapters">
+            <li><span>01</span><strong>Instructor setup and course context</strong></li>
+            <li><span>02</span><strong>Student assignment and guided support</strong></li>
+            <li><span>03</span><strong>Instructor visibility and learning signals</strong></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="demo-guide section" aria-labelledby="demo-guide-title">
+        <div class="wrap demo-guide-grid">
+          <div>
+            <p class="eyebrow">What to watch for</p>
+            <h2 id="demo-guide-title">One assignment. Three connected perspectives.</h2>
+          </div>
+          <ol class="watch-list">
+            <li>
+              <span>01</span>
+              <div><strong>Context shapes the support</strong><p>See how the instructor's course and assignment choices frame the experience.</p></div>
+            </li>
+            <li>
+              <span>02</span>
+              <div><strong>Guidance supports the thinking</strong><p>See questions and hints that help the student move forward without supplying the final response.</p></div>
+            </li>
+            <li>
+              <span>03</span>
+              <div><strong>Activity becomes useful insight</strong><p>See how observable interactions can help an instructor understand where support is needed.</p></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="wrap demo-contact">
+          <div>
+            <strong>Want to discuss what you saw?</strong>
+            <p>Share your course context or ask about a focused pilot.</p>
+          </div>
+          <div class="button-row">
+            <a class="button button-secondary" href="/" data-analytics-event="Homepage CTA clicked" data-analytics-location="demo context">Back to Homepage</a>
+            <a class="button button-primary" href="mailto:contact@mytaeducation.com" data-analytics-event="Contact CTA clicked" data-analytics-location="demo context">Contact Us</a>
           </div>
         </div>
       </section>
 
-      <section class="demo-context section">
-        <div class="wrap demo-context-grid">
-          <article class="demo-context-copy">
-            <p class="eyebrow">What MyTA does</p>
-            <h2>Guided AI inside the assignment workflow.</h2>
-            <p>
-              MyTA helps students use AI while they work and helps instructors see the learning process behind the final submission.
-            </p>
-          </article>
-          <article class="contact-card">
-            <h2>Want more context?</h2>
-            <p>
-              Visit the homepage for more product context, or contact the team to share feedback.
-            </p>
-            <div class="button-row">
-              <a class="button button-secondary" href="/" data-analytics-event="Homepage CTA clicked" data-analytics-location="demo context">Back to homepage</a>
-              <a class="button button-primary" href="mailto:contact@mytaeducation.com" data-analytics-event="Contact CTA clicked" data-analytics-location="demo context">Contact us</a>
+      <section class="feedback-section section" aria-labelledby="feedback-title">
+        <div class="wrap feedback-disclosure" data-marketing-feedback>
+          <div class="feedback-intro">
+            <div class="feedback-heading">
+              <p class="eyebrow">Demo feedback</p>
+              <h2 id="feedback-title">Help us improve the walkthrough.</h2>
+              <p>Tell us what was clear, what was not, and what would make the product more useful for your course or institution.</p>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section feedback-section">
-        <div class="wrap form-card">
-          <div class="form-heading">
-            <p class="eyebrow">Demo feedback</p>
-            <h2>Share feedback on the walkthrough.</h2>
-            <p>
-              Share honest feedback on the MyTA product demo. Your responses are used only to improve the product and will not be publicized.
-            </p>
+            <button
+              class="feedback-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="demo-feedback-panel"
+              data-marketing-feedback-toggle
+            >
+              <span>Open the feedback form</span>
+              <small>Optional, about five minutes</small>
+            </button>
           </div>
 
-          <form
-            id="demo-feedback-form"
-            class="site-form"
-            action="https://formspree.io/f/mojroqew"
-            method="POST"
-            novalidate
-            data-form-name="demo_feedback"
-            data-analytics-start="Feedback form started"
-          >
+          <div class="feedback-panel" id="demo-feedback-panel" data-marketing-feedback-panel>
+            <form
+              id="demo-feedback-form"
+              class="site-form"
+              action="https://formspree.io/f/mojroqew"
+              method="POST"
+              novalidate
+              data-form-name="demo_feedback"
+              data-analytics-start="Feedback form started"
+            >
             <input type="hidden" name="_subject" value="New MyTA demo feedback">
             <input type="hidden" name="form_type" value="demo_feedback">
             <input type="hidden" name="_next" value="/demo/#feedback-submitted" data-success-redirect="/demo/#feedback-submitted">
-            <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            <input class="form-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <div class="form-grid">
               <label class="form-field" for="feedback-name">
@@ -180,16 +211,17 @@
             </p>
 
             <div class="form-actions">
-              <button class="button button-primary" type="submit">Send feedback</button>
+              <button class="button button-primary" type="submit">Send Feedback</button>
               <p class="form-status error form-validation-message" data-validation-message role="alert" hidden></p>
             </div>
-          </form>
+            </form>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="wrap footer-grid">
+      <div class="wrap footer-main">
         <div class="footer-brand-column">
           <a class="brand footer-brand" href="/" aria-label="MyTA home">
             <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
@@ -201,32 +233,25 @@
             <span>MyTA</span>
           </a>
           <p>The assessment layer for seeing and shaping how students learn with AI.</p>
-          <a href="mailto:contact@mytaeducation.com">contact@mytaeducation.com</a>
         </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <div>
-            <h2>Product</h2>
-            <a href="/#how-it-works">How It Works</a>
-            <a href="/demo/">Demo</a>
-          </div>
-          <div>
-            <h2>Company</h2>
-            <a href="mailto:contact@mytaeducation.com">Contact</a>
-            <span>Privacy policy coming soon</span>
-            <span>Accessibility statement coming soon</span>
-          </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/">Home</a>
+          <a href="/#how-it-works">How It Works</a>
+          <a href="/demo/">Demo</a>
+          <a href="mailto:contact@mytaeducation.com">Contact</a>
         </nav>
       </div>
       <div class="wrap footer-bottom">
         <p>&copy; 2026 MyTA</p>
-        <p>Built for learning, not shortcuts.</p>
+        <p>Course grounded. Instructor controlled.</p>
       </div>
     </footer>
+
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="/assets/js/marketing.js"></script>
+    <script defer src="/assets/js/marketing.js?v=public-rescue-4"></script>
     <script defer src="../assets/js/site.js?v=plain-form-post"></script>
   </body>
 </html>

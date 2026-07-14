@@ -1,4 +1,45 @@
 (function () {
+  var productScrolls = Array.from(document.querySelectorAll("[data-marketing-product-scroll]"));
+  var mobileProductMedia = window.matchMedia("(max-width: 700px)");
+
+  var positionProductScrolls = function () {
+    productScrolls.forEach(function (scroller) {
+      if (!mobileProductMedia.matches || scroller.closest("[hidden]")) {
+        scroller.removeAttribute("role");
+        scroller.removeAttribute("tabindex");
+        if (!mobileProductMedia.matches) {
+          scroller.scrollLeft = 0;
+        }
+        return;
+      }
+
+      scroller.setAttribute("role", "region");
+      scroller.tabIndex = 0;
+
+      var maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      if (maxScroll <= 0) {
+        return;
+      }
+
+      scroller.scrollLeft = scroller.getAttribute("data-marketing-product-scroll") === "end"
+        ? maxScroll
+        : maxScroll / 2;
+    });
+  };
+
+  productScrolls.forEach(function (scroller) {
+    var image = scroller.querySelector("img");
+    if (image && !image.complete) {
+      image.addEventListener("load", positionProductScrolls, { once: true });
+    }
+  });
+
+  var productResizeFrame;
+  window.addEventListener("resize", function () {
+    window.cancelAnimationFrame(productResizeFrame);
+    productResizeFrame = window.requestAnimationFrame(positionProductScrolls);
+  });
+
   var navRoots = document.querySelectorAll("[data-marketing-nav]");
 
   navRoots.forEach(function (root) {
@@ -33,249 +74,88 @@
     setOpen(false);
   });
 
-  var carouselRoots = document.querySelectorAll("[data-hero-carousel]");
-  var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  document.querySelectorAll("[data-marketing-gallery]").forEach(function (root) {
+    var tabs = Array.from(root.querySelectorAll("[data-marketing-gallery-tab]"));
+    var panels = Array.from(root.querySelectorAll("[data-marketing-gallery-panel]"));
 
-  carouselRoots.forEach(function (root) {
-    var slides = Array.from(root.querySelectorAll("[data-hero-slide]"));
-    var controls = Array.from(root.querySelectorAll("[data-hero-slide-control]"));
-    var activeIndex = 0;
-    var timer = null;
-    var isPaused = false;
-
-    if (!slides.length || !controls.length) {
+    if (!tabs.length || tabs.length !== panels.length) {
       return;
     }
 
-    var setActiveSlide = function (index) {
-      activeIndex = (index + slides.length) % slides.length;
+    var activate = function (key, moveFocus) {
+      tabs.forEach(function (tab) {
+        var isActive = tab.getAttribute("data-marketing-gallery-tab") === key;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+        tab.tabIndex = isActive ? 0 : -1;
 
-      slides.forEach(function (slide, slideIndex) {
-        slide.classList.toggle("is-active", slideIndex === activeIndex);
-      });
-
-      controls.forEach(function (control, controlIndex) {
-        var isActive = controlIndex === activeIndex;
-        control.classList.toggle("is-active", isActive);
-        control.setAttribute("aria-pressed", isActive ? "true" : "false");
-      });
-    };
-
-    var stopRotation = function () {
-      if (timer) {
-        window.clearInterval(timer);
-        timer = null;
-      }
-    };
-
-    var startRotation = function () {
-      stopRotation();
-
-      if (isPaused || reducedMotionQuery.matches || document.hidden) {
-        return;
-      }
-
-      timer = window.setInterval(function () {
-        setActiveSlide(activeIndex + 1);
-      }, 5000);
-    };
-
-    controls.forEach(function (control, index) {
-      control.addEventListener("click", function () {
-        setActiveSlide(index);
-        startRotation();
-      });
-    });
-
-    root.addEventListener("mouseenter", function () {
-      isPaused = true;
-      stopRotation();
-    });
-
-    root.addEventListener("mouseleave", function () {
-      isPaused = false;
-      startRotation();
-    });
-
-    root.addEventListener("focusin", function () {
-      isPaused = true;
-      stopRotation();
-    });
-
-    root.addEventListener("focusout", function () {
-      if (!root.contains(document.activeElement)) {
-        isPaused = false;
-        startRotation();
-      }
-    });
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        stopRotation();
-      } else {
-        startRotation();
-      }
-    });
-
-    if (typeof reducedMotionQuery.addEventListener === "function") {
-      reducedMotionQuery.addEventListener("change", startRotation);
-    } else if (typeof reducedMotionQuery.addListener === "function") {
-      reducedMotionQuery.addListener(startRotation);
-    }
-
-    setActiveSlide(0);
-    startRotation();
-  });
-
-  var processRoot = document.querySelector("[data-myta-process]");
-
-  if (processRoot) {
-    var desktopQuery = window.matchMedia("(min-width: 1101px)");
-    var checkpoints = Array.from(processRoot.querySelectorAll("[data-process-step]"));
-    var images = Array.from(processRoot.querySelectorAll("[data-process-image]"));
-    var triggers = Array.from(processRoot.querySelectorAll("[data-process-trigger]"));
-    var observer = null;
-    var activeStep = "1";
-
-    var setActiveProcessStep = function (step) {
-      if (!step || step === activeStep) {
-        return;
-      }
-
-      activeStep = step;
-      processRoot.dataset.activeStep = step;
-
-      checkpoints.forEach(function (checkpoint) {
-        var checkpointStep = checkpoint.getAttribute("data-process-step");
-        var isActive = checkpointStep === step;
-        var isComplete = Number(checkpointStep) < Number(step);
-
-        checkpoint.classList.toggle("is-active", isActive);
-        checkpoint.classList.toggle("is-complete", isComplete);
-      });
-
-      images.forEach(function (image) {
-        image.classList.toggle("is-active", image.getAttribute("data-process-image") === step);
-      });
-    };
-
-    var getClosestTriggerStep = function () {
-      var viewportCenter = window.innerHeight / 2;
-      var closestStep = activeStep;
-      var closestDistance = Infinity;
-
-      triggers.forEach(function (trigger) {
-        var rect = trigger.getBoundingClientRect();
-        var triggerCenter = rect.top + rect.height / 2;
-        var distance = Math.abs(triggerCenter - viewportCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestStep = trigger.getAttribute("data-process-trigger");
+        if (isActive && moveFocus) {
+          tab.focus();
         }
       });
 
-      return closestStep;
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-marketing-gallery-panel") !== key;
+      });
+
+      window.requestAnimationFrame(positionProductScrolls);
     };
 
-    var initializeProcessState = function () {
-      if (!triggers.length || !checkpoints.length || !images.length || !desktopQuery.matches) {
-        processRoot.classList.remove("is-enhanced");
-        return;
-      }
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () {
+        activate(tab.getAttribute("data-marketing-gallery-tab"), false);
+      });
 
-      processRoot.classList.add("is-enhanced");
-      setActiveProcessStep(getClosestTriggerStep() || "1");
-    };
+      tab.addEventListener("keydown", function (event) {
+        var nextIndex = index;
 
-    var disconnectObserver = function () {
-      if (observer) {
-        observer.disconnect();
-        observer = null;
-      }
-    };
-
-    var setupObserver = function () {
-      disconnectObserver();
-
-      if (!desktopQuery.matches || !triggers.length) {
-        initializeProcessState();
-        return;
-      }
-
-      observer = new IntersectionObserver(function (entries) {
-        var visibleEntries = entries.filter(function (entry) {
-          return entry.isIntersecting;
-        });
-
-        if (!visibleEntries.length) {
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = tabs.length - 1;
+        } else {
           return;
         }
 
-        visibleEntries.sort(function (a, b) {
-          return b.intersectionRatio - a.intersectionRatio;
-        });
-
-        setActiveProcessStep(visibleEntries[0].target.getAttribute("data-process-trigger"));
-      }, {
-        root: null,
-        rootMargin: "-42% 0px -42% 0px",
-        threshold: [0, 0.35, 0.7, 1]
-      });
-
-      triggers.forEach(function (trigger) {
-        observer.observe(trigger);
-      });
-
-      initializeProcessState();
-    };
-
-    if ("IntersectionObserver" in window) {
-      setupObserver();
-    } else {
-      initializeProcessState();
-    }
-
-    if (typeof desktopQuery.addEventListener === "function") {
-      desktopQuery.addEventListener("change", setupObserver);
-    } else if (typeof desktopQuery.addListener === "function") {
-      desktopQuery.addListener(setupObserver);
-    }
-
-    window.addEventListener("resize", function () {
-      initializeProcessState();
-    });
-  }
-
-  var differenceRoot = document.querySelector("[data-difference-accordion]");
-
-  if (differenceRoot) {
-    var differenceItems = Array.from(differenceRoot.querySelectorAll("details"));
-
-    var syncDifferenceState = function () {
-      differenceItems.forEach(function (item) {
-        var summary = item.querySelector("summary");
-
-        if (summary) {
-          summary.setAttribute("aria-expanded", item.open ? "true" : "false");
-        }
-      });
-    };
-
-    differenceItems.forEach(function (item) {
-      item.addEventListener("toggle", function () {
-        if (item.open) {
-          differenceItems.forEach(function (otherItem) {
-            if (otherItem !== item) {
-              otherItem.open = false;
-            }
-          });
-        }
-
-        syncDifferenceState();
+        event.preventDefault();
+        activate(tabs[nextIndex].getAttribute("data-marketing-gallery-tab"), true);
       });
     });
 
-    syncDifferenceState();
-  }
+    root.classList.add("is-enhanced");
+    activate(tabs[0].getAttribute("data-marketing-gallery-tab"), false);
+  });
+
+  document.querySelectorAll("[data-marketing-feedback]").forEach(function (root) {
+    var toggle = root.querySelector("[data-marketing-feedback-toggle]");
+    var panel = root.querySelector("[data-marketing-feedback-panel]");
+    var toggleLabel = toggle && toggle.querySelector("span");
+
+    if (!toggle || !panel) {
+      return;
+    }
+
+    var setFeedbackOpen = function (isOpen) {
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      panel.hidden = !isOpen;
+      root.dataset.feedbackOpen = isOpen ? "true" : "false";
+
+      if (toggleLabel) {
+        toggleLabel.textContent = isOpen ? "Close the feedback form" : "Open the feedback form";
+      }
+    };
+
+    toggle.addEventListener("click", function () {
+      setFeedbackOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    root.classList.add("is-enhanced");
+    setFeedbackOpen(window.location.hash === "#feedback-submitted");
+  });
+
+  positionProductScrolls();
 })();
