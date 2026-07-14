@@ -140,7 +140,7 @@
             </div>
           </div>
 
-          <p class="problem-conclusion">MyTA brings that middle into the course workflow as guided interactions and reviewable learning signals.</p>
+          <p class="problem-conclusion">MyTA brings that middle into the course workflow as guided work and learning signals.</p>
         </div>
       </section>
 
@@ -149,147 +149,78 @@
           <div class="section-heading walkthrough-heading">
             <p class="eyebrow">Product walkthrough</p>
             <h2 id="walkthrough-title">Set the context. Guide the work. See the signals.</h2>
-            <p class="section-lede">One assignment connects what the instructor intends, how the student works, and what the instructor can learn.</p>
+            <p class="section-lede">Follow one assignment from setup to student work to instructor insight.</p>
           </div>
 
-          <div class="product-gallery" data-marketing-gallery>
-            <div class="product-gallery-tabs" role="tablist" aria-label="MyTA product walkthrough">
-              <button
-                class="product-gallery-tab is-active"
-                id="gallery-tab-setup"
-                type="button"
-                role="tab"
-                aria-selected="true"
-                aria-controls="gallery-panel-setup"
-                data-marketing-gallery-tab="setup"
-              >
-                <span>01</span>
-                <strong>Create the assignment</strong>
-                <small>Bring in course context and define how AI may support the work.</small>
-              </button>
-              <button
-                class="product-gallery-tab"
-                id="gallery-tab-student"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="gallery-panel-student"
-                tabindex="-1"
-                data-marketing-gallery-tab="student"
-              >
-                <span>02</span>
-                <strong>Guide students while they work</strong>
-                <small>Questions, hints, and explanations support the thinking.</small>
-              </button>
-              <button
-                class="product-gallery-tab"
-                id="gallery-tab-insight"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="gallery-panel-insight"
-                tabindex="-1"
-                data-marketing-gallery-tab="insight"
-              >
-                <span>03</span>
-                <strong>Review the learning signals</strong>
-                <small>See recurring confusion, help requests, revisions, and question-level patterns.</small>
-              </button>
+          <div class="story-walkthrough" data-marketing-story>
+            <div class="story-stages">
+              <article class="story-stage is-active" data-marketing-story-step="setup">
+                <span class="story-stage-number">01</span>
+                <h3>Set the assignment context.</h3>
+                <p>Add course materials, set the objective, and define AI support.</p>
+                <ul aria-label="Assignment setup includes">
+                  <li>Course materials</li>
+                  <li>Learning objective</li>
+                  <li>Support rules</li>
+                </ul>
+                <figure class="story-mobile-visual">
+                  <div class="product-frame">
+                    <div class="product-frame-bar" aria-hidden="true"><span></span><span></span><span></span><small>Instructor assignment creation</small></div>
+                    <div class="product-image-scroll" aria-label="Scrollable MyTA instructor assignment creation screenshot" data-marketing-product-scroll="center">
+                      <img src="assets/images/hero-carousel/instructor-assignment-creation.png" alt="MyTA instructor assignment creation screen showing Manual Draft, Generate with AI, and Upload PDF" width="1304" height="726" loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="story-stage" data-marketing-story-step="student">
+                <span class="story-stage-number">02</span>
+                <h3>Guide students while they work.</h3>
+                <p>Students receive course-grounded questions and hints while remaining responsible for the final response.</p>
+                <ul aria-label="Guided student work includes">
+                  <li>Assignment question</li>
+                  <li>Guided AI Tutor</li>
+                  <li>Student response</li>
+                </ul>
+                <figure class="story-mobile-visual">
+                  <div class="product-frame">
+                    <div class="product-frame-bar" aria-hidden="true"><span></span><span></span><span></span><small>Student assignment with guided AI</small></div>
+                    <div class="product-image-scroll" aria-label="Scrollable MyTA student assignment screenshot" data-marketing-product-scroll="end">
+                      <img src="assets/images/hero-carousel/student-assignment-ai-tutor.png" alt="MyTA student assignment screen showing the homework question beside the AI Tutor" width="1316" height="737" loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+              </article>
+
+              <article class="story-stage" data-marketing-story-step="insight">
+                <span class="story-stage-number">03</span>
+                <h3>See the learning signals.</h3>
+                <p>Review where students struggled, requested help, revised, or may need support.</p>
+                <ul aria-label="Instructor insight includes">
+                  <li>Mastery patterns</li>
+                  <li>Question-level insight</li>
+                  <li>Support signals</li>
+                </ul>
+                <figure class="story-mobile-visual">
+                  <div class="product-frame">
+                    <div class="product-frame-bar" aria-hidden="true"><span></span><span></span><span></span><small>Assignment analytics</small></div>
+                    <div class="product-image-scroll" aria-label="Scrollable MyTA assignment analytics screenshot" data-marketing-product-scroll="center">
+                      <img src="assets/images/hero-carousel/assignment-analytics.png" alt="MyTA Assignment Analytics screen showing mastery and question-level learning insight" width="1300" height="682" loading="lazy">
+                    </div>
+                  </div>
+                </figure>
+              </article>
             </div>
 
-            <div class="product-gallery-panels">
-              <figure
-                class="product-gallery-panel"
-                id="gallery-panel-setup"
-                role="tabpanel"
-                aria-labelledby="gallery-tab-setup"
-                data-marketing-gallery-panel="setup"
-              >
-                <div class="product-frame product-frame-gallery">
-                  <div class="product-frame-bar" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <small>Instructor assignment creation</small>
-                  </div>
-                  <div
-                    class="product-image-scroll"
-                    aria-label="Scrollable MyTA instructor assignment creation screenshot"
-                    data-marketing-product-scroll="center"
-                  >
-                    <img
-                      src="assets/images/hero-carousel/instructor-assignment-creation.png"
-                      alt="MyTA instructor assignment creation screen with manual, AI-assisted, and PDF options"
-                      width="1304"
-                      height="726"
-                      loading="lazy"
-                    >
-                  </div>
+            <div class="story-sticky" aria-live="polite">
+              <div class="product-frame story-product-frame">
+                <div class="product-frame-bar" aria-hidden="true"><span></span><span></span><span></span><small data-marketing-story-label>Instructor assignment creation</small></div>
+                <div class="story-screens">
+                  <img class="is-active" data-marketing-story-screen="setup" src="assets/images/hero-carousel/instructor-assignment-creation.png" alt="MyTA instructor assignment creation screen showing Manual Draft, Generate with AI, and Upload PDF" width="1304" height="726">
+                  <img data-marketing-story-screen="student" src="assets/images/hero-carousel/student-assignment-ai-tutor.png" alt="MyTA student assignment screen showing the homework question beside the AI Tutor" width="1316" height="737">
+                  <img data-marketing-story-screen="insight" src="assets/images/hero-carousel/assignment-analytics.png" alt="MyTA Assignment Analytics screen showing mastery and question-level learning insight" width="1300" height="682">
                 </div>
-                <figcaption>Bring course materials, learning goals, and support rules into the assignment.</figcaption>
-              </figure>
-
-              <figure
-                class="product-gallery-panel"
-                id="gallery-panel-student"
-                role="tabpanel"
-                aria-labelledby="gallery-tab-student"
-                data-marketing-gallery-panel="student"
-              >
-                <div class="product-frame product-frame-gallery">
-                  <div class="product-frame-bar" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <small>Student assignment with guided AI</small>
-                  </div>
-                  <div
-                    class="product-image-scroll"
-                    aria-label="Scrollable MyTA student assignment screenshot"
-                    data-marketing-product-scroll="end"
-                  >
-                    <img
-                      src="assets/images/hero-carousel/student-assignment-ai-tutor.png"
-                      alt="MyTA student assignment screen showing the assignment and guided AI Tutor together"
-                      width="1316"
-                      height="737"
-                      loading="lazy"
-                    >
-                  </div>
-                </div>
-                <figcaption>Students stay responsible for the response while support stays connected to the task.</figcaption>
-              </figure>
-
-              <figure
-                class="product-gallery-panel"
-                id="gallery-panel-insight"
-                role="tabpanel"
-                aria-labelledby="gallery-tab-insight"
-                data-marketing-gallery-panel="insight"
-              >
-                <div class="product-frame product-frame-gallery">
-                  <div class="product-frame-bar" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <small>Instructor learning signals</small>
-                  </div>
-                  <div
-                    class="product-image-scroll"
-                    aria-label="Scrollable MyTA instructor analytics screenshot"
-                    data-marketing-product-scroll="center"
-                  >
-                    <img
-                      src="assets/images/hero-carousel/assignment-analytics.png"
-                      alt="MyTA instructor analytics screen with question performance, AI chat counts, and common student approaches"
-                      width="1300"
-                      height="682"
-                      loading="lazy"
-                    >
-                  </div>
-                </div>
-                <figcaption>Review observable patterns that can shape feedback, grading, and the next lesson.</figcaption>
-              </figure>
+              </div>
             </div>
           </div>
         </div>
@@ -387,21 +318,68 @@
       </section>
 
       <section class="difference section" id="difference" aria-labelledby="difference-title">
-        <div class="wrap difference-grid">
-          <div class="difference-intro">
+        <div class="wrap">
+          <div class="section-heading section-heading-split difference-heading">
+            <div>
             <p class="eyebrow">Why MyTA</p>
-            <h2 id="difference-title">The assignment is the system.</h2>
-            <p>MyTA is being developed around one assignment loop: instructor context, guided student work, and instructor insight.</p>
+              <h2 id="difference-title">The assignment is the workflow.</h2>
+            </div>
+            <p class="section-lede">Other products bring valuable AI to education. MyTA is being built around the instructor-defined assignment loop.</p>
           </div>
 
-          <div class="difference-rows" aria-label="How MyTA differs from other AI education categories">
-            <div class="difference-context">
-              <strong>What is often missing</strong>
-              <p>Publisher AI, LMS AI, and standalone tutors typically support one part of the experience, not the full assignment process.</p>
-            </div>
-            <div class="difference-row difference-row-myta">
-              <strong>MyTA</strong>
-              <p>Course context goes in. Guided work happens. Learning signals come back.</p>
+          <div class="comparison" data-marketing-comparison>
+            <aside class="myta-loop" aria-labelledby="myta-loop-title">
+              <p class="eyebrow">MyTA connects the loop</p>
+              <h3 id="myta-loop-title">One connected assignment process.</h3>
+              <ol>
+                <li>Instructor context</li>
+                <li>AI support rules</li>
+                <li>Guided student work</li>
+                <li>Struggle and revision signals</li>
+                <li>Instructor insight</li>
+              </ol>
+              <p>Instructor intent, student work, and instructor insight stay connected.</p>
+            </aside>
+
+            <div class="comparison-accordion" aria-label="How MyTA differs by product category">
+              <article class="comparison-item">
+                <h3>
+                  <button id="comparison-button-publisher" type="button" aria-expanded="false" aria-controls="comparison-panel-publisher" data-marketing-comparison-toggle="publisher">
+                    <span>Publisher ecosystems</span><small>Pearson, McGraw Hill Connect</small><i aria-hidden="true"></i>
+                  </button>
+                </h3>
+                <div class="comparison-panel" id="comparison-panel-publisher" role="region" aria-labelledby="comparison-button-publisher" data-marketing-comparison-panel="publisher">
+                  <p><strong>Organized around</strong> Publisher content, courseware, and assessment workflows.</p>
+                  <p><strong>Instructor consideration</strong> A natural fit when the course is built around that publisher's materials and platform.</p>
+                  <p><strong>MyTA begins with</strong> The instructor's own context, objectives, support rules, and assignment design.</p>
+                </div>
+              </article>
+
+              <article class="comparison-item">
+                <h3>
+                  <button id="comparison-button-lms" type="button" aria-expanded="false" aria-controls="comparison-panel-lms" data-marketing-comparison-toggle="lms">
+                    <span>LMS AI</span><small>D2L Lumi, Canvas IgniteAI</small><i aria-hidden="true"></i>
+                  </button>
+                </h3>
+                <div class="comparison-panel" id="comparison-panel-lms" role="region" aria-labelledby="comparison-button-lms" data-marketing-comparison-panel="lms">
+                  <p><strong>Organized around</strong> AI across course creation, accessibility, assessment, analytics, operations, and student support.</p>
+                  <p><strong>Instructor consideration</strong> The assignment learning process is one workflow within a broader platform.</p>
+                  <p><strong>MyTA is built around</strong> That assignment loop itself, from setup through guided work to learning signals.</p>
+                </div>
+              </article>
+
+              <article class="comparison-item">
+                <h3>
+                  <button id="comparison-button-tutors" type="button" aria-expanded="false" aria-controls="comparison-panel-tutors" data-marketing-comparison-toggle="tutors">
+                    <span>AI tutors and study assistants</span><small>Student-led help and practice</small><i aria-hidden="true"></i>
+                  </button>
+                </h3>
+                <div class="comparison-panel" id="comparison-panel-tutors" role="region" aria-labelledby="comparison-button-tutors" data-marketing-comparison-panel="tutors">
+                  <p><strong>Organized around</strong> Student questions, explanations, practice, and self-directed study support.</p>
+                  <p><strong>Instructor consideration</strong> The key question is how closely support follows the specific assignment and returns to the course workflow.</p>
+                  <p><strong>MyTA begins with</strong> The instructor-defined assignment, guides the student inside it, and returns useful signals.</p>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -456,7 +434,7 @@
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="/assets/js/marketing.js?v=public-rescue-4"></script>
+    <script defer src="/assets/js/marketing.js?v=story-comparison-1"></script>
     <script defer src="/assets/js/site.js?v=plain-form-post"></script>
   </body>
 </html>

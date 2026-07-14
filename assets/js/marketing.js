@@ -74,60 +74,78 @@
     setOpen(false);
   });
 
-  document.querySelectorAll("[data-marketing-gallery]").forEach(function (root) {
-    var tabs = Array.from(root.querySelectorAll("[data-marketing-gallery-tab]"));
-    var panels = Array.from(root.querySelectorAll("[data-marketing-gallery-panel]"));
+  document.querySelectorAll("[data-marketing-story]").forEach(function (root) {
+    var steps = Array.from(root.querySelectorAll("[data-marketing-story-step]"));
+    var screens = Array.from(root.querySelectorAll("[data-marketing-story-screen]"));
+    var label = root.querySelector("[data-marketing-story-label]");
+    var labels = {
+      setup: "Instructor assignment creation",
+      student: "Student assignment with guided AI",
+      insight: "Assignment analytics"
+    };
 
-    if (!tabs.length || tabs.length !== panels.length) {
+    if (!steps.length || steps.length !== screens.length) {
       return;
     }
 
-    var activate = function (key, moveFocus) {
-      tabs.forEach(function (tab) {
-        var isActive = tab.getAttribute("data-marketing-gallery-tab") === key;
-        tab.classList.toggle("is-active", isActive);
-        tab.setAttribute("aria-selected", isActive ? "true" : "false");
-        tab.tabIndex = isActive ? 0 : -1;
+    var activateStory = function (key) {
+      steps.forEach(function (step) {
+        step.classList.toggle("is-active", step.getAttribute("data-marketing-story-step") === key);
+      });
 
-        if (isActive && moveFocus) {
-          tab.focus();
-        }
+      screens.forEach(function (screen) {
+        screen.classList.toggle("is-active", screen.getAttribute("data-marketing-story-screen") === key);
+      });
+
+      if (label) {
+        label.textContent = labels[key] || labels.setup;
+      }
+    };
+
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            activateStory(entry.target.getAttribute("data-marketing-story-step"));
+          }
+        });
+      }, { rootMargin: "-42% 0px -42% 0px", threshold: 0 });
+
+      steps.forEach(function (step) {
+        observer.observe(step);
+      });
+    }
+
+    activateStory("setup");
+  });
+
+  document.querySelectorAll("[data-marketing-comparison]").forEach(function (root) {
+    var toggles = Array.from(root.querySelectorAll("[data-marketing-comparison-toggle]"));
+    var panels = Array.from(root.querySelectorAll("[data-marketing-comparison-panel]"));
+
+    if (!toggles.length || toggles.length !== panels.length) {
+      return;
+    }
+
+    var setComparison = function (key) {
+      toggles.forEach(function (toggle) {
+        toggle.setAttribute("aria-expanded", toggle.getAttribute("data-marketing-comparison-toggle") === key ? "true" : "false");
       });
 
       panels.forEach(function (panel) {
-        panel.hidden = panel.getAttribute("data-marketing-gallery-panel") !== key;
+        panel.hidden = panel.getAttribute("data-marketing-comparison-panel") !== key;
       });
-
-      window.requestAnimationFrame(positionProductScrolls);
     };
 
-    tabs.forEach(function (tab, index) {
-      tab.addEventListener("click", function () {
-        activate(tab.getAttribute("data-marketing-gallery-tab"), false);
-      });
-
-      tab.addEventListener("keydown", function (event) {
-        var nextIndex = index;
-
-        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-          nextIndex = (index + 1) % tabs.length;
-        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-          nextIndex = (index - 1 + tabs.length) % tabs.length;
-        } else if (event.key === "Home") {
-          nextIndex = 0;
-        } else if (event.key === "End") {
-          nextIndex = tabs.length - 1;
-        } else {
-          return;
-        }
-
-        event.preventDefault();
-        activate(tabs[nextIndex].getAttribute("data-marketing-gallery-tab"), true);
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener("click", function () {
+        var key = toggle.getAttribute("data-marketing-comparison-toggle");
+        setComparison(toggle.getAttribute("aria-expanded") === "true" ? "" : key);
       });
     });
 
     root.classList.add("is-enhanced");
-    activate(tabs[0].getAttribute("data-marketing-gallery-tab"), false);
+    setComparison("");
   });
 
   document.querySelectorAll("[data-marketing-feedback]").forEach(function (root) {
