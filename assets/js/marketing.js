@@ -145,7 +145,7 @@
     });
 
     root.classList.add("is-enhanced");
-    setComparison("");
+    setComparison(window.matchMedia("(min-width: 861px)").matches ? "lms" : "");
   });
 
   document.querySelectorAll("[data-marketing-feedback]").forEach(function (root) {

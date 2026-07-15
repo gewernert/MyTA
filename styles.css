@@ -953,7 +953,7 @@ strong {
 
 .review-list {
   display: grid;
-  gap: 20px;
+  gap: 18px;
   margin: 32px 0 0;
   padding: 0;
   list-style: none;
@@ -968,7 +968,7 @@ strong {
 
 .review-list strong,
 .review-list span {
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   line-height: 1.45;
 }
 
@@ -1845,7 +1845,7 @@ strong {
   }
 
   .story-stage {
-    padding: 46px 0;
+    padding: 40px 0;
   }
 
   .story-stage h3 {
@@ -1857,7 +1857,7 @@ strong {
   }
 
   .story-mobile-visual {
-    margin-top: 30px;
+    margin-top: 26px;
   }
 
   .difference-heading {
