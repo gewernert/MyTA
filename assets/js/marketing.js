@@ -111,7 +111,7 @@
             activateStory(entry.target.getAttribute("data-marketing-story-step"));
           }
         });
-      }, { rootMargin: "-49% 0px -49% 0px", threshold: 0 });
+      }, { rootMargin: "-46% 0px -46% 0px", threshold: 0 });
 
       steps.forEach(function (step) {
         observer.observe(step);
@@ -122,34 +122,54 @@
   });
 
   document.querySelectorAll("[data-marketing-mobile-story]").forEach(function (root) {
-    var disclosures = Array.from(root.querySelectorAll("details"));
+    var tabs = Array.from(root.querySelectorAll("[data-marketing-mobile-story-tab]"));
+    var panels = Array.from(root.querySelectorAll("[data-marketing-mobile-story-panel]"));
 
-    disclosures.forEach(function (disclosure) {
-      var summary = disclosure.querySelector("summary");
+    if (!tabs.length || tabs.length !== panels.length) {
+      return;
+    }
 
-      if (summary) {
-        summary.addEventListener("keydown", function (event) {
-          if (event.key !== "Enter" && event.key !== " ") {
-            return;
-          }
+    var activateTab = function (key, moveFocus) {
+      tabs.forEach(function (tab) {
+        var isActive = tab.getAttribute("data-marketing-mobile-story-tab") === key;
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+        tab.tabIndex = isActive ? 0 : -1;
+        if (isActive && moveFocus) {
+          tab.focus();
+        }
+      });
 
-          event.preventDefault();
-          disclosure.open = !disclosure.open;
-        });
-      }
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-marketing-mobile-story-panel") !== key;
+      });
+    };
 
-      disclosure.addEventListener("toggle", function () {
-        if (!disclosure.open) {
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () {
+        activateTab(tab.getAttribute("data-marketing-mobile-story-tab"), false);
+      });
+
+      tab.addEventListener("keydown", function (event) {
+        var nextIndex;
+
+        if (event.key === "ArrowRight") {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (event.key === "ArrowLeft") {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = tabs.length - 1;
+        } else {
           return;
         }
 
-        disclosures.forEach(function (other) {
-          if (other !== disclosure) {
-            other.open = false;
-          }
-        });
+        event.preventDefault();
+        activateTab(tabs[nextIndex].getAttribute("data-marketing-mobile-story-tab"), true);
       });
     });
+
+    activateTab(tabs[0].getAttribute("data-marketing-mobile-story-tab"), false);
   });
 
   document.querySelectorAll("[data-marketing-comparison]").forEach(function (root) {
