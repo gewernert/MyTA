@@ -13,13 +13,15 @@
         return;
       }
 
-      scroller.setAttribute("role", "region");
-      scroller.tabIndex = 0;
-
       var maxScroll = scroller.scrollWidth - scroller.clientWidth;
       if (maxScroll <= 0) {
+        scroller.removeAttribute("role");
+        scroller.removeAttribute("tabindex");
         return;
       }
+
+      scroller.setAttribute("role", "region");
+      scroller.tabIndex = 0;
 
       scroller.scrollLeft = scroller.getAttribute("data-marketing-product-scroll") === "end"
         ? maxScroll
@@ -109,7 +111,7 @@
             activateStory(entry.target.getAttribute("data-marketing-story-step"));
           }
         });
-      }, { rootMargin: "-42% 0px -42% 0px", threshold: 0 });
+      }, { rootMargin: "-49% 0px -49% 0px", threshold: 0 });
 
       steps.forEach(function (step) {
         observer.observe(step);
@@ -117,6 +119,37 @@
     }
 
     activateStory("setup");
+  });
+
+  document.querySelectorAll("[data-marketing-mobile-story]").forEach(function (root) {
+    var disclosures = Array.from(root.querySelectorAll("details"));
+
+    disclosures.forEach(function (disclosure) {
+      var summary = disclosure.querySelector("summary");
+
+      if (summary) {
+        summary.addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" && event.key !== " ") {
+            return;
+          }
+
+          event.preventDefault();
+          disclosure.open = !disclosure.open;
+        });
+      }
+
+      disclosure.addEventListener("toggle", function () {
+        if (!disclosure.open) {
+          return;
+        }
+
+        disclosures.forEach(function (other) {
+          if (other !== disclosure) {
+            other.open = false;
+          }
+        });
+      });
+    });
   });
 
   document.querySelectorAll("[data-marketing-comparison]").forEach(function (root) {
@@ -138,9 +171,19 @@
     };
 
     toggles.forEach(function (toggle) {
-      toggle.addEventListener("click", function () {
+      var toggleComparison = function () {
         var key = toggle.getAttribute("data-marketing-comparison-toggle");
         setComparison(toggle.getAttribute("aria-expanded") === "true" ? "" : key);
+      };
+
+      toggle.addEventListener("click", toggleComparison);
+      toggle.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter" && event.key !== " ") {
+          return;
+        }
+
+        event.preventDefault();
+        toggleComparison();
       });
     });
 
