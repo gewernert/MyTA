@@ -68,8 +68,9 @@
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && root.dataset.navOpen === "true") {
         setOpen(false);
+        toggle.focus();
       }
     });
 
@@ -169,6 +170,7 @@
       });
     });
 
+    root.classList.add("is-enhanced");
     activateTab(tabs[0].getAttribute("data-marketing-mobile-story-tab"), false);
   });
 

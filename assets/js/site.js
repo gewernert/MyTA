@@ -75,19 +75,26 @@
 
   var initFormValidation = function () {
     document.querySelectorAll("form[data-form-name]").forEach(function (form) {
-      form.addEventListener("input", function () {
+      form.addEventListener("input", function (event) {
         clearValidationMessage(form);
+        if (event.target && event.target.removeAttribute) {
+          event.target.removeAttribute("aria-invalid");
+        }
       });
 
-      form.addEventListener("change", function () {
+      form.addEventListener("change", function (event) {
         clearValidationMessage(form);
+        if (event.target && event.target.removeAttribute) {
+          event.target.removeAttribute("aria-invalid");
+        }
       });
 
       form.addEventListener("submit", function (event) {
         var requiredFields = Array.from(form.querySelectorAll("[required]")).filter(isVisibleField);
-        var missingRequired = requiredFields.some(function (field) {
+        var missingFields = requiredFields.filter(function (field) {
           return !fieldHasValue(field);
         });
+        var missingRequired = missingFields.length > 0;
         var emailField = form.querySelector('input[type="email"]');
         var invalidEmail = emailField && isVisibleField(emailField) && fieldHasValue(emailField) && !emailLooksValid(emailField);
 
@@ -98,12 +105,31 @@
 
         event.preventDefault();
 
-        if (missingRequired && invalidEmail) {
-          showValidationMessage(form, "Please complete all required fields and enter a valid email address with an @ and a dot.");
-        } else if (missingRequired) {
-          showValidationMessage(form, "Please complete all required fields before submitting.");
-        } else {
+        var invalidFields = missingFields.slice();
+        if (invalidEmail && invalidFields.indexOf(emailField) === -1) {
+          invalidFields.push(emailField);
+        }
+
+        requiredFields.forEach(function (field) {
+          field.removeAttribute("aria-invalid");
+        });
+
+        invalidFields.forEach(function (field) {
+          field.setAttribute("aria-invalid", "true");
+        });
+
+        var firstInvalid = invalidFields[0];
+        var fieldLabel = firstInvalid && firstInvalid.closest("label") && firstInvalid.closest("label").querySelector("span");
+        var fieldName = fieldLabel ? fieldLabel.textContent.trim() : "the highlighted field";
+
+        if (firstInvalid === emailField && invalidEmail) {
           showValidationMessage(form, "Please enter a valid email address with an @ and a dot.");
+        } else {
+          showValidationMessage(form, "Please complete the required field: " + fieldName + ".");
+        }
+
+        if (firstInvalid) {
+          firstInvalid.focus();
         }
       });
     });
