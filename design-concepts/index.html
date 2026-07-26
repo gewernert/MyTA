@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyTA concept comparison</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+    * { box-sizing: border-box; }
+    html { color: #172033; background: #fafaf7; font: 16px/1.55 "DM Sans", sans-serif; }
+    body { margin: 0; }
+    a { color: #1d4ed8; }
+    a:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+    header, main, footer { width: min(1280px, calc(100% - 40px)); margin-inline: auto; }
+    header { padding: 48px 0 30px; border-bottom: 1px solid #b8c0cc; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.05; }
+    h2 { font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.15; }
+    h3 { font-size: 1rem; }
+    .intro { max-width: 72ch; }
+    .concept { padding: 56px 0; border-bottom: 1px solid #b8c0cc; }
+    .thesis { max-width: 78ch; font-size: 1.125rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 22px 0 34px; }
+    .links a { min-height: 44px; display: inline-flex; align-items: center; }
+    .viewport-grid, .full-grid { display: grid; gap: 20px; }
+    .viewport-grid { grid-template-columns: minmax(0, 3fr) minmax(240px, 1fr); }
+    .full-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 28px; align-items: start; }
+    figure { margin: 0; min-width: 0; }
+    figcaption { margin-bottom: 8px; font-weight: 700; }
+    img { display: block; width: 100%; height: auto; border: 1px solid #b8c0cc; background: #fff; }
+    .limitations { padding: 48px 0; }
+    .limitations li { margin-bottom: 8px; }
+    footer { padding: 24px 0 48px; color: #4b5563; }
+    @media (max-width: 760px) {
+      header, main, footer { width: min(100% - 28px, 1280px); }
+      header { padding-top: 30px; }
+      .concept { padding: 40px 0; }
+      .viewport-grid, .full-grid { grid-template-columns: 1fr; }
+      .viewport-grid figure:last-child img, .full-grid figure:last-child img { width: min(100%, 390px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MyTA concept comparison</h1>
+    <p class="intro">Neutral internal review board for three static blueprint translations. The concepts are presented without ranking, scoring, recommendation, or selection.</p>
+  </header>
+  <main>
+    <section class="concept" aria-labelledby="concept-a-title">
+      <h2 id="concept-a-title">Concept A: Connected Assignment Loop</h2>
+      <p class="thesis">Make the connected assignment loop the visible structure of the page.</p>
+      <nav class="links" aria-label="Concept A review files">
+        <a href="concept-a/index.html">Open prototype</a>
+        <a href="concept-a/evidence-map.md">Evidence map</a>
+        <a href="concept-a/decision-log.md">Decision log</a>
+        <a href="concept-a/self-audit.md">Self-audit</a>
+      </nav>
+      <div class="viewport-grid">
+        <figure><figcaption>Desktop first viewport</figcaption><img src="screenshots/viewport/concept-a-desktop.png" alt="Concept A desktop first viewport"></figure>
+        <figure><figcaption>Mobile first viewport</figcaption><img src="screenshots/viewport/concept-a-mobile.png" alt="Concept A mobile first viewport"></figure>
+      </div>
+      <div class="full-grid">
+        <figure><figcaption>Desktop full page</figcaption><img src="screenshots/desktop/concept-a-full.png" alt="Concept A desktop full page"></figure>
+        <figure><figcaption>Tablet full page</figcaption><img src="screenshots/tablet/concept-a-full.png" alt="Concept A tablet full page"></figure>
+        <figure><figcaption>Mobile full page</figcaption><img src="screenshots/mobile/concept-a-full.png" alt="Concept A mobile full page"></figure>
+      </div>
+    </section>
+
+    <section class="concept" aria-labelledby="concept-b-title">
+      <h2 id="concept-b-title">Concept B: Editorial Academic Product</h2>
+      <p class="thesis">Present MyTA as a serious higher-education product with an editorial hierarchy and large, calm product evidence.</p>
+      <nav class="links" aria-label="Concept B review files">
+        <a href="concept-b/index.html">Open prototype</a>
+        <a href="concept-b/evidence-map.md">Evidence map</a>
+        <a href="concept-b/decision-log.md">Decision log</a>
+        <a href="concept-b/self-audit.md">Self-audit</a>
+      </nav>
+      <div class="viewport-grid">
+        <figure><figcaption>Desktop first viewport</figcaption><img src="screenshots/viewport/concept-b-desktop.png" alt="Concept B desktop first viewport"></figure>
+        <figure><figcaption>Mobile first viewport</figcaption><img src="screenshots/viewport/concept-b-mobile.png" alt="Concept B mobile first viewport"></figure>
+      </div>
+      <div class="full-grid">
+        <figure><figcaption>Desktop full page</figcaption><img src="screenshots/desktop/concept-b-full.png" alt="Concept B desktop full page"></figure>
+        <figure><figcaption>Tablet full page</figcaption><img src="screenshots/tablet/concept-b-full.png" alt="Concept B tablet full page"></figure>
+        <figure><figcaption>Mobile full page</figcaption><img src="screenshots/mobile/concept-b-full.png" alt="Concept B mobile full page"></figure>
+      </div>
+    </section>
+
+    <section class="concept" aria-labelledby="concept-c-title">
+      <h2 id="concept-c-title">Concept C: Precision Course Workflow</h2>
+      <p class="thesis">Make the website exceptionally clear and practical for an instructor evaluating one course, while retaining a professional higher-education tone.</p>
+      <nav class="links" aria-label="Concept C review files">
+        <a href="concept-c/index.html">Open prototype</a>
+        <a href="concept-c/evidence-map.md">Evidence map</a>
+        <a href="concept-c/decision-log.md">Decision log</a>
+        <a href="concept-c/self-audit.md">Self-audit</a>
+      </nav>
+      <div class="viewport-grid">
+        <figure><figcaption>Desktop first viewport</figcaption><img src="screenshots/viewport/concept-c-desktop.png" alt="Concept C desktop first viewport"></figure>
+        <figure><figcaption>Mobile first viewport</figcaption><img src="screenshots/viewport/concept-c-mobile.png" alt="Concept C mobile first viewport"></figure>
+      </div>
+      <div class="full-grid">
+        <figure><figcaption>Desktop full page</figcaption><img src="screenshots/desktop/concept-c-full.png" alt="Concept C desktop full page"></figure>
+        <figure><figcaption>Tablet full page</figcaption><img src="screenshots/tablet/concept-c-full.png" alt="Concept C tablet full page"></figure>
+        <figure><figcaption>Mobile full page</figcaption><img src="screenshots/mobile/concept-c-full.png" alt="Concept C mobile full page"></figure>
+      </div>
+    </section>
+
+    <section class="limitations" aria-labelledby="limitations-title">
+      <h2 id="limitations-title">Known limitations</h2>
+      <ul>
+        <li>All product frames are structural internal placeholders, not representations of finished product functionality.</li>
+        <li>DM Sans is loaded from the official Google Fonts stylesheet and therefore requires network access.</li>
+        <li>Request a Pilot links move to the closing prototype section; these review artifacts contain no form.</li>
+        <li>Watch the Demo and Demo navigation links point to the existing repository Demo route, which was not modified.</li>
+        <li>These artifacts translate the approved blueprints for review and are not production designs.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>Internal visual concept review artifact</footer>
+</body>
+</html>

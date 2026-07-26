@@ -1,0 +1,409 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --blue: #2563eb;
+  --teal: #16a085;
+  --cyan: #38bdf8;
+  --ink: #172033;
+  --light: #fafaf7;
+  --soft: #eaf2ff;
+  --white: #ffffff;
+  --rule: #d8dee8;
+  --muted: #586274;
+  --max: 1200px;
+  color-scheme: light;
+  font-family: "DM Sans", sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--white);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.site-header {
+  min-height: 72px;
+  border-bottom: 1px solid rgba(23, 32, 51, 0.1);
+  background: var(--white);
+}
+
+.header-inner,
+.section-inner,
+.footer-inner {
+  width: min(var(--max), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.header-inner {
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 32px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 21px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-nav a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--blue);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.button:hover {
+  background: #1f55cc;
+}
+
+.button-secondary {
+  border-color: #aeb8c8;
+  background: transparent;
+  color: var(--ink);
+}
+
+.button-secondary:hover {
+  border-color: var(--blue);
+  background: var(--soft);
+}
+
+:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+section {
+  position: relative;
+  padding-block: 112px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: clamp(4rem, 5vw, 4.5rem);
+  line-height: 1.01;
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: clamp(2.625rem, 4vw, 3.25rem);
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+}
+
+h3 {
+  margin-bottom: 16px;
+  font-size: clamp(1.625rem, 2.2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.large-copy {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.58;
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: var(--blue);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.quiet {
+  color: var(--muted);
+}
+
+.rule-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.rule-list li {
+  padding-block: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.rule-list h3 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.rule-list p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.institutional-note {
+  padding: 32px;
+  background: var(--light);
+  border-left: 3px solid var(--teal);
+}
+
+.institutional-note h3 {
+  font-size: 26px;
+}
+
+.institutional-note p:last-child {
+  margin-bottom: 0;
+}
+
+.pilot-panel {
+  padding: 64px;
+  background: var(--light);
+  border: 1px solid var(--rule);
+}
+
+.pilot-panel p {
+  max-width: 700px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  background: var(--white);
+}
+
+.footer-inner {
+  display: flex;
+  min-height: 120px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--blue);
+}
+
+.concept-note {
+  margin: 0;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--light);
+  color: var(--muted);
+  font-size: 16px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .header-inner,
+  .section-inner,
+  .footer-inner {
+    width: min(928px, calc(100% - 96px));
+  }
+
+  .header-inner {
+    gap: 20px;
+  }
+
+  .site-nav {
+    gap: 18px;
+  }
+
+  section {
+    padding-block: 88px;
+  }
+
+  h1 {
+    font-size: 58px;
+  }
+
+  h2 {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .header-inner,
+  .section-inner,
+  .footer-inner {
+    width: calc(100% - 40px);
+  }
+
+  .site-header,
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 19px;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .header-action {
+    min-height: 42px;
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+
+  section {
+    padding-block: 72px;
+  }
+
+  h1 {
+    font-size: clamp(42px, 12vw, 48px);
+    line-height: 1.02;
+  }
+
+  h2 {
+    font-size: clamp(32px, 9.5vw, 38px);
+    line-height: 1.08;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  .large-copy {
+    font-size: 18px;
+  }
+
+  .button-row {
+    align-items: stretch;
+  }
+
+  .button-row .button {
+    flex: 1 1 150px;
+  }
+
+  .pilot-panel {
+    padding: 32px 24px;
+  }
+
+  .footer-inner {
+    min-height: 0;
+    padding-block: 40px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-links {
+    gap: 14px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

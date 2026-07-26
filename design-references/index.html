@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyTA internal visual evidence board</title>
+  <style>
+    :root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #202124; background: #f3f4f6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header, main { width: min(1400px, calc(100% - 32px)); margin-inline: auto; }
+    header { padding: 32px 0 20px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    header p { margin: 0; color: #5f6368; }
+    article { margin: 0 0 24px; padding: 20px; border: 1px solid #d7d9dd; background: #fff; border-radius: 6px; }
+    h2 { margin: 0 0 6px; font-size: 22px; }
+    .role { margin: 0 0 8px; color: #4f565e; }
+    .url { overflow-wrap: anywhere; }
+    .screens { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 390px); gap: 16px; align-items: start; margin: 18px 0; }
+    figure { margin: 0; min-width: 0; }
+    figcaption { margin-bottom: 6px; font-weight: 700; }
+    img { display: block; width: 100%; height: auto; border: 1px solid #c9ccd1; background: #eee; }
+    .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .notes section { padding: 14px; border: 1px solid #e0e2e5; background: #fafafa; }
+    h3 { margin: 0 0 8px; font-size: 16px; }
+    ul { margin: 0; padding-left: 20px; }
+    li + li { margin-top: 4px; }
+    .meta { margin-top: 14px; padding-top: 12px; border-top: 1px solid #e0e2e5; }
+    .meta p { margin: 5px 0; }
+    @media (max-width: 720px) {
+      header, main { width: min(100% - 20px, 1400px); }
+      header { padding-top: 22px; }
+      article { padding: 14px; }
+      .screens, .notes { grid-template-columns: 1fr; }
+      .screens figure:nth-child(2) { width: min(390px, 100%); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MyTA internal visual evidence board</h1>
+    <p>Source captures for research only. This is not a MyTA visual concept or production page.</p>
+  </header>
+  <main id="board"></main>
+  <script>
+    const references = [
+      ["01","Google for Education","Education-first brand expression","https://edu.google.com/","google-for-education",
+        ["Human education context","Product UI integrated into a broader visual story","Continuous promise-to-product transition"],
+        ["Google brand colors","Rainforest concept","Broad platform positioning","Recreating high-budget scroll animation"],
+        ["Instructor","University leader","Designer","Founder"],
+        "Desktop centers the promise above a device transition. Mobile narrows the headline and places the device after copy.",
+        "Stable animation frame captured; no attempt to flatten the entire scroll sequence."],
+      ["02","Linear","Product scale and precise hierarchy","https://linear.app/homepage","linear",
+        ["Dominant product interface","Precise alignment","Restrained supporting copy","One focal visual"],
+        ["Dark identity","Exact typography","Product-development language","Brand-specific motion"],
+        ["Designer","Marketing consultant","Founder"],
+        "Desktop uses a large dark product canvas. Mobile stacks copy, action, and product evidence.",
+        "Stable representative interface state captured after the opening animation settled."],
+      ["03","Class Companion","Immediate educator value and assignment proof","https://classcompanion.com/","class-companion",
+        ["Direct educator benefit","Product experience near the opening","Short path from promise to proof","Assignment-level framing"],
+        ["K–12 tone","Superpower language","Outcome statistics","Free self-service conversion"],
+        ["Instructor","Teaching and learning leader","Marketing consultant"],
+        "Desktop uses a copy/interface split. Mobile stacks copy, the assignment UI, then the trial.",
+        "Cookie overlay dismissed. Current heading matches the manifest."],
+      ["04","Turnitin Clarity product section","Assignment control and process visibility","https://in.turnitin.com/products/feedback-studio/clarity","turnitin-clarity-product-section",
+        ["Assignment-level specificity","Configurable AI support","Real student workspace","Product proof beside practical outcomes"],
+        ["Detection-first framing","Proof-of-process category","Surveillance detail","Writing-only positioning"],
+        ["Instructor","Teaching and learning leader","Student advocate","Founder"],
+        "Alternating copy and product proof on desktop becomes a single-column product sequence on mobile.",
+        "Captured through Integrity insights all in one place; cookie overlay dismissed."],
+      ["05","Granola lifecycle","Continuous three-stage workflow","https://www.granola.ai/","granola-lifecycle",
+        ["One clear lifecycle","Stable visual logic across stages","Short stage copy","Continuous narrative"],
+        ["Meeting language","Notes metaphors","Brand styling","Privacy claims"],
+        ["Designer","Marketing consultant","Founder"],
+        "Desktop keeps a stage rail beside the lifecycle. Mobile stacks the three stages and their product evidence.",
+        "Single tall crop per viewport; no stitch seam."],
+      ["06","Gradescope","Reduce course-change anxiety","https://www.gradescope.com/","gradescope",
+        ["Existing-assignment compatibility","Practical instructor language","Concrete workflow","Real product evidence"],
+        ["Grading-time claims","Cheating-prevention claims","Exact workflow","Dense assignment-type lists"],
+        ["Instructor","University leader","Marketing consultant"],
+        "A horizontal four-step workflow on desktop compresses for mobile while retaining scan-to-analytics order.",
+        "One selected Exams workflow captured; other tabs excluded."],
+      ["07","SchoolAI Spaces","Teacher-defined experience and action-oriented insight","https://schoolai.com/products/spaces","schoolai-spaces",
+        ["Teacher-defined environment","Visible setup-to-student relationship","Instructor insight tied to next action","Real product states"],
+        ["K–12 tone","Universal personalization claims","Mastery claims","District-scale positioning"],
+        ["Instructor","Teaching and learning leader","Founder","Student advocate"],
+        "Alternating desktop product/copy sections become stacked on mobile.",
+        "Cookie dismissed; the complete target sequence was scrolled through before capture so lazy-loaded product states render without abnormal blank gaps."],
+      ["08","Instructure IgniteAI","Teaching alignment, control, adoption, and trust","https://www.instructure.com/igniteai","instructure-igniteai",
+        ["Alignment with how educators teach","Control and visibility","Product value before trust details","Separate adoption layer"],
+        ["Canvas-specific claims","Enterprise breadth","Compliance claims","Unified platform positioning"],
+        ["University leader","IT reviewer","Instructor","Marketing consultant"],
+        "Parallel non-negotiable cards on desktop stack into a trust and adoption hierarchy on mobile.",
+        "Captured from hero through the adoption layer."],
+      ["09","OpenAI Solutions for Education","Institutional information hierarchy","https://openai.com/business/solutions/education/","openai-solutions-education",
+        ["Product value before institutional detail","Clear audience layers","Calm institutional tone","Contained trust information"],
+        ["Campus-wide platform positioning","Scale claims","Customer logos","OpenAI visual identity"],
+        ["University leader","IT reviewer","Designer"],
+        "Institutional priorities run as four columns on desktop and stack on mobile.",
+        "Opening and first priority transition captured."],
+      ["10","Turnitin Clarity CTA","Low-pressure product walkthrough conversion","https://in.turnitin.com/products/feedback-studio/clarity","turnitin-clarity-cta",
+        ["Walkthrough before commitment","Low-pressure tone","Clear reason to contact","One focused action"],
+        ["Webinar format","Enterprise sales language","Institution-scale purchase framing"],
+        ["Instructor","University leader","Marketing consultant"],
+        "Contained desktop CTA becomes a stacked mobile invitation and action.",
+        "Captured before Why choose Turnitin Clarity; cookie overlay dismissed."],
+      ["11","Nectir AI","Competitive boundary for higher-education AI","https://www.nectir.io/","nectir-ai",
+        ["Higher-education specificity","Course-content grounding","LMS-fit awareness","Audience separation"],
+        ["Supercharge language","Transform-instantly language","Broad campus infrastructure positioning","Generic AI-assistant category"],
+        ["Founder","Marketing consultant","University leader","Designer"],
+        "Centered hero remains centered on mobile; buttons reorder and stack above the mockup.",
+        "Cookie and chat prompts dismissed; the product mockup is unobstructed."],
+      ["12","Canvas Plus for Higher Education","Competitive boundary for visibility and action","https://www.instructure.com/canvas-tiers/canvas-plus-higher-education","canvas-plus-higher-education",
+        ["Actionable instructor language","Signals tied to support","Higher-education tone"],
+        ["Broad LMS ecosystem positioning","Campus-wide scale","Analytics as the product center","Claims MyTA cannot verify"],
+        ["Founder","University leader","Marketing consultant","Instructor"],
+        "Split desktop hero and three benefit columns become a stacked mobile hierarchy.",
+        "Opening and three benefits captured through Enable timely support and intervention."]
+    ];
+    const list = items => `<ul>${items.map(item => `<li>${item}</li>`).join("")}</ul>`;
+    document.querySelector("#board").innerHTML = references.map(r => `
+      <article>
+        <h2>${r[0]}. ${r[1]}</h2>
+        <p class="role">${r[2]}</p>
+        <a class="url" href="${r[3]}">${r[3]}</a>
+        <div class="screens">
+          <figure><figcaption>Desktop</figcaption><img src="screenshots/desktop/${r[0]}-${r[4]}.png" alt="${r[1]} desktop reference capture"></figure>
+          <figure><figcaption>Mobile</figcaption><img src="screenshots/mobile/${r[0]}-${r[4]}.png" alt="${r[1]} mobile reference capture"></figure>
+        </div>
+        <div class="notes">
+          <section><h3>What MyTA may borrow</h3>${list(r[5])}</section>
+          <section><h3>What MyTA must reject</h3>${list(r[6])}</section>
+        </div>
+        <div class="meta">
+          <p><strong>Persona gates:</strong> ${r[7].join(", ")}</p>
+          <p><strong>Responsive observation:</strong> ${r[8]}</p>
+          <p><strong>Capture limitation or change:</strong> ${r[9]}</p>
+        </div>
+      </article>`).join("");
+  </script>
+</body>
+</html>

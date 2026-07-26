@@ -1,0 +1,343 @@
+.hero-c {
+  padding-top: 88px;
+}
+
+.hero-grid-c {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-copy-c .button-row {
+  margin-top: 32px;
+}
+
+.hero-workspace-c {
+  min-width: 0;
+}
+
+.annotation-strip-c {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+  background: var(--white);
+}
+
+.annotation-strip-c span {
+  padding: 10px 12px;
+  border-right: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.annotation-strip-c span:last-child {
+  border-right: 0;
+}
+
+.problem-c {
+  background: var(--light);
+}
+
+.problem-heading-c {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: end;
+}
+
+.timeline-c {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-top: 72px;
+  border-top: 2px solid var(--ink);
+}
+
+.timeline-end-c,
+.timeline-middle-c {
+  padding: 24px 20px;
+}
+
+.timeline-middle-c {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 18px;
+  border-right: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+
+.timeline-middle-c strong {
+  grid-column: 1 / -1;
+  color: var(--blue);
+}
+
+.timeline-middle-c span {
+  color: var(--muted);
+}
+
+.timeline-end-c:last-child {
+  text-align: right;
+}
+
+.timeline-bridge-c {
+  max-width: 900px;
+  margin: 32px 0 0;
+  font-size: 19px;
+}
+
+.walk-intro-c {
+  max-width: 850px;
+  margin-bottom: 80px;
+}
+
+.workflow-shell-c {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 48px;
+}
+
+.workflow-index-c {
+  display: flex;
+  position: sticky;
+  top: 104px;
+  height: fit-content;
+  flex-direction: column;
+  border-left: 2px solid var(--rule);
+}
+
+.workflow-index-c span {
+  position: relative;
+  padding: 18px 0 18px 24px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.workflow-index-c span.current {
+  color: var(--blue);
+}
+
+.workflow-index-c span.current::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: 2px;
+  background: var(--blue);
+}
+
+.workflow-state-c {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 96px;
+  padding-bottom: 96px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.workflow-step-c {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.workflow-copy-c p {
+  color: var(--muted);
+}
+
+.workflow-labels-c {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.actions-c {
+  grid-column: 2;
+  margin: -64px 0 0;
+  color: var(--teal);
+}
+
+.why-c {
+  background: var(--white);
+}
+
+.why-heading-c {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.points-c {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  margin-block: 64px;
+  border-top: 1px solid var(--rule);
+}
+
+.points-c > div {
+  padding-block: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.points-c h3 {
+  font-size: 24px;
+}
+
+.points-c p {
+  color: var(--muted);
+}
+
+.adoption-c {
+  padding: 40px;
+  background: var(--soft);
+  border-left: 3px solid var(--blue);
+}
+
+.adoption-c p:last-child {
+  margin-bottom: 0;
+}
+
+.pilot-c {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px 48px;
+  align-items: center;
+}
+
+.pilot-c > div:first-child {
+  grid-column: 1 / -1;
+}
+
+.expectation-c {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.pilot-c > p:last-child {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid-c,
+  .problem-heading-c,
+  .why-heading-c {
+    gap: 40px;
+  }
+
+  .workflow-shell-c {
+    grid-template-columns: 130px 1fr;
+    gap: 32px;
+  }
+
+  .workflow-state-c {
+    grid-template-columns: 1fr;
+  }
+
+  .actions-c {
+    grid-column: 1;
+    margin-top: -64px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-c {
+    padding-top: 64px;
+  }
+
+  .hero-grid-c,
+  .problem-heading-c,
+  .why-heading-c,
+  .pilot-c {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-workspace-c {
+    margin-top: 40px;
+  }
+
+  .annotation-strip-c {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .annotation-strip-c span:nth-child(n + 3) {
+    display: none;
+  }
+
+  .timeline-c {
+    grid-template-columns: 1fr;
+    padding-left: 20px;
+    border-top: 0;
+    border-left: 2px solid var(--ink);
+  }
+
+  .timeline-end-c,
+  .timeline-middle-c {
+    padding: 16px 0 16px 20px;
+  }
+
+  .timeline-middle-c {
+    grid-template-columns: 1fr 1fr;
+    border: 0;
+  }
+
+  .timeline-end-c:last-child {
+    text-align: left;
+  }
+
+  .workflow-shell-c {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-index-c {
+    display: grid;
+    position: static;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 2px solid var(--rule);
+    border-left: 0;
+  }
+
+  .workflow-index-c span {
+    padding: 12px 4px;
+    text-align: center;
+  }
+
+  .workflow-index-c span.current::before {
+    top: -2px;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: auto;
+    height: 2px;
+  }
+
+  .workflow-state-c {
+    gap: 24px;
+    margin-bottom: 72px;
+    padding-bottom: 72px;
+  }
+
+  .actions-c {
+    margin-top: -44px;
+  }
+
+  .points-c {
+    grid-template-columns: 1fr;
+  }
+
+  .adoption-c {
+    padding: 28px 24px;
+  }
+
+  .pilot-c > div:first-child,
+  .pilot-c > p:last-child {
+    grid-column: 1;
+  }
+}

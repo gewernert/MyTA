@@ -1,0 +1,413 @@
+[
+  {
+    "id": "01",
+    "name": "Google for Education",
+    "url": "https://edu.google.com/",
+    "role": "Education-first brand expression",
+    "desktop": {
+      "anchor": "Elevating Educators. Empowering Learners.",
+      "capture": "Capture one stable hero/product-transition state showing the headline and Google Classroom product UI. Do not attempt to flatten the entire scroll animation into one image."
+    },
+    "mobile": {
+      "anchor": "Elevating Educators. Empowering Learners.",
+      "capture": "Capture the opening and the first stable product state at 390\u00d7844."
+    },
+    "borrow": [
+      "Human education context",
+      "Product UI integrated into a broader visual story",
+      "Continuous promise-to-product transition"
+    ],
+    "reject": [
+      "Google brand colors",
+      "Rainforest concept",
+      "Broad platform positioning",
+      "Recreating high-budget scroll animation"
+    ],
+    "personas": [
+      "Instructor",
+      "University leader",
+      "Designer",
+      "Founder"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "construction_or_primary_customer",
+    "measurement_level": "detailed"
+  },
+  {
+    "id": "02",
+    "name": "Linear",
+    "url": "https://linear.app/homepage",
+    "role": "Product scale and precise hierarchy",
+    "desktop": {
+      "anchor": "The product development system for teams and agents",
+      "capture": "Capture the full hero and dominant interface through the beginning of \u2018A new species of product tool.\u2019"
+    },
+    "mobile": {
+      "anchor": "The product development system for teams and agents",
+      "capture": "Capture the mobile hero, primary action, and first product evidence."
+    },
+    "borrow": [
+      "Dominant product interface",
+      "Precise alignment",
+      "Restrained supporting copy",
+      "One focal visual"
+    ],
+    "reject": [
+      "Dark identity",
+      "Exact typography",
+      "Product-development language",
+      "Brand-specific motion"
+    ],
+    "personas": [
+      "Designer",
+      "Marketing consultant",
+      "Founder"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "construction_or_primary_customer",
+    "measurement_level": "detailed"
+  },
+  {
+    "id": "03",
+    "name": "Class Companion",
+    "url": "https://classcompanion.com/",
+    "role": "Immediate educator value and assignment proof",
+    "desktop": {
+      "anchor": "Give students AI tutoring and instant feedback on assignments",
+      "capture": "Capture the hero and \u2018Try an assignment\u2019 area only. Stop before social proof."
+    },
+    "mobile": {
+      "anchor": "Give students AI tutoring and instant feedback on assignments",
+      "capture": "Capture the mobile hero and the beginning of the assignment trial."
+    },
+    "borrow": [
+      "Direct educator benefit",
+      "Product experience near the opening",
+      "Short path from promise to proof",
+      "Assignment-level framing"
+    ],
+    "reject": [
+      "K\u201312 tone",
+      "Superpower language",
+      "Outcome statistics",
+      "Free self-service conversion"
+    ],
+    "personas": [
+      "Instructor",
+      "Teaching and learning leader",
+      "Marketing consultant"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "construction_or_primary_customer",
+    "measurement_level": "detailed"
+  },
+  {
+    "id": "04",
+    "name": "Turnitin Clarity product section",
+    "url": "https://in.turnitin.com/products/feedback-studio/clarity",
+    "role": "Assignment control and process visibility",
+    "desktop": {
+      "anchor": "Why choose Turnitin Clarity?",
+      "capture": "Capture only the \u2018Why choose Turnitin Clarity?\u2019 feature section through \u2018Integrity insights all in one place.\u2019 Exclude testimonials, form, and FAQ."
+    },
+    "mobile": {
+      "anchor": "Why choose Turnitin Clarity?",
+      "capture": "Capture the mobile feature section through the configurable AI assistant and process-visibility content."
+    },
+    "borrow": [
+      "Assignment-level specificity",
+      "Configurable AI support",
+      "Real student workspace",
+      "Product proof beside practical outcomes"
+    ],
+    "reject": [
+      "Detection-first framing",
+      "Proof-of-process category",
+      "Surveillance detail",
+      "Writing-only positioning"
+    ],
+    "personas": [
+      "Instructor",
+      "Teaching and learning leader",
+      "Student advocate",
+      "Founder"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "construction_or_primary_customer",
+    "measurement_level": "detailed"
+  },
+  {
+    "id": "05",
+    "name": "Granola lifecycle",
+    "url": "https://www.granola.ai/",
+    "role": "Continuous three-stage workflow",
+    "desktop": {
+      "anchor": "Granola helps you before, during and after your meetings.",
+      "capture": "Capture the complete lifecycle section from the heading through the three stage headings. Use a stitched audit image only if necessary and clearly record seams."
+    },
+    "mobile": {
+      "anchor": "Granola helps you before, during and after your meetings.",
+      "capture": "Capture how the three stages stack and how product evidence remains associated with each stage."
+    },
+    "borrow": [
+      "One clear lifecycle",
+      "Stable visual logic across stages",
+      "Short stage copy",
+      "Continuous narrative"
+    ],
+    "reject": [
+      "Meeting language",
+      "Notes metaphors",
+      "Brand styling",
+      "Privacy claims"
+    ],
+    "personas": [
+      "Designer",
+      "Marketing consultant",
+      "Founder"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "construction_or_primary_customer",
+    "measurement_level": "detailed"
+  },
+  {
+    "id": "06",
+    "name": "Gradescope",
+    "url": "https://www.gradescope.com/",
+    "role": "Reduce course-change anxiety",
+    "desktop": {
+      "anchor": "Use Your Existing Assignments",
+      "capture": "Capture the heading and one selected assignment workflow only. Do not capture every assignment-type tab."
+    },
+    "mobile": {
+      "anchor": "Use Your Existing Assignments",
+      "capture": "Capture the mobile heading and one workflow sequence through analytics."
+    },
+    "borrow": [
+      "Existing-assignment compatibility",
+      "Practical instructor language",
+      "Concrete workflow",
+      "Real product evidence"
+    ],
+    "reject": [
+      "Grading-time claims",
+      "Cheating-prevention claims",
+      "Exact workflow",
+      "Dense assignment-type lists"
+    ],
+    "personas": [
+      "Instructor",
+      "University leader",
+      "Marketing consultant"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "construction_or_primary_customer",
+    "measurement_level": "detailed"
+  },
+  {
+    "id": "07",
+    "name": "SchoolAI Spaces",
+    "url": "https://schoolai.com/products/spaces",
+    "role": "Teacher-defined experience and action-oriented insight",
+    "desktop": {
+      "anchor": "Give every student a personalized learning experience",
+      "capture": "Capture hero through \u2018Build your teaching style into every response,\u2019 including the teacher setup, student experience, and insight states."
+    },
+    "mobile": {
+      "anchor": "Give every student a personalized learning experience",
+      "capture": "Capture the same product sequence at mobile width, noting how product screenshots and copy alternate."
+    },
+    "borrow": [
+      "Teacher-defined environment",
+      "Visible setup-to-student relationship",
+      "Instructor insight tied to next action",
+      "Real product states"
+    ],
+    "reject": [
+      "K\u201312 tone",
+      "Universal personalization claims",
+      "Mastery claims",
+      "District-scale positioning"
+    ],
+    "personas": [
+      "Instructor",
+      "Teaching and learning leader",
+      "Founder",
+      "Student advocate"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "market_or_competitive_boundary",
+    "measurement_level": "basic"
+  },
+  {
+    "id": "08",
+    "name": "Instructure IgniteAI",
+    "url": "https://www.instructure.com/igniteai",
+    "role": "Teaching alignment, control, adoption, and trust",
+    "desktop": {
+      "anchor": "Unify AI tools into one cohesive user experience.",
+      "capture": "Capture the hero and \u2018Our non-negotiables\u2019 through \u2018Adoption that works in practice.\u2019 Exclude later use-case tabs."
+    },
+    "mobile": {
+      "anchor": "Unify AI tools into one cohesive user experience.",
+      "capture": "Capture the mobile hero and the trust/adoption hierarchy."
+    },
+    "borrow": [
+      "Alignment with how educators teach",
+      "Control and visibility",
+      "Product value before trust details",
+      "Separate adoption layer"
+    ],
+    "reject": [
+      "Canvas-specific claims",
+      "Enterprise breadth",
+      "Compliance claims",
+      "Unified platform positioning"
+    ],
+    "personas": [
+      "University leader",
+      "IT reviewer",
+      "Instructor",
+      "Marketing consultant"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "market_or_competitive_boundary",
+    "measurement_level": "basic"
+  },
+  {
+    "id": "09",
+    "name": "OpenAI Solutions for Education",
+    "url": "https://openai.com/business/solutions/education/",
+    "role": "Institutional information hierarchy",
+    "desktop": {
+      "anchor": "AI built for campuses that shape what\u2019s next",
+      "capture": "Capture the hero and the opening of \u2018Supporting mission-critical priorities across campus.\u2019"
+    },
+    "mobile": {
+      "anchor": "AI built for campuses that shape what\u2019s next",
+      "capture": "Capture the mobile opening and first institutional-priority transition."
+    },
+    "borrow": [
+      "Product value before institutional detail",
+      "Clear audience layers",
+      "Calm institutional tone",
+      "Contained trust information"
+    ],
+    "reject": [
+      "Campus-wide platform positioning",
+      "Scale claims",
+      "Customer logos",
+      "OpenAI visual identity"
+    ],
+    "personas": [
+      "University leader",
+      "IT reviewer",
+      "Designer"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "market_or_competitive_boundary",
+    "measurement_level": "basic"
+  },
+  {
+    "id": "10",
+    "name": "Turnitin Clarity CTA",
+    "url": "https://in.turnitin.com/products/feedback-studio/clarity",
+    "role": "Low-pressure product walkthrough conversion",
+    "desktop": {
+      "anchor": "See Turnitin Clarity in action",
+      "capture": "Capture only the walkthrough CTA through the registration action. Stop before \u2018Why choose Turnitin Clarity?\u2019"
+    },
+    "mobile": {
+      "anchor": "See Turnitin Clarity in action",
+      "capture": "Capture the mobile CTA, supporting copy, and action."
+    },
+    "borrow": [
+      "Walkthrough before commitment",
+      "Low-pressure tone",
+      "Clear reason to contact",
+      "One focused action"
+    ],
+    "reject": [
+      "Webinar format",
+      "Enterprise sales language",
+      "Institution-scale purchase framing"
+    ],
+    "personas": [
+      "Instructor",
+      "University leader",
+      "Marketing consultant"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "conversion",
+    "measurement_level": "basic"
+  },
+  {
+    "id": "11",
+    "name": "Nectir AI",
+    "url": "https://www.nectir.io/",
+    "role": "Competitive boundary for higher-education AI",
+    "desktop": {
+      "anchor": "We make it easy for schools to adopt AI safely.",
+      "capture": "Capture the hero only through the primary product mockup. This is a category-boundary artifact, not a construction reference."
+    },
+    "mobile": {
+      "anchor": "We make it easy for schools to adopt AI safely.",
+      "capture": "Capture the mobile hero and product mockup."
+    },
+    "borrow": [
+      "Higher-education specificity",
+      "Course-content grounding",
+      "LMS-fit awareness",
+      "Audience separation"
+    ],
+    "reject": [
+      "Supercharge language",
+      "Transform-instantly language",
+      "Broad campus infrastructure positioning",
+      "Generic AI-assistant category"
+    ],
+    "personas": [
+      "Founder",
+      "Marketing consultant",
+      "University leader",
+      "Designer"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "market_or_competitive_boundary",
+    "measurement_level": "basic"
+  },
+  {
+    "id": "12",
+    "name": "Canvas Plus for Higher Education",
+    "url": "https://www.instructure.com/canvas-tiers/canvas-plus-higher-education",
+    "role": "Competitive boundary for visibility and action",
+    "desktop": {
+      "anchor": "Make learning visible, engagement actionable, and high-quality instruction easier to sustain",
+      "capture": "Capture the opening and the three benefit blocks through \u2018Enable timely support and intervention.\u2019"
+    },
+    "mobile": {
+      "anchor": "Make learning visible, engagement actionable, and high-quality instruction easier to sustain",
+      "capture": "Capture the mobile opening and three benefit blocks."
+    },
+    "borrow": [
+      "Actionable instructor language",
+      "Signals tied to support",
+      "Higher-education tone"
+    ],
+    "reject": [
+      "Broad LMS ecosystem positioning",
+      "Campus-wide scale",
+      "Analytics as the product center",
+      "Claims MyTA cannot verify"
+    ],
+    "personas": [
+      "Founder",
+      "University leader",
+      "Marketing consultant",
+      "Instructor"
+    ],
+    "verified_on": "2026-07-25",
+    "classification": "market_or_competitive_boundary",
+    "measurement_level": "basic"
+  }
+]
