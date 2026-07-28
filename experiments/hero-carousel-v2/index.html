@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyTA Hero Carousel Prototype</title>
+    <meta name="description" content="An isolated implementation of the approved MyTA header and Hero carousel.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="carousel.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#" aria-label="MyTA home">
+          <img src="../../assets/brand/myta-logo.png" alt="" width="202" height="184">
+          <span>MyTA</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+          <span class="visually-hidden">Open navigation</span>
+          <span class="menu-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+
+        <div class="header-navigation" id="site-navigation">
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <a href="#">Product</a>
+            <a href="#">For Instructors</a>
+            <a href="#">For Institutions</a>
+            <a href="#">Resources</a>
+          </nav>
+          <div class="header-actions">
+            <a href="#">Log in</a>
+            <a class="header-pilot" href="#">Request a Pilot</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">COURSE CONTEXT <span>·</span> SUPPORT RULES <span>·</span> CHECKS FOR UNDERSTANDING</p>
+            <h1 id="hero-title" aria-label="Make learning visible in the age of AI.">
+              <span aria-hidden="true">Make learning</span>
+              <span aria-hidden="true">visible in the</span>
+              <span aria-hidden="true">age of AI<b>.</b></span>
+            </h1>
+            <p class="supporting-copy">MyTA lets you set the course context and the rules for AI support. Students get guided help while they work, and you get a clearer view of where understanding breaks down.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#">Request a Pilot</a>
+              <a class="button button-secondary" href="#">
+                <span class="play-symbol" aria-hidden="true"></span>
+                Watch the Demo
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="carousel"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="MyTA product workspaces"
+            tabindex="0"
+          >
+            <div class="carousel-wash" aria-hidden="true"></div>
+            <div class="carousel-stage">
+              <div
+                class="carousel-slide"
+                data-slide-index="0"
+                data-position="0"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Assignment workspace, slide 1 of 3"
+              >
+                <img
+                  src="assets/product-assignment.png"
+                  alt="MyTA assignment workspace with a calculus problem and guided MyTA support panel"
+                  width="1917"
+                  height="908"
+                  fetchpriority="high"
+                  loading="eager"
+                  draggable="false"
+                >
+              </div>
+              <div
+                class="carousel-slide"
+                data-slide-index="1"
+                data-position="1"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Student dashboard, slide 2 of 3"
+                aria-hidden="true"
+              >
+                <img
+                  src="assets/product-dashboard.png"
+                  alt="MyTA student dashboard with current assignments, classes, calendar, recommended study, and insight areas"
+                  width="1903"
+                  height="910"
+                  loading="lazy"
+                  draggable="false"
+                >
+              </div>
+              <div
+                class="carousel-slide"
+                data-slide-index="2"
+                data-position="2"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Study workspace, slide 3 of 3"
+                aria-hidden="true"
+              >
+                <img
+                  src="assets/product-study.png"
+                  alt="MyTA Study workspace with study sessions, resource types, and a student resource library"
+                  width="1904"
+                  height="906"
+                  loading="lazy"
+                  draggable="false"
+                >
+              </div>
+            </div>
+
+            <div class="carousel-navigation">
+              <button class="carousel-arrow carousel-previous" type="button" aria-label="Show previous slide">
+                <span aria-hidden="true">‹</span>
+              </button>
+
+              <div class="carousel-controls">
+                <div class="carousel-indicators" aria-label="Choose a product slide">
+                  <button type="button" data-slide-control="0" aria-label="Show Assignment workspace" aria-current="true"></button>
+                  <button type="button" data-slide-control="1" aria-label="Show Student dashboard"></button>
+                  <button type="button" data-slide-control="2" aria-label="Show Study workspace"></button>
+                </div>
+                <button class="rotation-toggle" type="button" aria-label="Pause automatic slide rotation" aria-pressed="false">
+                  <span class="pause-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+
+              <button class="carousel-arrow carousel-next" type="button" aria-label="Show next slide">
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+
+            <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-carousel-status></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

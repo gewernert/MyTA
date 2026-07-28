@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyTA Section 2 Product Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="section2.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="product-story" data-product-story aria-labelledby="story-heading">
+        <div class="story-sticky">
+          <div class="story-layout">
+            <div class="story-editorial">
+              <p class="story-eyebrow">ONE CONNECTED COURSE WORKFLOW</p>
+              <h1 class="story-heading" id="story-heading">
+                <span>From course context</span>
+                <span>to clearer teaching</span>
+                <span>decisions.</span>
+              </h1>
+              <p class="story-intro">MyTA brings course materials, guided assignment support, and instructor attention into one connected workflow.</p>
+
+              <nav class="chapter-index" aria-label="Product story chapters">
+                <button class="chapter-control" type="button" data-chapter-control="0" aria-expanded="true" aria-controls="chapter-description-1">
+                  <span class="chapter-number">01</span>
+                  <span class="chapter-content">
+                    <span class="chapter-title">Ground support in the course</span>
+                    <span class="chapter-description" id="chapter-description-1">Upload the notes, references, rubrics, and solutions that shape how students are expected to work.</span>
+                  </span>
+                </button>
+                <button class="chapter-control" type="button" data-chapter-control="1" aria-expanded="false" aria-controls="chapter-description-2">
+                  <span class="chapter-number">02</span>
+                  <span class="chapter-content">
+                    <span class="chapter-title">Guide the work, not replace it</span>
+                    <span class="chapter-description" id="chapter-description-2" hidden>Students can ask for hints, explanations, and reasoning checks without leaving the assignment.</span>
+                  </span>
+                </button>
+                <button class="chapter-control" type="button" data-chapter-control="2" aria-expanded="false" aria-controls="chapter-description-3">
+                  <span class="chapter-number">03</span>
+                  <span class="chapter-content">
+                    <span class="chapter-title">See what deserves attention next</span>
+                    <span class="chapter-description" id="chapter-description-3" hidden>Weekly briefings and assignment queues help instructors decide what to review, grade, or revisit.</span>
+                  </span>
+                </button>
+              </nav>
+            </div>
+
+            <div class="product-canvas" aria-live="off">
+              <figure class="product-frame is-active" data-product-frame="0">
+                <img class="product-image product-image-course" src="assets/course-material.png" width="1440" height="1000" alt="MyTA instructor Course Material screen showing upload controls, material types, and uploaded course materials.">
+              </figure>
+              <figure class="product-frame" data-product-frame="1" aria-hidden="true">
+                <img class="product-image product-image-guidance" src="assets/guided-support.png" width="1440" height="641" alt="MyTA student assignment workspace showing the assignment problem, the student's hint request, and MyTA's returned hint.">
+              </figure>
+              <figure class="product-frame" data-product-frame="2" aria-hidden="true">
+                <img class="product-image product-image-signals" src="assets/instructor-signals.png" width="1440" height="1000" alt="MyTA instructor dashboard showing the weekly briefing with grading and upcoming assignment queues.">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-scroll-steps" aria-hidden="true">
+          <article class="story-scroll-step" id="desktop-chapter-1-step" data-chapter-step="0"></article>
+          <article class="story-scroll-step" id="desktop-chapter-2-step" data-chapter-step="1"></article>
+          <article class="story-scroll-step" id="desktop-chapter-3-step" data-chapter-step="2"></article>
+        </div>
+
+        <div class="mobile-story">
+          <header class="mobile-story-header">
+            <p class="story-eyebrow">ONE CONNECTED COURSE WORKFLOW</p>
+            <h1 class="story-heading">
+              <span>From course context</span>
+              <span>to clearer teaching</span>
+              <span>decisions.</span>
+            </h1>
+            <p class="story-intro">MyTA brings course materials, guided assignment support, and instructor attention into one connected workflow.</p>
+          </header>
+
+          <article class="mobile-chapter" id="mobile-chapter-1">
+            <p class="mobile-chapter-number">01</p>
+            <h2>Ground support in the course</h2>
+            <p>Upload the notes, references, rubrics, and solutions that shape how students are expected to work.</p>
+            <figure class="mobile-product-frame mobile-product-frame-course">
+              <img class="mobile-product-image mobile-product-course" src="assets/course-material.png" width="1440" height="1000" alt="MyTA instructor Course Material screen showing upload controls, material types, and uploaded course materials.">
+            </figure>
+          </article>
+
+          <article class="mobile-chapter" id="mobile-chapter-2">
+            <p class="mobile-chapter-number">02</p>
+            <h2>Guide the work, not replace it</h2>
+            <p>Students can ask for hints, explanations, and reasoning checks without leaving the assignment.</p>
+            <figure class="mobile-product-frame mobile-product-frame-guidance">
+              <img class="mobile-product-image mobile-product-guidance-problem" src="assets/guided-support.png" width="1440" height="641" alt="MyTA student assignment workspace showing the assignment title and problem context.">
+            </figure>
+            <figure class="mobile-product-frame mobile-product-frame-guidance mobile-product-frame-guidance-support">
+              <img class="mobile-product-image mobile-product-guidance-support" src="assets/guided-support.png" width="1440" height="641" alt="MyTA support pane showing the student's hint request and MyTA's returned hint.">
+            </figure>
+          </article>
+
+          <article class="mobile-chapter" id="mobile-chapter-3">
+            <p class="mobile-chapter-number">03</p>
+            <h2>See what deserves attention next</h2>
+            <p>Weekly briefings and assignment queues help instructors decide what to review, grade, or revisit.</p>
+            <figure class="mobile-product-frame mobile-product-frame-briefing">
+              <img class="mobile-product-image mobile-product-briefing" src="assets/instructor-signals.png" width="1440" height="1000" alt="MyTA instructor dashboard weekly briefing.">
+            </figure>
+            <figure class="mobile-product-frame mobile-product-frame-supporting">
+              <img class="mobile-product-image mobile-product-queues" src="assets/instructor-queues.png" width="1440" height="1000" alt="MyTA instructor dashboard grading and upcoming assignment queues.">
+            </figure>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyTA Hero and Assignment Workflow Prototype</title>
+    <meta name="description" content="An isolated MyTA hero and connected assignment workflow prototype.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="prototype-header">
+      <a class="brand" href="#main" aria-label="MyTA prototype home">
+        <img src="../../assets/brand/myta-logo.png" alt="MyTA" width="42" height="38">
+        <span>MyTA</span>
+      </a>
+    </header>
+
+    <main id="main">
+      <div class="connected-story">
+        <div class="story-line" aria-hidden="true"></div>
+
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <h1 id="hero-title">Make learning visible in the age of AI.</h1>
+            <p>MyTA lets you set the course context and the rules for AI support. Students get guided help while they work, and you get a clearer view of where understanding breaks down.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="/educators/#pilot">Request a Pilot</a>
+              <a class="button button-secondary" href="/demo/">Watch the Demo</a>
+            </div>
+          </div>
+
+          <div class="hero-product" aria-label="Instructor setup connects to guided student work">
+            <aside class="setup-layer" aria-labelledby="setup-layer-title">
+              <div class="concept-label">Conceptual setup layer</div>
+              <h2 id="setup-layer-title">Instructor-defined boundaries</h2>
+              <ul>
+                <li><span aria-hidden="true">01</span>Course context</li>
+                <li><span aria-hidden="true">02</span>Support rules</li>
+                <li><span aria-hidden="true">03</span>Checks for understanding</li>
+              </ul>
+              <p>Setup concept, not a current product screen</p>
+            </aside>
+
+            <article class="assignment-workspace" aria-labelledby="workspace-title">
+              <header class="workspace-header">
+                <div>
+                  <span class="workspace-course">Fluid dynamics</span>
+                  <h2 id="workspace-title">Guided assignment</h2>
+                </div>
+                <span class="workspace-status">Problem 2 of 4</span>
+              </header>
+
+              <div class="workspace-body">
+                <section class="problem-pane" aria-labelledby="problem-title">
+                  <div class="problem-progress" aria-label="Assignment problem progression">
+                    <span class="is-complete">1</span>
+                    <span class="is-current" aria-current="step">2</span>
+                    <span>3</span>
+                    <span>4</span>
+                  </div>
+                  <p class="pane-label">Problem</p>
+                  <h3 id="problem-title">Flow through a narrowing pipe</h3>
+                  <p>Water flows through a horizontal pipe that narrows from a diameter of 10 cm to 5 cm.</p>
+                  <p>If the velocity in the wider section is 2 m/s, what is the velocity in the narrower section?</p>
+                  <div class="student-work">
+                    <span>Your reasoning</span>
+                    <p>I should start by identifying what stays constant as the pipe narrows.</p>
+                  </div>
+                  <div class="problem-footer">
+                    <button class="text-button" type="button">Previous</button>
+                    <button class="review-button" type="button">Review and turn in</button>
+                  </div>
+                </section>
+
+                <section class="support-pane" aria-labelledby="support-title">
+                  <header>
+                    <span class="support-mark" aria-hidden="true">M</span>
+                    <div>
+                      <h3 id="support-title">MyTA support</h3>
+                      <p>Problem 2 context</p>
+                    </div>
+                  </header>
+                  <div class="support-message">
+                    <span>Guided support</span>
+                    <p>What principle describes how flow rate behaves when the pipe diameter changes?</p>
+                  </div>
+                  <div class="support-actions" aria-label="Available MyTA support actions">
+                    <button type="button"><span aria-hidden="true">01</span>Hint</button>
+                    <button type="button"><span aria-hidden="true">02</span>Explain concept</button>
+                    <button type="button"><span aria-hidden="true">03</span>Check reasoning</button>
+                  </div>
+                  <div class="support-input" aria-hidden="true">Ask about this problem</div>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="workflow" aria-labelledby="workflow-title">
+          <header class="workflow-intro">
+            <p class="section-kicker">One connected assignment</p>
+            <h2 id="workflow-title">From instructor intent to the next teaching move.</h2>
+          </header>
+
+          <ol class="workflow-stages">
+            <li class="workflow-stage stage-setup">
+              <div class="stage-copy">
+                <span class="stage-number">01</span>
+                <div>
+                  <h3>Set the course context</h3>
+                  <p>Define the materials, rules, and checks that shape support.</p>
+                </div>
+              </div>
+              <div class="setup-fragment" aria-label="Conceptual setup categories">
+                <span class="fragment-label">Conceptual setup layer</span>
+                <div><i aria-hidden="true"></i>Course context</div>
+                <div><i aria-hidden="true"></i>Support rules</div>
+                <div><i aria-hidden="true"></i>Checks for understanding</div>
+              </div>
+            </li>
+
+            <li class="workflow-stage stage-guide">
+              <div class="stage-copy">
+                <span class="stage-number">02</span>
+                <div>
+                  <h3>Guide the student's work</h3>
+                  <p>Support stays inside the problem while the student does the reasoning.</p>
+                </div>
+              </div>
+              <div class="assignment-fragment" aria-label="Verified student assignment structure">
+                <div class="mini-problem">
+                  <span>Problem 2</span>
+                  <strong>What stays constant?</strong>
+                  <div class="reasoning-line"></div>
+                  <div class="reasoning-line short"></div>
+                </div>
+                <div class="mini-support">
+                  <span>MyTA support</span>
+                  <strong>Start with the governing principle.</strong>
+                  <div class="mini-actions">
+                    <b>Hint</b>
+                    <b>Check reasoning</b>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="workflow-stage stage-signals">
+              <div class="stage-copy">
+                <span class="stage-number">03</span>
+                <div>
+                  <h3>Surface learning signals</h3>
+                  <p>Qualitative patterns make possible breakdowns easier to review.</p>
+                </div>
+              </div>
+              <div class="signals-fragment" aria-label="Qualitative learning signal categories">
+                <span class="fragment-label">Qualitative learning signals</span>
+                <div><span aria-hidden="true">C</span>Concept confusion</div>
+                <div><span aria-hidden="true">H</span>Repeated hint use</div>
+                <div><span aria-hidden="true">R</span>Reasoning gap</div>
+              </div>
+            </li>
+
+            <li class="workflow-stage stage-action">
+              <div class="stage-copy">
+                <span class="stage-number">04</span>
+                <div>
+                  <h3>Decide what to revisit</h3>
+                  <p>Instructor judgment turns those signals into focused follow-up.</p>
+                </div>
+              </div>
+              <div class="action-fragment" aria-label="Conceptual instructor action list">
+                <span class="fragment-label">Conceptual action layer</span>
+                <div><span aria-hidden="true">01</span>Revisit in class</div>
+                <div><span aria-hidden="true">02</span>Reinforce with practice</div>
+                <div><span aria-hidden="true">03</span>Support a student</div>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

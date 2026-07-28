@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyTA Homepage Composition Preview</title>
+    <meta name="description" content="An isolated composition of the approved MyTA Hero and product story.">
+    <link rel="stylesheet" href="styles.css?v=5">
+    <script src="hero-carousel.js?v=1" defer></script>
+    <script src="section2.js?v=1" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#" aria-label="MyTA home">
+          <img src="assets/myta-logo.png" alt="" width="202" height="184">
+          <span>MyTA</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+          <span class="visually-hidden">Open navigation</span>
+          <span class="menu-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+
+        <div class="header-navigation" id="site-navigation">
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <a href="#product">Product</a>
+            <a href="#product-story">For Instructors</a>
+            <a href="#product-story">For Institutions</a>
+            <a href="#product-story">Resources</a>
+          </nav>
+          <div class="header-actions">
+            <a href="#">Log in</a>
+            <a class="header-pilot" href="#">Request a Pilot</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="product" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">COURSE CONTEXT <span>·</span> SUPPORT RULES <span>·</span> CHECKS FOR UNDERSTANDING</p>
+            <h1 id="hero-title" aria-label="Make learning visible in the age of AI.">
+              <span aria-hidden="true">Make learning</span>
+              <span aria-hidden="true">visible in the</span>
+              <span aria-hidden="true">age of AI<b>.</b></span>
+            </h1>
+            <p class="supporting-copy">MyTA lets you set the course context and the rules for AI support. Students get guided help while they work, and you get a clearer view of where understanding breaks down.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#">Request a Pilot</a>
+              <a class="button button-secondary" href="#">
+                <span class="play-symbol" aria-hidden="true"></span>
+                Watch the Demo
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="carousel"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="MyTA product workspaces"
+            tabindex="0"
+          >
+            <div class="carousel-wash" aria-hidden="true"></div>
+            <div class="carousel-stage">
+              <div
+                class="carousel-slide"
+                data-slide-index="0"
+                data-position="0"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Assignment workspace, slide 1 of 3"
+              >
+                <img
+                  src="assets/product-assignment.png"
+                  alt="MyTA assignment workspace with a calculus problem and guided MyTA support panel"
+                  width="1917"
+                  height="908"
+                  fetchpriority="high"
+                  loading="eager"
+                  draggable="false"
+                >
+              </div>
+              <div
+                class="carousel-slide"
+                data-slide-index="1"
+                data-position="1"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Student dashboard, slide 2 of 3"
+                aria-hidden="true"
+              >
+                <img
+                  src="assets/product-dashboard.png"
+                  alt="MyTA student dashboard with current assignments, classes, calendar, recommended study, and insight areas"
+                  width="1903"
+                  height="910"
+                  loading="lazy"
+                  draggable="false"
+                >
+              </div>
+              <div
+                class="carousel-slide"
+                data-slide-index="2"
+                data-position="2"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="Study workspace, slide 3 of 3"
+                aria-hidden="true"
+              >
+                <img
+                  src="assets/product-study.png"
+                  alt="MyTA Study workspace with study sessions, resource types, and a student resource library"
+                  width="1904"
+                  height="906"
+                  loading="lazy"
+                  draggable="false"
+                >
+              </div>
+            </div>
+
+            <div class="carousel-navigation">
+              <button class="carousel-arrow carousel-previous" type="button" aria-label="Show previous slide">
+                <span aria-hidden="true">‹</span>
+              </button>
+
+              <div class="carousel-controls">
+                <div class="carousel-indicators" aria-label="Choose a product slide">
+                  <button type="button" data-slide-control="0" aria-label="Show Assignment workspace" aria-current="true"></button>
+                  <button type="button" data-slide-control="1" aria-label="Show Student dashboard"></button>
+                  <button type="button" data-slide-control="2" aria-label="Show Study workspace"></button>
+                </div>
+                <button class="rotation-toggle" type="button" aria-label="Pause automatic slide rotation" aria-pressed="false">
+                  <span class="pause-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+
+              <button class="carousel-arrow carousel-next" type="button" aria-label="Show next slide">
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+
+            <p class="visually-hidden" aria-live="polite" aria-atomic="true" data-carousel-status></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-story" id="product-story" data-product-story aria-label="From course context to clearer teaching decisions.">
+        <div class="story-sticky">
+          <div class="story-layout">
+            <div class="story-editorial">
+              <p class="story-eyebrow">ONE CONNECTED COURSE WORKFLOW</p>
+              <h2 class="story-heading">
+                <span>From course context</span>
+                <span>to clearer teaching</span>
+                <span>decisions.</span>
+              </h2>
+              <p class="story-intro">MyTA brings course materials, guided assignment support, and instructor attention into one connected workflow.</p>
+
+              <nav class="chapter-index" aria-label="Product story chapters">
+                <button class="chapter-control" type="button" data-chapter-control="0" aria-expanded="true" aria-controls="chapter-description-1">
+                  <span class="chapter-number">01</span>
+                  <span class="chapter-content">
+                    <span class="chapter-title">Ground support in the course</span>
+                    <span class="chapter-description" id="chapter-description-1">Upload the notes, references, rubrics, and solutions that shape how students are expected to work.</span>
+                  </span>
+                </button>
+                <button class="chapter-control" type="button" data-chapter-control="1" aria-expanded="false" aria-controls="chapter-description-2">
+                  <span class="chapter-number">02</span>
+                  <span class="chapter-content">
+                    <span class="chapter-title">Guide the work, not replace it</span>
+                    <span class="chapter-description" id="chapter-description-2" hidden>Students can ask for hints, explanations, and reasoning checks without leaving the assignment.</span>
+                  </span>
+                </button>
+                <button class="chapter-control" type="button" data-chapter-control="2" aria-expanded="false" aria-controls="chapter-description-3">
+                  <span class="chapter-number">03</span>
+                  <span class="chapter-content">
+                    <span class="chapter-title">See what deserves attention next</span>
+                    <span class="chapter-description" id="chapter-description-3" hidden>Weekly briefings and assignment queues help instructors decide what to review, grade, or revisit.</span>
+                  </span>
+                </button>
+              </nav>
+            </div>
+
+            <div class="product-canvas" aria-live="off">
+              <figure class="product-frame is-active" data-product-frame="0">
+                <img class="product-image product-image-course" src="assets/course-material.png" width="1440" height="1000" alt="MyTA instructor Course Material screen showing upload controls, material types, and uploaded course materials.">
+              </figure>
+              <figure class="product-frame" data-product-frame="1" aria-hidden="true">
+                <img class="product-image product-image-guidance" src="assets/guided-support.png" width="1440" height="641" alt="MyTA student assignment workspace showing the assignment problem, the student's hint request, and MyTA's returned hint.">
+              </figure>
+              <figure class="product-frame" data-product-frame="2" aria-hidden="true">
+                <img class="product-image product-image-signals" src="assets/instructor-signals.png" width="1440" height="1000" alt="MyTA instructor dashboard showing the weekly briefing with grading and upcoming assignment queues.">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-scroll-steps" aria-hidden="true">
+          <article class="story-scroll-step" id="desktop-chapter-1-step" data-chapter-step="0"></article>
+          <article class="story-scroll-step" id="desktop-chapter-2-step" data-chapter-step="1"></article>
+          <article class="story-scroll-step" id="desktop-chapter-3-step" data-chapter-step="2"></article>
+        </div>
+
+        <div class="mobile-story">
+          <header class="mobile-story-header">
+            <p class="story-eyebrow">ONE CONNECTED COURSE WORKFLOW</p>
+            <h2 class="story-heading">
+              <span>From course context</span>
+              <span>to clearer teaching</span>
+              <span>decisions.</span>
+            </h2>
+            <p class="story-intro">MyTA brings course materials, guided assignment support, and instructor attention into one connected workflow.</p>
+          </header>
+
+          <article class="mobile-chapter" id="mobile-chapter-1">
+            <p class="mobile-chapter-number">01</p>
+            <h3>Ground support in the course</h3>
+            <p>Upload the notes, references, rubrics, and solutions that shape how students are expected to work.</p>
+            <figure class="mobile-product-frame mobile-product-frame-course">
+              <img class="mobile-product-image mobile-product-course" src="assets/course-material.png" width="1440" height="1000" alt="MyTA instructor Course Material screen showing upload controls, material types, and uploaded course materials.">
+            </figure>
+          </article>
+
+          <article class="mobile-chapter" id="mobile-chapter-2">
+            <p class="mobile-chapter-number">02</p>
+            <h3>Guide the work, not replace it</h3>
+            <p>Students can ask for hints, explanations, and reasoning checks without leaving the assignment.</p>
+            <figure class="mobile-product-frame mobile-product-frame-guidance">
+              <img class="mobile-product-image mobile-product-guidance-problem" src="assets/guided-support.png" width="1440" height="641" alt="MyTA student assignment workspace showing the assignment title and problem context.">
+            </figure>
+            <figure class="mobile-product-frame mobile-product-frame-guidance mobile-product-frame-guidance-support">
+              <img class="mobile-product-image mobile-product-guidance-support" src="assets/guided-support.png" width="1440" height="641" alt="MyTA support pane showing the student's hint request and MyTA's returned hint.">
+            </figure>
+          </article>
+
+          <article class="mobile-chapter" id="mobile-chapter-3">
+            <p class="mobile-chapter-number">03</p>
+            <h3>See what deserves attention next</h3>
+            <p>Weekly briefings and assignment queues help instructors decide what to review, grade, or revisit.</p>
+            <figure class="mobile-product-frame mobile-product-frame-briefing">
+              <img class="mobile-product-image mobile-product-briefing" src="assets/instructor-signals.png" width="1440" height="1000" alt="MyTA instructor dashboard weekly briefing.">
+            </figure>
+            <figure class="mobile-product-frame mobile-product-frame-supporting">
+              <img class="mobile-product-image mobile-product-queues" src="assets/instructor-queues.png" width="1440" height="1000" alt="MyTA instructor dashboard grading and upcoming assignment queues.">
+            </figure>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
